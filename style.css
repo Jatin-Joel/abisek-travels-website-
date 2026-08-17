@@ -1,8 +1,40 @@
 /* ==========================================================================
-   Abisek Travels Style System
+   Abisek Travels Style System & Mobile Responsive Engine
    ========================================================================== */
 
-/* Custom Scrollbar */
+/* 1. Global Typography & Sharpness Optimizations */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    touch-action: manipulation;
+}
+
+/* 2. Image Sharpness & Responsive Reset */
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
+}
+
+/* Prevent stretched images */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 3. Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -19,23 +51,22 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #FFC107;
+    background: #F59E0B;
 }
 
-/* Custom Selection */
+/* 4. Text Selection */
 ::selection {
-    background-color: #FFC107;
+    background-color: #F59E0B;
     color: #000000;
 }
 
-/* Hide Default Cursor on desktop when custom cursor is active */
-@media (min-width: 768px) {
+/* 5. Custom Cursor (Desktop Only / Fine Pointers Only) */
+@media (min-width: 1024px) and (pointer: fine) and (hover: hover) {
     body, a, button, input, select, textarea, [role="button"] {
         cursor: none !important;
     }
 }
 
-/* Custom Cursor */
 .custom-cursor {
     width: 10px;
     height: 10px;
@@ -45,29 +76,38 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 99999;
-    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
     transition: width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 .custom-cursor.hover {
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 193, 7, 0.15);
+    background-color: rgba(245, 158, 11, 0.15);
     border: 1.5px solid #F59E0B;
 }
 
-/* Glassmorphic Navbar on scroll */
-nav.scrolled {
-    background-color: rgba(18, 18, 20, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+/* Always hide custom cursor on touch/mobile devices */
+@media (pointer: coarse), (hover: none) {
+    .custom-cursor {
+        display: none !important;
+    }
+    body, a, button, input, select, textarea, [role="button"] {
+        cursor: auto !important;
+    }
 }
 
-/* Navigation Links underline effect */
+/* 6. Navigation Bar */
+nav.scrolled {
+    background-color: rgba(18, 18, 20, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+}
+
 .nav-link {
     position: relative;
 }
@@ -87,26 +127,26 @@ nav.scrolled {
     width: 100%;
 }
 
-/* Scroll Animation classes */
+/* 7. Scroll Animations */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fade-in-left {
     opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-30px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fade-in-right {
     opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(30px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fade-in.visible,
@@ -116,14 +156,30 @@ nav.scrolled {
     transform: translate(0, 0);
 }
 
-/* Custom Parallax background speed adjustment */
+/* 8. Hero & Parallax Optimizations */
 #heroBg {
     will-change: transform;
     transition: transform 0.1s ease-out;
 }
 
-/* Custom styling for inputs */
+/* 9. Mobile Touch Targets & Form Optimizations */
+@media (max-width: 768px) {
+    /* Prevent iOS zoom-in when focusing inputs (requires 16px min font size) */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
     cursor: pointer;
+}
+
+/* 10. Safe Area Insets for Modern Mobile Screens (iPhone Notch/Home Bar & Android Gesture Bar) */
+.safe-bottom {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+
+.floating-cta-container {
+    bottom: max(1.5rem, calc(env(safe-area-inset-bottom) + 0.75rem));
 }

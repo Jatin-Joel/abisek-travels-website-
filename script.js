@@ -20,6 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenu.classList.add('hidden');
             }
         });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
         
         // Close menu when clicking on links
         mobileMenu.querySelectorAll('a').forEach(link => {
@@ -29,25 +36,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Custom Cursor Tracker
+    // 3. Custom Cursor Tracker (Desktop & Fine-pointer devices only)
     const cursor = document.getElementById('customCursor');
-    if (cursor) {
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (cursor && isFinePointer && window.innerWidth >= 1024) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let cursorX = mouseX;
+        let cursorY = mouseY;
+        let isCursorActive = false;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-        });
+            if (!isCursorActive) {
+                isCursorActive = true;
+                cursor.style.opacity = '1';
+            }
+        }, { passive: true });
 
         // Smooth cursor follow (lerp)
         const renderCursor = () => {
             const dx = mouseX - cursorX;
             const dy = mouseY - cursorY;
-            cursorX += dx * 0.15;
-            cursorY += dy * 0.15;
+            cursorX += dx * 0.2;
+            cursorY += dy * 0.2;
             cursor.style.left = `${cursorX}px`;
             cursor.style.top = `${cursorY}px`;
             requestAnimationFrame(renderCursor);
@@ -62,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Parallax Hero Background & Navbar Scroll styling
+    // 4. Parallax Hero Background & Navbar Scroll styling (Passive for performance)
     const navbar = document.getElementById('navbar');
     const heroBg = document.getElementById('heroBg');
 
@@ -71,22 +85,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Navbar scrolled state
         if (navbar) {
-            if (scrollY > 50) {
+            if (scrollY > 30) {
                 navbar.classList.add('scrolled');
-                navbar.classList.remove('py-6');
-                navbar.classList.add('py-4');
+                navbar.classList.remove('py-4', 'sm:py-6');
+                navbar.classList.add('py-3');
             } else {
                 navbar.classList.remove('scrolled');
-                navbar.classList.remove('py-4');
-                navbar.classList.add('py-6');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('py-4', 'sm:py-6');
             }
         }
 
         // Hero parallax
-        if (heroBg) {
-            heroBg.style.transform = `translate3d(0, ${scrollY * 0.35}px, 0)`;
+        if (heroBg && window.innerWidth >= 768) {
+            heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
         }
-    });
+    }, { passive: true });
 
     // 5. Scroll Reveal Intersection Observer
     const scrollRevealObserver = new IntersectionObserver((entries) => {
@@ -96,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px'
     });
 
     // Register elements for fade-in scroll reveal
@@ -109,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register scroll animations container triggers
     const scrollAnimateContainers = document.querySelectorAll('.scroll-animate');
     scrollAnimateContainers.forEach(container => {
-        // Trigger reveal of children inside section container when section hits screen
         scrollRevealObserver.observe(container);
         container.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(child => {
             scrollRevealObserver.observe(child);
@@ -121,23 +134,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            // Guard: only fire if intersecting AND not already counted
             if (entry.isIntersecting && !entry.target.dataset.counted) {
-                entry.target.dataset.counted = 'true'; // lock immediately — prevents any re-trigger
+                entry.target.dataset.counted = 'true';
                 observer.unobserve(entry.target);
                 const target = parseInt(entry.target.getAttribute('data-target'), 10);
                 animateCounter(entry.target, target);
             }
         });
-    }, { threshold: 0.3 }); // 30% visible is enough to start
+    }, { threshold: 0.25 });
 
     counterNumbers.forEach(num => counterObserver.observe(num));
 
     function animateCounter(element, targetValue) {
-        const duration = 1800; // ms — 1.8 s total
+        const duration = 1600; // ms
         const startTime = performance.now();
 
-        // Cubic ease-out: starts fast, decelerates near the end
         function easeOut(t) {
             return 1 - Math.pow(1 - t, 3);
         }
@@ -151,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (rawProgress < 1) {
                 requestAnimationFrame(tick);
             } else {
-                element.textContent = targetValue; // guarantee exact final value
+                element.textContent = targetValue;
             }
         }
 
@@ -187,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = `New Booking Request 🚖\nName: ${name}\nContact: ${whatsapp}\nPickup: ${pickup}\nDrop: ${drop}\nDate: ${formattedDate}`;
             
             // Open in WhatsApp API
-            const whatsappUrl = `https://wa.me/917973992326?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/917814442326?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
     }

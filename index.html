@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Primary SEO -->
     <title>Abisek Travels | Cab Service Pathankot to Kashmir, Ladakh, Himachal Pradesh &amp; Uttarakhand</title>
@@ -27,13 +31,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;850&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    screens: {
+                        'xs': '475px',
+                    },
                     colors: {
                         'midnight-black': '#000000',
                         'midnight-surface': '#121214',
@@ -42,8 +49,8 @@
                         'golden-hover': '#D97706',  /* Softer Amber Hover */
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        poppins: ['Poppins', 'sans-serif'],
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        poppins: ['Poppins', 'Inter', 'sans-serif'],
                     }
                 }
             }
@@ -51,27 +58,27 @@
     </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-midnight-black text-white overflow-x-hidden font-sans">
+<body class="bg-midnight-black text-white overflow-x-hidden font-sans selection:bg-golden-yellow selection:text-black">
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor hidden md:block" id="customCursor"></div>
+    <!-- Custom Cursor (Visible only on Desktop fine-pointer devices) -->
+    <div class="custom-cursor hidden lg:block" id="customCursor"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 sm:py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <div class="flex items-center gap-3">
-                    <div class="relative w-8 h-8 text-golden-yellow">
-                        <i data-lucide="car-front" class="w-6 h-6 absolute bottom-0 left-0"></i>
-                        <i data-lucide="plane" class="w-5 h-5 absolute top-0 right-0 transform rotate-45"></i>
+                <div class="flex items-center gap-2.5 sm:gap-3">
+                    <div class="relative w-7 h-7 sm:w-8 sm:h-8 text-golden-yellow shrink-0">
+                        <i data-lucide="car-front" class="w-5 h-5 sm:w-6 sm:h-6 absolute bottom-0 left-0"></i>
+                        <i data-lucide="plane" class="w-4 h-4 sm:w-5 sm:h-5 absolute top-0 right-0 transform rotate-45"></i>
                     </div>
-                    <a href="#" class="text-xl md:text-2xl font-poppins font-bold text-white tracking-wider uppercase flex items-center">
-                        ABISEK <span class="text-golden-yellow ml-2 font-medium">TRAVELS</span>
+                    <a href="#home" class="text-lg sm:text-xl md:text-2xl font-poppins font-bold text-white tracking-wider uppercase flex items-center">
+                        ABISEK <span class="text-golden-yellow ml-1.5 font-medium">TRAVELS</span>
                     </a>
                 </div>
-                <!-- Menu Links -->
-                <div class="hidden md:flex items-center space-x-8 font-poppins">
+                <!-- Desktop Menu Links -->
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-poppins">
                     <a href="#home" class="nav-link hover:text-golden-yellow text-sm font-medium tracking-wide uppercase transition-colors">Home</a>
                     <a href="#about" class="nav-link hover:text-golden-yellow text-sm font-medium tracking-wide uppercase transition-colors">About</a>
                     <a href="#services" class="nav-link hover:text-golden-yellow text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
@@ -79,15 +86,15 @@
                     <a href="#testimonials" class="nav-link hover:text-golden-yellow text-sm font-medium tracking-wide uppercase transition-colors">Reviews</a>
                     <a href="#faq" class="nav-link hover:text-golden-yellow text-sm font-medium tracking-wide uppercase transition-colors">FAQ</a>
                 </div>
-                <!-- Book CTA -->
+                <!-- Desktop Book CTA -->
                 <div class="hidden md:block font-poppins">
-                    <a href="#booking" class="bg-golden-yellow text-black font-semibold px-6 py-2.5 rounded-lg hover:bg-golden-hover transition-all duration-300 shadow-lg shadow-golden-yellow/10 hover:shadow-golden-yellow/20 hover:-translate-y-0.5 transform">
+                    <a href="#booking" class="bg-golden-yellow text-black font-semibold px-5 lg:px-6 py-2.5 rounded-lg hover:bg-golden-hover transition-all duration-300 shadow-lg shadow-golden-yellow/10 hover:shadow-golden-yellow/20 hover:-translate-y-0.5 transform text-sm">
                         Book Now
                     </a>
                 </div>
-                <!-- Mobile Burger -->
+                <!-- Mobile Burger Button -->
                 <div class="flex md:hidden">
-                    <button id="mobileMenuBtn" class="text-gray-400 hover:text-white focus:outline-none">
+                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="text-gray-300 hover:text-white p-2 focus:outline-none rounded-lg active:bg-white/10">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -95,40 +102,48 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-midnight-surface/98 backdrop-blur-lg border-b border-white/5 py-6 px-4 space-y-4 font-poppins">
-            <a href="#home" class="block text-white hover:text-golden-yellow text-lg font-medium py-2">Home</a>
-            <a href="#about" class="block text-white hover:text-golden-yellow text-lg font-medium py-2">About</a>
-            <a href="#services" class="block text-white hover:text-golden-yellow text-lg font-medium py-2">Services</a>
-            <a href="#destinations" class="block text-white hover:text-golden-yellow text-lg font-medium py-2">Routes</a>
-            <a href="#testimonials" class="block text-white hover:text-golden-yellow text-lg font-medium py-2">Reviews</a>
-            <a href="#faq" class="block text-white hover:text-golden-yellow text-lg font-medium py-2">FAQ</a>
-            <a href="#booking" class="block w-full text-center bg-golden-yellow text-black font-semibold py-3 rounded-lg hover:bg-golden-hover transition-colors">
-                Book Now
-            </a>
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-midnight-surface/98 backdrop-blur-xl border-b border-white/10 py-6 px-6 space-y-3 font-poppins shadow-2xl">
+            <a href="#home" class="block text-white hover:text-golden-yellow text-base font-medium py-2.5 border-b border-white/5">Home</a>
+            <a href="#about" class="block text-white hover:text-golden-yellow text-base font-medium py-2.5 border-b border-white/5">About</a>
+            <a href="#services" class="block text-white hover:text-golden-yellow text-base font-medium py-2.5 border-b border-white/5">Services</a>
+            <a href="#destinations" class="block text-white hover:text-golden-yellow text-base font-medium py-2.5 border-b border-white/5">Routes</a>
+            <a href="#testimonials" class="block text-white hover:text-golden-yellow text-base font-medium py-2.5 border-b border-white/5">Reviews</a>
+            <a href="#faq" class="block text-white hover:text-golden-yellow text-base font-medium py-2.5 border-b border-white/5">FAQ</a>
+            <div class="pt-2">
+                <a href="#booking" class="block w-full text-center bg-golden-yellow text-black font-semibold py-3 rounded-xl hover:bg-golden-hover transition-colors text-base">
+                    Book Now
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <header id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
+        <!-- Hero Background Layer -->
         <div class="absolute inset-0 z-0" id="heroBg">
-            <div class="absolute inset-0 bg-cover bg-center filter blur-xl scale-110 opacity-70" style="background-image: url('assets/hero_uploaded.jpg');"></div>
-            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/hero_uploaded.jpg'); max-width: 1024px; max-height: 768px; width: 100%; height: 100%; margin: auto;"></div>
+            <div class="absolute inset-0 bg-cover bg-center filter blur-lg scale-105 opacity-60" style="background-image: url('assets/hero_uploaded.jpg');"></div>
+            <div class="absolute inset-0 bg-cover bg-center opacity-75" style="background-image: url('assets/hero_uploaded.jpg');"></div>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-midnight-black z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-midnight-black z-10 pointer-events-none"></div>
         
-        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto mt-20 fade-in">
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-poppins font-bold text-white leading-tight mb-6 tracking-tight">
+        <div class="relative z-20 text-center px-4 sm:px-6 max-w-5xl mx-auto mt-8 sm:mt-16 fade-in">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-golden-yellow text-xs sm:text-sm font-medium mb-6 backdrop-blur-md">
+                <i data-lucide="shield-check" class="w-4 h-4 text-golden-yellow"></i>
+                Verified &amp; Safe Outstation Cab Service
+            </div>
+            <h1 class="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-poppins font-bold text-white leading-[1.15] mb-5 sm:mb-6 tracking-tight">
                 Explore the Mountains,<br />
                 <span class="text-golden-yellow">Travel in Comfort.</span>
             </h1>
-            <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
-                Professional outstation taxi services from Pathankot. Trusted, secure, and affordable rides to North India's most beautiful destinations.
+            <p class="text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-sans px-2">
+                Professional outstation taxi services from Pathankot. Trusted, secure, and affordable rides to North India's most breathtaking hill destinations.
             </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 font-poppins">
-                <a href="#booking" class="bg-golden-yellow text-black font-semibold px-8 py-4 rounded-lg hover:bg-golden-hover transition-all duration-300 text-lg w-full sm:w-auto inline-block shadow-lg shadow-golden-yellow/10 hover:shadow-golden-yellow/20 hover:-translate-y-0.5 transform">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 font-poppins max-w-md sm:max-w-none mx-auto">
+                <a href="#booking" class="bg-golden-yellow text-black font-semibold px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl hover:bg-golden-hover transition-all duration-300 text-base sm:text-lg w-full sm:w-auto inline-flex items-center justify-center gap-2 shadow-lg shadow-golden-yellow/20 hover:-translate-y-0.5 transform active:scale-95">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
                     Book Your Ride
                 </a>
-                <a href="#destinations" class="bg-transparent border border-white/40 text-white hover:border-white hover:bg-white/10 font-medium px-8 py-4 rounded-lg transition-all duration-300 text-lg w-full sm:w-auto inline-block">
+                <a href="#destinations" class="bg-white/10 border border-white/30 text-white hover:border-white hover:bg-white/20 font-medium px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl transition-all duration-300 text-base sm:text-lg w-full sm:w-auto inline-flex items-center justify-center backdrop-blur-sm active:scale-95">
                     Explore Routes
                 </a>
             </div>
@@ -136,37 +151,37 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="py-32 bg-midnight-black relative border-t border-white/5 scroll-animate">
+    <section id="about" class="py-16 sm:py-24 lg:py-32 bg-midnight-black relative border-t border-white/5 scroll-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
                 <div class="fade-in-left">
-                    <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2 font-poppins">Our Commitment</h2>
-                    <h3 class="text-3xl md:text-5xl font-poppins font-bold text-white mb-6 leading-tight">
+                    <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2 font-poppins">Our Commitment</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-5xl font-poppins font-bold text-white mb-5 sm:mb-6 leading-tight">
                         Reliable mountain travel for every journey.
                     </h3>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed font-sans">
+                    <p class="text-gray-300 text-base sm:text-lg mb-8 leading-relaxed font-sans">
                         Abisek Travels is built on the foundation of trust, safety, and local expertise. Based in Pathankot, we specialize in high-altitude mountain terrain navigation, serving travelers headed to the serene hills of Dharamshala, the scenic valleys of Kashmir, and the rugged beauty of Leh-Ladakh. With 5+ years of driving experience, we guarantee a professional and seamless travel experience across North India.
                     </p>
-                    <div class="grid grid-cols-2 gap-8 font-poppins">
+                    <div class="grid grid-cols-2 gap-6 sm:gap-8 font-poppins">
                         <div class="border-l-2 border-golden-yellow pl-4">
-                            <div class="text-4xl font-bold text-white mb-1">
+                            <div class="text-3xl sm:text-4xl font-bold text-white mb-1">
                                 <span class="counter-number" data-target="2000">0</span>+
                             </div>
-                            <div class="text-gray-400 text-sm tracking-wide">Trips Completed</div>
+                            <div class="text-gray-400 text-xs sm:text-sm tracking-wide">Trips Completed</div>
                         </div>
                         <div class="border-l-2 border-golden-yellow pl-4">
-                            <div class="text-4xl font-bold text-white mb-1">
+                            <div class="text-3xl sm:text-4xl font-bold text-white mb-1">
                                 <span class="counter-number" data-target="5">0</span>+
                             </div>
-                            <div class="text-gray-400 text-sm tracking-wide">Years Experience</div>
+                            <div class="text-gray-400 text-xs sm:text-sm tracking-wide">Years Experience</div>
                         </div>
                     </div>
                 </div>
                 <div class="relative fade-in-right">
-                    <div class="aspect-[4/5] bg-midnight-surface rounded-2xl overflow-hidden relative group shadow-2xl">
+                    <div class="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] bg-midnight-surface rounded-2xl overflow-hidden relative group shadow-2xl">
                         <div class="absolute inset-0 bg-gradient-to-tr from-golden-yellow/20 to-transparent z-20 pointer-events-none"></div>
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img src="assets/about_clean.png" alt="Driver's hand on steering wheel" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                        <img src="assets/about_clean.png" alt="Driver's hand on steering wheel" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
                     </div>
                 </div>
             </div>
@@ -174,49 +189,50 @@
     </section>
 
     <!-- Meet Your Driver Section -->
-    <section id="driver" class="py-32 bg-midnight-surface relative border-t border-white/5 scroll-animate">
+    <section id="driver" class="py-16 sm:py-24 lg:py-32 bg-midnight-surface relative border-t border-white/5 scroll-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
 
                 <!-- Left — Text Content -->
                 <div class="order-2 lg:order-1 fade-in-left">
-                    <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-4 font-poppins">Meet Your Driver</h2>
-                    <h3 class="text-3xl md:text-5xl font-poppins font-bold text-white mb-6 leading-tight">
+                    <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-3 sm:mb-4 font-poppins">Meet Your Driver</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-5xl font-poppins font-bold text-white mb-5 sm:mb-6 leading-tight">
                         Experienced,<br>Professional<br>&amp; Friendly.
                     </h3>
-                    <p class="text-gray-400 text-lg mb-10 leading-relaxed font-sans">
+                    <p class="text-gray-300 text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed font-sans">
                         Your safety and comfort are our top priorities. Meet Abisek Atwal, our senior driver with extensive knowledge of the local routes and a commitment to providing a seamless travel experience across North India.
                     </p>
 
-                    <!-- Stat Cards — fade in after heading -->
-                    <div class="grid grid-cols-2 gap-6 font-poppins fade-in">
-                        <div class="bg-midnight-card p-6 rounded-2xl border border-white/5 flex items-start gap-4 hover:border-golden-yellow/20 transition-all duration-300">
-                            <i data-lucide="award" class="w-8 h-8 text-golden-yellow shrink-0 mt-1"></i>
+                    <!-- Stat Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 font-poppins fade-in">
+                        <div class="bg-midnight-card p-5 sm:p-6 rounded-2xl border border-white/5 flex items-start gap-4 hover:border-golden-yellow/20 transition-all duration-300">
+                            <i data-lucide="award" class="w-7 h-7 sm:w-8 sm:h-8 text-golden-yellow shrink-0 mt-0.5"></i>
                             <div>
-                                <div class="text-3xl font-bold text-white leading-none mb-1">
+                                <div class="text-2xl sm:text-3xl font-bold text-white leading-none mb-1">
                                     <span class="counter-number" data-target="5">0</span>+
                                 </div>
-                                <div class="text-sm text-gray-400">Years Exp.</div>
+                                <div class="text-xs sm:text-sm text-gray-400">Years Exp.</div>
                             </div>
                         </div>
-                        <div class="bg-midnight-card p-6 rounded-2xl border border-white/5 flex items-start gap-4 hover:border-golden-yellow/20 transition-all duration-300">
-                            <i data-lucide="map-pin" class="w-8 h-8 text-golden-yellow shrink-0 mt-1"></i>
+                        <div class="bg-midnight-card p-5 sm:p-6 rounded-2xl border border-white/5 flex items-start gap-4 hover:border-golden-yellow/20 transition-all duration-300">
+                            <i data-lucide="map-pin" class="w-7 h-7 sm:w-8 sm:h-8 text-golden-yellow shrink-0 mt-0.5"></i>
                             <div>
-                                <div class="text-3xl font-bold text-white leading-none mb-1">
+                                <div class="text-2xl sm:text-3xl font-bold text-white leading-none mb-1">
                                     <span class="counter-number" data-target="2000">0</span>+
                                 </div>
-                                <div class="text-sm text-gray-400">Total Trips</div>
+                                <div class="text-xs sm:text-sm text-gray-400">Total Trips</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right — Driver Photo (fixed-height container) -->
+                <!-- Right — Driver Photo -->
                 <div class="order-1 lg:order-2 relative fade-in-right">
-                    <div class="relative h-[480px] rounded-3xl overflow-hidden border border-white/5 shadow-2xl group hover:border-golden-yellow/30 transition-all duration-500">
-                        <!-- Photo — cropped to face/upper-body zone -->
+                    <div class="relative h-[340px] xs:h-[400px] sm:h-[450px] md:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/5 shadow-2xl group hover:border-golden-yellow/30 transition-all duration-500">
                         <img src="assets/driver.png"
                              alt="Abisek Atwal — Professional Driver at Abisek Travels"
+                             loading="lazy"
+                             decoding="async"
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                              style="object-position: center 15%;">
 
@@ -224,15 +240,15 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
 
                         <!-- Name + Rating overlay -->
-                        <div class="absolute bottom-0 left-0 right-0 p-8 font-poppins">
-                            <div class="text-2xl font-bold text-white mb-2">Abisek Atwal</div>
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="star" class="w-5 h-5 text-golden-yellow" style="fill:#F59E0B"></i>
-                                <i data-lucide="star" class="w-5 h-5 text-golden-yellow" style="fill:#F59E0B"></i>
-                                <i data-lucide="star" class="w-5 h-5 text-golden-yellow" style="fill:#F59E0B"></i>
-                                <i data-lucide="star" class="w-5 h-5 text-golden-yellow" style="fill:#F59E0B"></i>
-                                <i data-lucide="star" class="w-5 h-5 text-golden-yellow" style="fill:#F59E0B"></i>
-                                <span class="text-gray-300 text-sm ml-1">(4.9 rating)</span>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 font-poppins">
+                            <div class="text-xl sm:text-2xl font-bold text-white mb-1.5">Abisek Atwal</div>
+                            <div class="flex items-center gap-1.5 sm:gap-2">
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-golden-yellow" style="fill:#F59E0B"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-golden-yellow" style="fill:#F59E0B"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-golden-yellow" style="fill:#F59E0B"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-golden-yellow" style="fill:#F59E0B"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-golden-yellow" style="fill:#F59E0B"></i>
+                                <span class="text-gray-300 text-xs sm:text-sm ml-1">(4.9 rating)</span>
                             </div>
                         </div>
                     </div>
@@ -245,171 +261,171 @@
         </div>
     </section>
 
-
     <!-- Services Section -->
-
-    <section id="services" class="py-32 bg-midnight-surface relative border-t border-white/5 scroll-animate">
+    <section id="services" class="py-16 sm:py-24 lg:py-32 bg-midnight-surface relative border-t border-white/5 scroll-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-in">
-                <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2 font-poppins">Travel Solutions</h2>
-                <h3 class="text-3xl md:text-5xl font-poppins font-bold text-white mb-6">
+            <div class="text-center mb-12 sm:mb-20 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2 font-poppins">Travel Solutions</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-5xl font-poppins font-bold text-white">
                     Professional Cab Services.
                 </h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 font-poppins">
-                <div class="bg-midnight-card p-8 rounded-2xl border border-white/5 hover:border-golden-yellow/30 transition-all duration-300">
-                    <div class="w-14 h-14 bg-golden-yellow/10 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="navigation" class="w-8 h-8 text-golden-yellow"></i>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 font-poppins">
+                <div class="bg-midnight-card p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-golden-yellow/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-golden-yellow/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="navigation" class="w-6 h-6 sm:w-8 sm:h-8 text-golden-yellow"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">One-Way Outstation</h4>
-                    <p class="text-gray-400 font-sans">Reach your destination without the round-trip cost. Ideal for drop-offs at hotels, airports, or home stays.</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">One-Way Outstation</h4>
+                    <p class="text-gray-400 text-sm sm:text-base font-sans">Reach your destination without the round-trip cost. Ideal for drop-offs at hotels, airports, or home stays.</p>
                 </div>
 
-                <div class="bg-midnight-card p-8 rounded-2xl border border-white/5 hover:border-golden-yellow/30 transition-all duration-300">
-                    <div class="w-14 h-14 bg-golden-yellow/10 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="repeat" class="w-8 h-8 text-golden-yellow"></i>
+                <div class="bg-midnight-card p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-golden-yellow/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-golden-yellow/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="repeat" class="w-6 h-6 sm:w-8 sm:h-8 text-golden-yellow"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Round Trip</h4>
-                    <p class="text-gray-400 font-sans">Perfect for short getaways. Our driver waits at your destination and brings you back safely.</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Round Trip</h4>
+                    <p class="text-gray-400 text-sm sm:text-base font-sans">Perfect for short getaways. Our driver waits at your destination and brings you back safely.</p>
                 </div>
 
-                <div class="bg-midnight-card p-8 rounded-2xl border border-white/5 hover:border-golden-yellow/30 transition-all duration-300">
-                    <div class="w-14 h-14 bg-golden-yellow/10 rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="mountain" class="w-8 h-8 text-golden-yellow"></i>
+                <div class="bg-midnight-card p-6 sm:p-8 rounded-2xl border border-white/5 hover:border-golden-yellow/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-golden-yellow/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="mountain" class="w-6 h-6 sm:w-8 sm:h-8 text-golden-yellow"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Hill Tours (Multi-Day)</h4>
-                    <p class="text-gray-400 font-sans">Full-day dedicated cab for Leh-Ladakh, Kashmir circuits, or Uttarakhand tours with total flexibility.</p>
+                    <h4 class="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Hill Tours (Multi-Day)</h4>
+                    <p class="text-gray-400 text-sm sm:text-base font-sans">Full-day dedicated cab for Leh-Ladakh, Kashmir circuits, or Uttarakhand tours with total flexibility.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section id="why-us" class="py-24 bg-midnight-black relative border-t border-white/5 scroll-animate">
+    <section id="why-us" class="py-16 sm:py-24 bg-midnight-black relative border-t border-white/5 scroll-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14 fade-in">
-                <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2 font-poppins">Why Abisek Travels</h2>
-                <h3 class="text-3xl md:text-4xl font-poppins font-bold text-white">Trust, Safety & Expertise.</h3>
+            <div class="text-center mb-10 sm:mb-14 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2 font-poppins">Why Abisek Travels</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-white">Trust, Safety &amp; Expertise.</h3>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-poppins">
-                <div class="bg-midnight-surface rounded-2xl p-6 border border-white/5 text-center">
-                    <div class="w-14 h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
-                        <i data-lucide="shield-check" class="w-7 h-7 text-golden-yellow"></i>
+            <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 font-poppins">
+                <div class="bg-midnight-surface rounded-2xl p-5 sm:p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="shield-check" class="w-6 h-6 sm:w-7 sm:h-7 text-golden-yellow"></i>
                     </div>
-                    <div class="text-white font-bold mb-1">Police Verified Driver</div>
-                    <div class="text-gray-400 text-sm font-sans mt-2">Safety first with expert hill-road navigation.</div>
+                    <div class="text-white font-bold mb-1 text-sm sm:text-base">Police Verified Driver</div>
+                    <div class="text-gray-400 text-xs sm:text-sm font-sans mt-1 sm:mt-2">Safety first with expert hill-road navigation.</div>
                 </div>
-                <div class="bg-midnight-surface rounded-2xl p-6 border border-white/5 text-center">
-                    <div class="w-14 h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
-                        <i data-lucide="message-circle" class="w-7 h-7 text-golden-yellow"></i>
+                <div class="bg-midnight-surface rounded-2xl p-5 sm:p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="message-circle" class="w-6 h-6 sm:w-7 sm:h-7 text-golden-yellow"></i>
                     </div>
-                    <div class="text-white font-bold mb-1">24/7 WhatsApp Help</div>
-                    <div class="text-gray-400 text-sm font-sans mt-2">Fast response from Pathankot to Ladakh.</div>
+                    <div class="text-white font-bold mb-1 text-sm sm:text-base">24/7 WhatsApp Help</div>
+                    <div class="text-gray-400 text-xs sm:text-sm font-sans mt-1 sm:mt-2">Fast response from Pathankot to Ladakh.</div>
                 </div>
-                <div class="bg-midnight-surface rounded-2xl p-6 border border-white/5 text-center">
-                    <div class="w-14 h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
-                        <i data-lucide="indian-rupee" class="w-7 h-7 text-golden-yellow"></i>
+                <div class="bg-midnight-surface rounded-2xl p-5 sm:p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="indian-rupee" class="w-6 h-6 sm:w-7 sm:h-7 text-golden-yellow"></i>
                     </div>
-                    <div class="text-white font-bold mb-1">Fair, Upfront Quotes</div>
-                    <div class="text-gray-400 text-sm font-sans mt-2">No hidden fees, pay the agreed quote.</div>
+                    <div class="text-white font-bold mb-1 text-sm sm:text-base">Fair, Upfront Quotes</div>
+                    <div class="text-gray-400 text-xs sm:text-sm font-sans mt-1 sm:mt-2">No hidden fees, pay the agreed quote.</div>
                 </div>
-                <div class="bg-midnight-surface rounded-2xl p-6 border border-white/5 text-center">
-                    <div class="w-14 h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
+                <div class="bg-midnight-surface rounded-2xl p-5 sm:p-6 border border-white/5 text-center">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 mx-auto bg-golden-yellow/10 rounded-2xl flex items-center justify-center mb-4">
                         <i data-lucide="map" class="w-7 h-7 text-golden-yellow"></i>
                     </div>
-                    <div class="text-white font-bold mb-1">Local Route Mastery</div>
-                    <div class="text-gray-400 text-sm font-sans mt-2">Expert knowledge of Himalayan shortcuts.</div>
+                    <div class="text-white font-bold mb-1 text-sm sm:text-base">Local Route Mastery</div>
+                    <div class="text-gray-400 text-xs sm:text-sm font-sans mt-1 sm:mt-2">Expert knowledge of Himalayan shortcuts.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Destinations -->
-    <section id="destinations" class="py-32 bg-midnight-black relative border-t border-white/5 scroll-animate font-poppins">
+    <section id="destinations" class="py-16 sm:py-24 lg:py-32 bg-midnight-black relative border-t border-white/5 scroll-animate font-poppins">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Popular Routes</h2>
-                <h3 class="text-3xl md:text-5xl font-bold text-white">Top Destinations</h3>
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Popular Routes</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-5xl font-bold text-white">Top Destinations</h3>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                 <!-- Card 1 — Pathankot -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 shadow-xl border border-white/5">
-                    <img src="assets/dest_pathankot.png" alt="Pathankot city and Ranjit Sagar Dam scenic view" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 shadow-xl border border-white/5">
+                    <img src="assets/dest_pathankot.png" alt="Pathankot city and Ranjit Sagar Dam scenic view" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-95 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">Local &amp; Airport Drop</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Pathankot</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">Local &amp; Airport Drop</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Pathankot</h4>
                     </div>
                 </div>
 
                 <!-- Card 2 — Himachal Pradesh -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 shadow-xl border border-white/5">
-                    <img src="assets/dest_dharamshala.png" alt="Himachal Pradesh - Dharamshala and Dhauladhar mountain range" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 shadow-xl border border-white/5">
+                    <img src="assets/dest_dharamshala.png" alt="Himachal Pradesh - Dharamshala and Dhauladhar mountain range" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-95 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">Scenic Hill Route</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Himachal Pradesh</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">Scenic Hill Route</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Himachal Pradesh</h4>
                     </div>
                 </div>
 
                 <!-- Card 3 — Kashmir -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 shadow-xl border border-white/5">
-                    <img src="assets/dest_kashmir.png" alt="Kashmir - Dal Lake with shikara boats and Himalayan mountains" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 shadow-xl border border-white/5">
+                    <img src="assets/dest_kashmir.png" alt="Kashmir - Dal Lake with shikara boats and Himalayan mountains" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-95 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">Multi-Day Tour</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Kashmir</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">Multi-Day Tour</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Kashmir</h4>
                     </div>
                 </div>
 
                 <!-- Card 4 — Chandigarh -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 shadow-xl border border-white/5">
-                    <img src="assets/dest_chandigarh.png" alt="Chandigarh city" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 shadow-xl border border-white/5">
+                    <img src="assets/dest_chandigarh.png" alt="Chandigarh city" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-95 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">City Transfer</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Chandigarh</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">City Transfer</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Chandigarh</h4>
                     </div>
                 </div>
 
                 <!-- Card 5 — Delhi -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 shadow-xl border border-white/5">
-                    <img src="assets/dest_delhi.png" alt="Delhi - India Gate monument at dusk" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 shadow-xl border border-white/5">
+                    <img src="assets/dest_delhi.png" alt="Delhi - India Gate monument at dusk" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-95 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">Outstation Trip</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Delhi</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">Outstation Trip</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Delhi</h4>
                     </div>
                 </div>
 
                 <!-- Card 6 — Uttarakhand -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 shadow-xl border border-white/5">
-                    <img src="assets/dest_nainital.png" alt="Uttarakhand - Nainital Lake with forested hills" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 shadow-xl border border-white/5">
+                    <img src="assets/dest_nainital.png" alt="Uttarakhand - Nainital Lake with forested hills" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-95 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">Multi-Day Tour</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Uttarakhand</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">Multi-Day Tour</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Uttarakhand</h4>
                     </div>
                 </div>
 
                 <!-- Card 7 — Leh-Ladakh (full-width banner) -->
-                <div class="relative rounded-2xl overflow-hidden group h-72 lg:h-64 shadow-xl border border-white/5 col-span-1 sm:col-span-2 lg:col-span-3">
+                <div class="relative rounded-2xl overflow-hidden group h-64 sm:h-72 lg:h-80 shadow-xl border border-white/5 col-span-1 sm:col-span-2 lg:col-span-3">
                     <img src="assets/dest_leh_ladakh.png" alt="Leh Ladakh - Winding mountain roads and Himalayan monasteries"
+                         loading="lazy"
+                         decoding="async"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                          style="object-position: center 55%;">
                     <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-500 z-10"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-midnight-black via-transparent to-transparent opacity-90 z-10"></div>
-                    <div class="absolute bottom-6 left-6 right-6 z-20">
-                        <div class="text-golden-yellow font-bold text-xs tracking-wider uppercase mb-2">Extended Expedition</div>
-                        <h4 class="text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Leh-Ladakh</h4>
+                    <div class="absolute bottom-5 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6 z-20">
+                        <div class="text-golden-yellow font-bold text-[11px] sm:text-xs tracking-wider uppercase mb-1 sm:mb-2">Extended Expedition</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-white group-hover:text-golden-yellow transition-colors duration-300">Leh-Ladakh</h4>
                     </div>
                 </div>
             </div>
@@ -417,24 +433,24 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-32 bg-midnight-surface relative border-t border-white/5 scroll-animate">
+    <section id="testimonials" class="py-16 sm:py-24 lg:py-32 bg-midnight-surface relative border-t border-white/5 scroll-animate">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-poppins">
-            <div class="text-center mb-20 fade-in">
-                <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Reviews</h2>
-                <h3 class="text-3xl md:text-5xl font-bold text-white">
+            <div class="text-center mb-12 sm:mb-20 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Reviews</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-5xl font-bold text-white">
                     What our clients say.
                 </h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Review 1 — Rohan Malhotra -->
-                <div class="bg-midnight-card p-8 rounded-2xl relative border border-white/5 hover:border-golden-yellow/20 transition-all duration-300 shadow-lg flex flex-col">
-                    <div class="text-7xl text-golden-yellow/10 font-serif absolute top-4 left-4 pointer-events-none">"</div>
-                    <p class="text-gray-300 mb-8 relative z-10 text-base leading-relaxed pt-4 italic font-sans flex-1">
+                <div class="bg-midnight-card p-6 sm:p-8 rounded-2xl relative border border-white/5 hover:border-golden-yellow/20 transition-all duration-300 shadow-lg flex flex-col">
+                    <div class="text-6xl sm:text-7xl text-golden-yellow/10 font-serif absolute top-3 left-4 pointer-events-none">"</div>
+                    <p class="text-gray-300 mb-6 sm:mb-8 relative z-10 text-sm sm:text-base leading-relaxed pt-2 sm:pt-4 italic font-sans flex-1">
                         "Honestly wasn't expecting much for the price but the drive to Dharamshala was really comfortable. Driver showed up 10 mins early which I appreciated because there was already traffic building up near Pathankot. No unnecessary stops, AC was working fine, and he knew a shortcut near Kangra that saved us maybe 30–40 mins. Would book again without thinking twice."
                     </p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-4 mt-auto">
-                        <div class="w-11 h-11 bg-golden-yellow/10 rounded-full flex items-center justify-center text-golden-yellow font-bold">
+                    <div class="flex items-center gap-3 sm:gap-4 border-t border-white/5 pt-4 mt-auto">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-golden-yellow/10 rounded-full flex items-center justify-center text-golden-yellow font-bold text-sm sm:text-base shrink-0">
                             R
                         </div>
                         <div>
@@ -445,13 +461,13 @@
                 </div>
 
                 <!-- Review 2 — Priya Sharma -->
-                <div class="bg-midnight-card p-8 rounded-2xl relative border border-white/5 hover:border-golden-yellow/20 transition-all duration-300 shadow-lg flex flex-col">
-                    <div class="text-7xl text-golden-yellow/10 font-serif absolute top-4 left-4 pointer-events-none">"</div>
-                    <p class="text-gray-300 mb-8 relative z-10 text-base leading-relaxed pt-4 italic font-sans flex-1">
+                <div class="bg-midnight-card p-6 sm:p-8 rounded-2xl relative border border-white/5 hover:border-golden-yellow/20 transition-all duration-300 shadow-lg flex flex-col">
+                    <div class="text-6xl sm:text-7xl text-golden-yellow/10 font-serif absolute top-3 left-4 pointer-events-none">"</div>
+                    <p class="text-gray-300 mb-6 sm:mb-8 relative z-10 text-sm sm:text-base leading-relaxed pt-2 sm:pt-4 italic font-sans flex-1">
                         "We were a family of 5 going to Kashmir — two kids and my in-laws. I was a little nervous about the long drive honestly. But the driver was very patient, stopped when the kids needed a break, didn't make us feel rushed at all. By the time we crossed Banihal both the little ones were fast asleep. My mother-in-law specifically said she felt safe the whole time, which means a lot. Good experience overall."
                     </p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-4 mt-auto">
-                        <div class="w-11 h-11 bg-golden-yellow/10 rounded-full flex items-center justify-center text-golden-yellow font-bold">
+                    <div class="flex items-center gap-3 sm:gap-4 border-t border-white/5 pt-4 mt-auto">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-golden-yellow/10 rounded-full flex items-center justify-center text-golden-yellow font-bold text-sm sm:text-base shrink-0">
                             P
                         </div>
                         <div>
@@ -462,13 +478,13 @@
                 </div>
 
                 <!-- Review 3 — Karan Singh -->
-                <div class="bg-midnight-card p-8 rounded-2xl relative border border-white/5 hover:border-golden-yellow/20 transition-all duration-300 shadow-lg flex flex-col">
-                    <div class="text-7xl text-golden-yellow/10 font-serif absolute top-4 left-4 pointer-events-none">"</div>
-                    <p class="text-gray-300 mb-8 relative z-10 text-base leading-relaxed pt-4 italic font-sans flex-1">
+                <div class="bg-midnight-card p-6 sm:p-8 rounded-2xl relative border border-white/5 hover:border-golden-yellow/20 transition-all duration-300 shadow-lg flex flex-col">
+                    <div class="text-6xl sm:text-7xl text-golden-yellow/10 font-serif absolute top-3 left-4 pointer-events-none">"</div>
+                    <p class="text-gray-300 mb-6 sm:mb-8 relative z-10 text-sm sm:text-base leading-relaxed pt-2 sm:pt-4 italic font-sans flex-1">
                         "Had an early morning meeting in Chandigarh and needed to get back to Pathankot the same evening. Driver called the night before to confirm the time — that alone was reassuring. Traffic was fine, music was low, I got some reading done. Reached on time, no drama at all. Will use again for sure."
                     </p>
-                    <div class="flex items-center gap-4 border-t border-white/5 pt-4 mt-auto">
-                        <div class="w-11 h-11 bg-golden-yellow/10 rounded-full flex items-center justify-center text-golden-yellow font-bold">
+                    <div class="flex items-center gap-3 sm:gap-4 border-t border-white/5 pt-4 mt-auto">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-golden-yellow/10 rounded-full flex items-center justify-center text-golden-yellow font-bold text-sm sm:text-base shrink-0">
                             K
                         </div>
                         <div>
@@ -482,44 +498,44 @@
     </section>
 
     <!-- Booking Form Section -->
-    <section id="booking" class="py-32 bg-midnight-black relative border-t border-white/5 scroll-animate">
+    <section id="booking" class="py-16 sm:py-24 lg:py-32 bg-midnight-black relative border-t border-white/5 scroll-animate">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-midnight-surface rounded-3xl p-8 lg:p-12 border border-white/5 shadow-2xl relative overflow-hidden hover:border-golden-yellow/10 transition-all duration-500">
+            <div class="bg-midnight-surface rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/5 shadow-2xl relative overflow-hidden hover:border-golden-yellow/10 transition-all duration-500">
                 <!-- Glow effect -->
                 <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-golden-yellow/5 blur-[100px] rounded-full pointer-events-none"></div>
                 
-                <div class="text-center mb-10 relative z-10 fade-in font-poppins">
-                    <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Reserve Your Ride</h2>
-                    <h3 class="text-2xl sm:text-4xl font-bold text-white">
+                <div class="text-center mb-8 sm:mb-10 relative z-10 fade-in font-poppins">
+                    <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Reserve Your Ride</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                         Quick WhatsApp Booking
                     </h3>
                 </div>
 
-                <form id="whatsappBookingForm" class="relative z-10 space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form id="whatsappBookingForm" class="relative z-10 space-y-4 sm:space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-400 mb-2 font-poppins uppercase tracking-wider text-[11px]">Full Name</label>
-                            <input type="text" id="bookingName" required class="w-full bg-midnight-black border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="John Doe">
+                            <label class="block font-semibold text-gray-400 mb-1.5 sm:mb-2 font-poppins uppercase tracking-wider text-[11px]">Full Name</label>
+                            <input type="text" id="bookingName" required class="w-full bg-midnight-black border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="John Doe">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-400 mb-2 font-poppins uppercase tracking-wider text-[11px]">WhatsApp Number</label>
-                            <input type="tel" id="bookingWhatsapp" required class="w-full bg-midnight-black border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="+91 98765 43210">
+                            <label class="block font-semibold text-gray-400 mb-1.5 sm:mb-2 font-poppins uppercase tracking-wider text-[11px]">WhatsApp Number</label>
+                            <input type="tel" id="bookingWhatsapp" required class="w-full bg-midnight-black border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="+91 78144 42326">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-400 mb-2 font-poppins uppercase tracking-wider text-[11px]">Pickup Location</label>
-                            <input type="text" id="bookingPickup" required class="w-full bg-midnight-black border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="Pathankot Airport / Hotel">
+                            <label class="block font-semibold text-gray-400 mb-1.5 sm:mb-2 font-poppins uppercase tracking-wider text-[11px]">Pickup Location</label>
+                            <input type="text" id="bookingPickup" required class="w-full bg-midnight-black border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="Pathankot Airport / Hotel">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-400 mb-2 font-poppins uppercase tracking-wider text-[11px]">Drop Location</label>
-                            <input type="text" id="bookingDrop" required class="w-full bg-midnight-black border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="Dharamshala, Himachal">
+                            <label class="block font-semibold text-gray-400 mb-1.5 sm:mb-2 font-poppins uppercase tracking-wider text-[11px]">Drop Location</label>
+                            <input type="text" id="bookingDrop" required class="w-full bg-midnight-black border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 font-sans" placeholder="Dharamshala, Himachal">
                         </div>
                         <div class="md:col-span-2">
-                            <label class="block text-sm font-semibold text-gray-400 mb-2 font-poppins uppercase tracking-wider text-[11px]">Travel Date & Time</label>
-                            <input type="datetime-local" id="bookingDate" required class="w-full bg-midnight-black border border-white/10 rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 [color-scheme:dark] font-sans">
+                            <label class="block font-semibold text-gray-400 mb-1.5 sm:mb-2 font-poppins uppercase tracking-wider text-[11px]">Travel Date & Time</label>
+                            <input type="datetime-local" id="bookingDate" required class="w-full bg-midnight-black border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-golden-yellow transition-all duration-300 [color-scheme:dark] font-sans">
                         </div>
                     </div>
                     
-                    <button type="submit" class="w-full bg-golden-yellow text-black font-semibold text-lg rounded-lg px-8 py-4 mt-4 hover:bg-golden-hover transition-all duration-300 font-poppins tracking-wide flex items-center justify-center gap-3 shadow-lg shadow-golden-yellow/10 hover:shadow-golden-yellow/20">
+                    <button type="submit" class="w-full bg-golden-yellow text-black font-semibold text-base sm:text-lg rounded-xl px-6 sm:px-8 py-3.5 sm:py-4 mt-2 sm:mt-4 hover:bg-golden-hover transition-all duration-300 font-poppins tracking-wide flex items-center justify-center gap-3 shadow-lg shadow-golden-yellow/15 hover:shadow-golden-yellow/25 active:scale-95">
                         <i data-lucide="send" class="w-5 h-5"></i>
                         Send Booking Request
                     </button>
@@ -529,61 +545,61 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-midnight-surface relative border-t border-white/5 scroll-animate scroll-mt-28">
+    <section id="faq" class="py-16 sm:py-24 bg-midnight-surface relative border-t border-white/5 scroll-animate scroll-mt-28">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-14 fade-in font-poppins">
-                <h2 class="text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Common Questions</h2>
-                <h3 class="text-3xl md:text-4xl font-bold text-white">Frequently Asked</h3>
+            <div class="text-center mb-10 sm:mb-14 fade-in font-poppins">
+                <h2 class="text-xs sm:text-sm font-bold text-golden-yellow tracking-widest uppercase mb-2">Common Questions</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Frequently Asked</h3>
             </div>
-            <div class="space-y-4 font-poppins" id="faqAccordion">
+            <div class="space-y-3.5 sm:space-y-4 font-poppins" id="faqAccordion">
                 <!-- Q1 -->
                 <div class="bg-midnight-card rounded-2xl border border-white/5 overflow-hidden hover:border-golden-yellow/15 transition-all duration-300">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
-                        <span class="text-white font-semibold text-base">How do I get a fare estimate before booking?</span>
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left" aria-expanded="false">
+                        <span class="text-white font-semibold text-sm sm:text-base pr-4">How do I get a fare estimate before booking?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-golden-yellow shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <div class="faq-body hidden px-6 pb-5">
-                        <p class="text-gray-400 font-sans leading-relaxed">Just send us a WhatsApp message with your pickup location, destination, and travel date. We'll reply with an exact quote — usually within a few minutes. No obligation to book after asking.</p>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-400 font-sans text-sm sm:text-base leading-relaxed">Just send us a WhatsApp message with your pickup location, destination, and travel date. We'll reply with an exact quote — usually within a few minutes. No obligation to book after asking.</p>
                     </div>
                 </div>
                 <!-- Q2 -->
                 <div class="bg-midnight-card rounded-2xl border border-white/5 overflow-hidden hover:border-golden-yellow/15 transition-all duration-300">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
-                        <span class="text-white font-semibold text-base">How far in advance should I book?</span>
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left" aria-expanded="false">
+                        <span class="text-white font-semibold text-sm sm:text-base pr-4">How far in advance should I book?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-golden-yellow shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <div class="faq-body hidden px-6 pb-5">
-                        <p class="text-gray-400 font-sans leading-relaxed">For local Pathankot trips, same-day booking is usually fine. For outstation trips — especially during peak season (May–June, Oct) — booking 2–3 days ahead is recommended to guarantee availability.</p>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-400 font-sans text-sm sm:text-base leading-relaxed">For local Pathankot trips, same-day booking is usually fine. For outstation trips — especially during peak season (May–June, Oct) — booking 2–3 days ahead is recommended to guarantee availability.</p>
                     </div>
                 </div>
                 <!-- Q3 -->
                 <div class="bg-midnight-card rounded-2xl border border-white/5 overflow-hidden hover:border-golden-yellow/15 transition-all duration-300">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
-                        <span class="text-white font-semibold text-base">What happens if I need to cancel or reschedule?</span>
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left" aria-expanded="false">
+                        <span class="text-white font-semibold text-sm sm:text-base pr-4">What happens if I need to cancel or reschedule?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-golden-yellow shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <div class="faq-body hidden px-6 pb-5">
-                        <p class="text-gray-400 font-sans leading-relaxed">Cancellations more than 24 hours before departure incur no charge. For last-minute cancellations (within 24 hours), a small fee may apply depending on the trip. We always try to be flexible — just let us know as early as possible.</p>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-400 font-sans text-sm sm:text-base leading-relaxed">Cancellations more than 24 hours before departure incur no charge. For last-minute cancellations (within 24 hours), a small fee may apply depending on the trip. We always try to be flexible — just let us know as early as possible.</p>
                     </div>
                 </div>
                 <!-- Q4 -->
                 <div class="bg-midnight-card rounded-2xl border border-white/5 overflow-hidden hover:border-golden-yellow/15 transition-all duration-300">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
-                        <span class="text-white font-semibold text-base">What payment methods do you accept?</span>
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left" aria-expanded="false">
+                        <span class="text-white font-semibold text-sm sm:text-base pr-4">What payment methods do you accept?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-golden-yellow shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <div class="faq-body hidden px-6 pb-5">
-                        <p class="text-gray-400 font-sans leading-relaxed">We accept cash, UPI (GPay, PhonePe, Paytm), and bank transfers. Payment is usually settled at the end of the trip. For multi-day tours, a partial advance may be required at the time of booking.</p>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-400 font-sans text-sm sm:text-base leading-relaxed">We accept cash, UPI (GPay, PhonePe, Paytm), and bank transfers. Payment is usually settled at the end of the trip. For multi-day tours, a partial advance may be required at the time of booking.</p>
                     </div>
                 </div>
                 <!-- Q5 -->
                 <div class="bg-midnight-card rounded-2xl border border-white/5 overflow-hidden hover:border-golden-yellow/15 transition-all duration-300">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" aria-expanded="false">
-                        <span class="text-white font-semibold text-base">How much luggage can I carry?</span>
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left" aria-expanded="false">
+                        <span class="text-white font-semibold text-sm sm:text-base pr-4">How much luggage can I carry?</span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-golden-yellow shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <div class="faq-body hidden px-6 pb-5">
-                        <p class="text-gray-400 font-sans leading-relaxed">The Maruti Suzuki Ertiga comfortably handles 3–4 large suitcases in the boot. If you have a large group or extra camping gear, just mention it when booking so we can plan accordingly.</p>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-400 font-sans text-sm sm:text-base leading-relaxed">The Maruti Suzuki Ertiga comfortably handles 3–4 large suitcases in the boot. If you have a large group or extra camping gear, just mention it when booking so we can plan accordingly.</p>
                     </div>
                 </div>
             </div>
@@ -591,33 +607,33 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-midnight-surface pt-20 pb-8 border-t border-white/5 font-poppins">
+    <footer class="bg-midnight-surface pt-16 sm:pt-20 pb-12 sm:pb-8 border-t border-white/5 font-poppins">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-14">
                 <!-- Brand -->
                 <div class="col-span-1 md:col-span-2 lg:col-span-1">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="relative w-8 h-8 text-golden-yellow">
+                    <div class="flex items-center gap-3 mb-4 sm:mb-5">
+                        <div class="relative w-8 h-8 text-golden-yellow shrink-0">
                             <i data-lucide="car-front" class="w-6 h-6 absolute bottom-0 left-0"></i>
                             <i data-lucide="plane" class="w-5 h-5 absolute top-0 right-0 transform rotate-45"></i>
                         </div>
-                        <span class="text-xl font-bold text-white tracking-widest uppercase">
+                        <span class="text-lg sm:text-xl font-bold text-white tracking-widest uppercase">
                             ABISEK <span class="text-golden-yellow font-medium">TRAVELS</span>
                         </span>
                     </div>
                     <p class="text-gray-400 leading-relaxed text-sm font-sans mb-6">
                         Reliable outstation cab service from Pathankot to Kashmir, Ladakh, Himachal Pradesh, Uttarakhand &amp; beyond.
                     </p>
-                    <a href="https://wa.me/917973992326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels" target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-[#1ebe5d] transition-colors">
+                    <a href="https://wa.me/917814442326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1ebe5d] transition-colors shadow-lg shadow-[#25D366]/10 active:scale-95">
                         <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
                         Chat on WhatsApp
                     </a>
                 </div>
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-sm">Quick Links</h4>
-                    <ul class="space-y-3 text-gray-400 text-sm font-sans">
+                    <h4 class="text-white font-bold mb-4 sm:mb-5 uppercase tracking-wider text-xs sm:text-sm">Quick Links</h4>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 text-sm font-sans">
                         <li><a href="#about" class="hover:text-golden-yellow transition-colors">About Us</a></li>
                         <li><a href="#services" class="hover:text-golden-yellow transition-colors">Services &amp; Pricing</a></li>
                         <li><a href="#destinations" class="hover:text-golden-yellow transition-colors">Routes</a></li>
@@ -628,8 +644,8 @@
                 </div>
                 <!-- Service Areas -->
                 <div>
-                    <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-sm">We Cover</h4>
-                    <ul class="space-y-3 text-gray-400 text-sm font-sans">
+                    <h4 class="text-white font-bold mb-4 sm:mb-5 uppercase tracking-wider text-xs sm:text-sm">We Cover</h4>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-400 text-sm font-sans">
                         <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-golden-yellow shrink-0"></i>Pathankot &amp; Punjab</li>
                         <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-golden-yellow shrink-0"></i>Himachal Pradesh</li>
                         <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-golden-yellow shrink-0"></i>Jammu &amp; Kashmir</li>
@@ -640,16 +656,16 @@
                 </div>
                 <!-- Contact -->
                 <div>
-                    <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-sm">Contact</h4>
-                    <ul class="space-y-4 text-gray-400 text-sm font-sans">
+                    <h4 class="text-white font-bold mb-4 sm:mb-5 uppercase tracking-wider text-xs sm:text-sm">Contact</h4>
+                    <ul class="space-y-3.5 sm:space-y-4 text-gray-400 text-sm font-sans">
                         <li>
-                            <a href="tel:+917973992326" class="flex items-center gap-2 hover:text-golden-yellow transition-colors">
+                            <a href="tel:+917814442326" class="flex items-center gap-2 hover:text-golden-yellow transition-colors">
                                 <i data-lucide="phone" class="w-4 h-4 text-golden-yellow shrink-0"></i>
-                                +91 79739 92326
+                                +91 78144 42326
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:abhishekattwal02@gmail.com" class="flex items-center gap-2 hover:text-golden-yellow transition-colors">
+                            <a href="mailto:abhishekattwal02@gmail.com" class="flex items-center gap-2 hover:text-golden-yellow transition-colors break-all">
                                 <i data-lucide="mail" class="w-4 h-4 text-golden-yellow shrink-0"></i>
                                 abhishekattwal02@gmail.com
                             </a>
@@ -661,25 +677,26 @@
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm font-sans">
+            <div class="border-t border-white/5 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-gray-500 text-xs sm:text-sm font-sans text-center sm:text-left">
                 <span>&copy; <span id="copyrightYear">2026</span> Abisek Travels. All rights reserved.</span>
                 <span class="text-gray-600 text-xs">Outstation cab service from Pathankot · Punjab, India</span>
             </div>
         </div>
     </footer>
 
-    <!-- Floating CTAs -->
+    <!-- Floating Mobile CTAs -->
     <!-- Mobile: Book Now pill (left side) -->
     <a href="#booking" id="mobileBookNow"
-        class="md:hidden fixed bottom-8 left-6 z-50 bg-golden-yellow text-black font-bold text-sm px-5 py-3.5 rounded-full shadow-lg shadow-golden-yellow/20 flex items-center gap-2 hover:bg-golden-hover transition-all duration-300 hover:scale-105">
+        class="md:hidden fixed bottom-6 left-4 z-50 bg-golden-yellow text-black font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-full shadow-2xl shadow-golden-yellow/30 flex items-center gap-2 hover:bg-golden-hover transition-all duration-300 active:scale-95">
         <i data-lucide="calendar-check" class="w-4 h-4"></i>
         Book Now
     </a>
     <!-- WhatsApp button (right side, always visible) -->
-    <a href="https://wa.me/917973992326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels" target="_blank" rel="noopener noreferrer" id="floatingWhatsapp"
-        class="fixed bottom-8 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] z-50 flex items-center justify-center transition-all duration-300 hover:scale-110">
+    <a href="https://wa.me/917814442326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels" target="_blank" rel="noopener noreferrer" id="floatingWhatsapp"
+        class="fixed bottom-6 right-4 sm:bottom-8 sm:right-6 bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] z-50 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        aria-label="Chat on WhatsApp">
         <div class="absolute inset-0 bg-[#25D366] rounded-full opacity-40 animate-ping"></div>
-        <svg viewBox="0 0 24 24" class="w-7 h-7 relative z-10 fill-current" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-7 sm:h-7 relative z-10 fill-current" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
         </svg>
     </a>
