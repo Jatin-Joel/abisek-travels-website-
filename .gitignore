@@ -1,0 +1,6 @@
+node_modules/
+**/node_modules/
+.gemini/
+*.log
+.DS_Store
+Thumbs.db

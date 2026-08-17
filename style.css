@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Abisek Travels Style System
+   ========================================================================== */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1a1a1e;
+    border-radius: 999px;
+    border: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFC107;
+}
+
+/* Custom Selection */
+::selection {
+    background-color: #FFC107;
+    color: #000000;
+}
+
+/* Hide Default Cursor on desktop when custom cursor is active */
+@media (min-width: 768px) {
+    body, a, button, input, select, textarea, [role="button"] {
+        cursor: none !important;
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: #F59E0B;
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 99999;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    transition: width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.custom-cursor.hover {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 193, 7, 0.15);
+    border: 1.5px solid #F59E0B;
+}
+
+/* Glassmorphic Navbar on scroll */
+nav.scrolled {
+    background-color: rgba(18, 18, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Navigation Links underline effect */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #F59E0B;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Scroll Animation classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.visible,
+.fade-in-left.visible,
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Custom Parallax background speed adjustment */
+#heroBg {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+/* Custom styling for inputs */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
