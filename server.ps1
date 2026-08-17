@@ -16,6 +16,8 @@ $mimeTypes = @{
     ".woff" = "font/woff"
     ".woff2"= "font/woff2"
     ".ttf"  = "font/ttf"
+    ".webp" = "image/webp"
+    ".webmanifest" = "application/manifest+json"
 }
 
 $listener = New-Object System.Net.HttpListener
