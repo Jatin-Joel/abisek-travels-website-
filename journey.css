@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Journey Hero — 3D Scroll-Driven Scene Styles
+   Scope: .journey-section and all #journey* / .journey-* elements only.
+   Does NOT override any existing site styles.
+   ========================================================================== */
+
+/* ── 1. Section shell ────────────────────────────────────────────────────── */
+
+:root {
+  --journey-height: 500vh;   /* Total scroll distance for the 3D journey */
+  --journey-gold:   #F59E0B;
+  --journey-gold-dim: rgba(245,158,11,0.15);
+}
+
+.journey-section {
+  position: relative;
+  height: var(--journey-height);
+  /* clip instead of hidden so position:sticky works cross-browser */
+  overflow: clip;
+  background: #000;
+}
+
+/* ── 2. Sticky canvas wrapper ────────────────────────────────────────────── */
+
+.journey-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#journeyCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Prevent canvas from creating a new stacking context that breaks z-index */
+  z-index: 0;
+}
+
+/* ── 3. Fallback (no WebGL / low-power) ──────────────────────────────────── */
+
+.journey-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.journey-fallback__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    #1a0f00 0%,
+    #2d1a00 20%,
+    #0a1a2e 50%,
+    #0d1117 80%,
+    #050810 100%
+  );
+  animation: journeyGradShift 18s ease-in-out infinite alternate;
+}
+
+@keyframes journeyGradShift {
+  0%   { filter: hue-rotate(0deg)   brightness(1.0); }
+  25%  { filter: hue-rotate(-15deg) brightness(1.1); }  /* warm Punjab */
+  50%  { filter: hue-rotate(20deg)  brightness(0.9); }  /* cool Kashmir */
+  75%  { filter: hue-rotate(10deg)  brightness(1.05); }
+  100% { filter: hue-rotate(-5deg)  brightness(0.95); } /* Ladakh contrast */
+}
+
+.journey-fallback__road {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.journey-fallback__road svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+/* ── 4. Hero copy overlay ────────────────────────────────────────────────── */
+
+.journey-hero-copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1.5rem 2rem;
+  /* pointer-events off so canvas receives mouse input; links re-enable themselves */
+  pointer-events: none;
+  z-index: 20;
+  /* transition handled by JS opacity */
+  will-change: opacity;
+}
+
+.journey-hero-copy > a,
+.journey-hero-copy > div > a,
+.journey-hero-ctas > a {
+  pointer-events: auto;
+}
+
+.journey-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--journey-gold);
+  font-size: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-bottom: 1.5rem;
+}
+
+.journey-hero-h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.14;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.8);
+}
+
+.journey-hero-accent {
+  color: var(--journey-gold);
+}
+
+.journey-hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 38rem;
+  line-height: 1.65;
+  margin-bottom: 2.25rem;
+  text-shadow: 0 1px 20px rgba(0,0,0,0.6);
+}
+
+.journey-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.journey-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 0.75rem;
+  padding: 0.8125rem 1.75rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.journey-cta--primary {
+  background: var(--journey-gold);
+  color: #000;
+  box-shadow: 0 4px 24px rgba(245,158,11,0.28);
+}
+.journey-cta--primary:hover {
+  background: #D97706;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(245,158,11,0.38);
+}
+
+.journey-cta--ghost {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.journey-cta--ghost:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+.journey-cta:active {
+  transform: scale(0.96);
+}
+
+/* ── 5. Region label HUD ──────────────────────────────────────────────────── */
+
+#journeyRegionLabel {
+  position: absolute;
+  bottom: 3rem;
+  left: 2.5rem;
+  z-index: 30;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  /* start hidden; JS sets opacity */
+  opacity: 0;
+}
+
+.journey-label-region {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.7);
+}
+
+.journey-label-desc {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--journey-gold);
+  margin-top: 0.25rem;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+  letter-spacing: 0.01em;
+}
+
+/* The decorative pipe accent to the left of the label */
+#journeyRegionLabel::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.2em;
+  width: 3px;
+  height: 70%;
+  background: var(--journey-gold);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* ── 6. Scroll cue ────────────────────────────────────────────────────────── */
+
+#journeyScrollCue {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.journey-scroll-cue__line {
+  display: block;
+  width: 1.5px;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.5));
+  animation: journeyCuePulse 2s ease-in-out infinite;
+}
+
+@keyframes journeyCuePulse {
+  0%, 100% { transform: scaleY(1);   opacity: 0.5; }
+  50%       { transform: scaleY(1.2); opacity: 1;   }
+}
+
+.journey-scroll-cue__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.6875rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── 7. WhatsApp button — absolute inside sticky so it vanishes after journey ── */
+
+.journey-whatsapp {
+  position: absolute;
+  bottom: max(1.75rem, calc(env(safe-area-inset-bottom, 0px) + 1.25rem));
+  right: 1.5rem;
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #25D366;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-decoration: none;
+  padding: 0.625rem 1.125rem 0.625rem 0.875rem;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.38);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s ease;
+}
+
+.journey-whatsapp:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 32px rgba(37, 211, 102, 0.55);
+  background: #1ebe5d;
+}
+
+.journey-whatsapp:active {
+  transform: scale(0.96);
+}
+
+/* Hide the text on very small screens — keep just the icon */
+@media (max-width: 400px) {
+  .journey-whatsapp span { display: none; }
+  .journey-whatsapp { padding: 0.75rem; border-radius: 50%; }
+}
+
+/* ── 8. Progress indicator (thin line at top of viewport during journey) ──── */
+
+#journeyProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--journey-gold), #fff6);
+  z-index: 40;
+  pointer-events: none;
+  transform-origin: left center;
+  will-change: width;
+}
+
+/* ── 9. Reduced motion overrides ─────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-fallback__bg          { animation: none; }
+  .journey-scroll-cue__line      { animation: none; }
+  .journey-cta                   { transition: none; }
+  .journey-whatsapp              { transition: none; }
+  #journeyRegionLabel            { transition: none; }
+  .journey-hero-copy             { transition: none; }
+}
+
+/* ── 10. Mobile adjustments ──────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  #journeyRegionLabel {
+    bottom: 5.5rem; /* clear the floating mobile CTAs from script.js */
+    left: 1.25rem;
+  }
+
+  .journey-hero-badge { font-size: 0.6875rem; }
+  .journey-hero-h1    { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+  .journey-hero-sub   { font-size: 0.875rem; }
+  .journey-cta        { font-size: 0.875rem; padding: 0.75rem 1.25rem; }
+
+  #journeyScrollCue   { display: none; } /* Too cluttered on mobile */
+}
