@@ -8,8 +8,8 @@
 
 :root {
   --journey-height: 500vh;   /* Total scroll distance for the 3D journey */
-  --journey-gold:   #F59E0B;
-  --journey-gold-dim: rgba(245,158,11,0.15);
+  --journey-gold:   #3db39e;
+  --journey-gold-dim: rgba(61,179,158,0.15);
 }
 
 .journey-section {
@@ -181,12 +181,12 @@
 .journey-cta--primary {
   background: var(--journey-gold);
   color: #000;
-  box-shadow: 0 4px 24px rgba(245,158,11,0.28);
+  box-shadow: 0 4px 24px rgba(61,179,158,0.28);
 }
 .journey-cta--primary:hover {
-  background: #D97706;
+  background: #2a9b88;
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(245,158,11,0.38);
+  box-shadow: 0 8px 32px rgba(61,179,158,0.38);
 }
 
 .journey-cta--ghost {

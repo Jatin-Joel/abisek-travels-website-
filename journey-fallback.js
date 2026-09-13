@@ -32,8 +32,8 @@
     <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id="fbRoad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#F59E0B" stop-opacity="0.05"/>
-          <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.3"/>
+          <stop offset="0%"  stop-color="#3db39e" stop-opacity="0.05"/>
+          <stop offset="100%" stop-color="#3db39e" stop-opacity="0.3"/>
         </linearGradient>
         <!-- Mountain silhouettes per zone -->
         <!-- Punjab: gentle undulation -->
@@ -61,19 +61,19 @@
             opacity="0.55"/>
       <!-- Road center dashes -->
       <path d="M 300 410 C 295 360 310 330 290 290 C 270 250 305 210 280 170 C 255 130 310 100 295 60 C 285 35 300 10 300 10"
-            stroke="#F59E0B" stroke-width="1.5" fill="none" stroke-linecap="round"
+            stroke="#3db39e" stroke-width="1.5" fill="none" stroke-linecap="round"
             stroke-dasharray="8 14" opacity="0.4"/>
 
       <!-- Pin markers along the road -->
       <!-- Pathankot (bottom) -->
-      <circle cx="300" cy="390" r="5" fill="#F59E0B" opacity="0.9"/>
-      <circle cx="300" cy="390" r="10" fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.4"/>
+      <circle cx="300" cy="390" r="5" fill="#3db39e" opacity="0.9"/>
+      <circle cx="300" cy="390" r="10" fill="none" stroke="#3db39e" stroke-width="1" opacity="0.4"/>
       <!-- Himachal -->
-      <circle cx="290" cy="280" r="4.5" fill="#F59E0B" opacity="0.85"/>
-      <circle cx="290" cy="280" r="9"   fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.35"/>
+      <circle cx="290" cy="280" r="4.5" fill="#3db39e" opacity="0.85"/>
+      <circle cx="290" cy="280" r="9"   fill="none" stroke="#3db39e" stroke-width="1" opacity="0.35"/>
       <!-- Kashmir -->
-      <circle cx="283" cy="170" r="4.5" fill="#F59E0B" opacity="0.85"/>
-      <circle cx="283" cy="170" r="9"   fill="none" stroke="#F59E0B" stroke-width="1" opacity="0.35"/>
+      <circle cx="283" cy="170" r="4.5" fill="#3db39e" opacity="0.85"/>
+      <circle cx="283" cy="170" r="9"   fill="none" stroke="#3db39e" stroke-width="1" opacity="0.35"/>
       <!-- Ladakh (top) -->
       <circle cx="296" cy="60" r="5" fill="#fff" opacity="0.9"/>
       <circle cx="296" cy="60" r="10" fill="none" stroke="#fff" stroke-width="1" opacity="0.3"/>
@@ -103,7 +103,7 @@
         border-radius:999px;
         background:rgba(255,255,255,0.08);
         border:1px solid rgba(255,255,255,0.14);
-        color:#F59E0B;
+        color:#3db39e;
         font-size:0.72rem;
         font-family:'Poppins',sans-serif;
         font-weight:500;
@@ -126,7 +126,7 @@
         margin:0 0 1.25rem;
         text-shadow:0 2px 32px rgba(0,0,0,0.85);
       ">Explore the Mountains,<br>
-        <span style="color:#F59E0B">Travel in Comfort.</span>
+        <span style="color:#3db39e">Travel in Comfort.</span>
       </h1>
       <p style="
         font-family:'Inter',sans-serif;
@@ -140,11 +140,11 @@
       <div style="display:flex;flex-wrap:wrap;gap:0.875rem;align-items:center;justify-content:center">
         <a href="#booking" style="
           display:inline-flex;align-items:center;gap:0.5rem;
-          background:#F59E0B;color:#000;
+          background:#3db39e;color:#000;
           font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9375rem;
           padding:0.8125rem 1.75rem;border-radius:0.75rem;
           text-decoration:none;
-          box-shadow:0 4px 20px rgba(245,158,11,0.3);
+          box-shadow:0 4px 20px rgba(61,179,158,0.3);
         ">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="4" width="18" height="18" rx="2"/>
@@ -172,10 +172,10 @@
     var html = '<div style="position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;gap:1rem">';
     PINS.forEach(function(p) {
       html += `<div style="display:flex;align-items:center;gap:0.5rem;opacity:0.85">
-        <span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;flex-shrink:0"></span>
+        <span style="width:6px;height:6px;border-radius:50%;background:#3db39e;flex-shrink:0"></span>
         <div>
           <div style="font-family:'Poppins',sans-serif;font-size:0.72rem;font-weight:700;color:#fff;line-height:1.2">${p.label}</div>
-          <div style="font-family:'Inter',sans-serif;font-size:0.6rem;color:#F59E0B;opacity:0.8">${p.desc}</div>
+          <div style="font-family:'Inter',sans-serif;font-size:0.6rem;color:#3db39e;opacity:0.8">${p.desc}</div>
         </div>
       </div>`;
     });

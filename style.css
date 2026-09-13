@@ -1,4 +1,25 @@
 /* ==========================================================================
+   Brand Design Tokens & Theme Variables
+   ========================================================================== */
+:root {
+    /* ── Primary & Accent Colors ───────────────────────────────── */
+    --color-primary: #3db39e;           /* Mint Teal */
+    --color-primary-hover: #2a9b88;     /* Darker teal for interactive hover */
+    --color-accent: #3db39e;
+    --color-bg: #f9fafb;                /* Light background */
+    --color-surface: #ffffff;           /* Pure white card surface */
+    --color-text-main: #111827;         /* Heading & dark text */
+    --color-text-muted: #6b7280;        /* Secondary body text */
+    --color-border: #e5e7eb;            /* Light gray border */
+
+    /* ── Brand Logo Colors ─────────────────────────────────────── */
+    --logo-mountain: #ede9d9;          /* Off-white / cream mountain */
+    --logo-road: #32343a;              /* Slate road asphalt */
+    --logo-road-line: #ede9d9;         /* Cream center road divider */
+    --logo-pin: var(--color-primary);  /* Teal GPS location pin */
+}
+
+/* ==========================================================================
    Abisek Travels Style System & Mobile Responsive Engine
    ========================================================================== */
 
@@ -41,23 +62,23 @@ img, picture, svg, video {
 }
 
 ::-webkit-scrollbar-track {
-    background: #000000;
+    background: var(--color-bg, #f9fafb);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #1a1a1e;
+    background: #d1d5db;
     border-radius: 999px;
-    border: 2px solid #000000;
+    border: 2px solid var(--color-bg, #f9fafb);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #F59E0B;
+    background: var(--color-primary, #3db39e);
 }
 
 /* 4. Text Selection */
 ::selection {
-    background-color: #F59E0B;
-    color: #000000;
+    background-color: var(--color-primary, #3db39e);
+    color: #ffffff;
 }
 
 /* 5. Custom Cursor (Desktop Only / Fine Pointers Only) */
@@ -70,21 +91,21 @@ img, picture, svg, video {
 .custom-cursor {
     width: 10px;
     height: 10px;
-    background-color: #F59E0B;
+    background-color: var(--color-primary, #3db39e);
     border-radius: 50%;
     position: fixed;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 99999;
-    box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+    box-shadow: 0 0 15px rgba(61, 179, 158, 0.5);
     transition: width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out;
 }
 
 .custom-cursor.hover {
     width: 40px;
     height: 40px;
-    background-color: rgba(245, 158, 11, 0.15);
-    border: 1.5px solid #F59E0B;
+    background-color: rgba(61, 179, 158, 0.15);
+    border: 1.5px solid var(--color-primary, #3db39e);
 }
 
 /* Always hide custom cursor on touch/mobile devices */
@@ -99,13 +120,13 @@ img, picture, svg, video {
 
 /* 6. Navigation Bar */
 nav.scrolled {
-    background-color: rgba(18, 18, 20, 0.92);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     padding-top: 0.85rem;
     padding-bottom: 0.85rem;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.08);
 }
 
 .nav-link {
@@ -119,7 +140,7 @@ nav.scrolled {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #F59E0B;
+    background-color: var(--color-primary, #3db39e);
     transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 

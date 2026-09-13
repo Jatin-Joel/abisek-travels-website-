@@ -33,12 +33,12 @@ const ZONES = [
     tEnd:        0.22,
     name:        'Punjab Plains',
     desc:        'Local & airport runs from Pathankot',
-    sunColor:    new THREE.Color(0xFFB347),
-    zenithColor: new THREE.Color(0x7EC8E3),
-    horizColor:  new THREE.Color(0xFFE0A0),
-    fogColor:    new THREE.Color(0xFFD580),
+    sunColor:    new THREE.Color(0xffffff),
+    zenithColor: new THREE.Color(0xc0c0c0),
+    horizColor:  new THREE.Color(0xdddddd),
+    fogColor:    new THREE.Color(0xb0b0b0),
     fogDensity:  0.0018,
-    ambientCol:  new THREE.Color(0xFFF0C0),
+    ambientCol:  new THREE.Color(0xffffff),
     ambientInt:  0.85,
     sunInt:      2.2,
     fov:         56,
@@ -49,7 +49,7 @@ const ZONES = [
     tEnd:        0.47,
     name:        'Himachal Pradesh',
     desc:        'Scenic hill routes — Dharamshala & Shimla',
-    sunColor:    new THREE.Color(0xFFF0E0),
+    sunColor:    new THREE.Color(0xdddddd),
     zenithColor: new THREE.Color(0x3A78C9),
     horizColor:  new THREE.Color(0xB0D0F0),
     fogColor:    new THREE.Color(0xC0D5E8),
@@ -290,7 +290,7 @@ const TERRAIN_VERT = /* glsl */`
     float ridge = abs(n1*2.0-1.0); // ridge noise for dramatic peaks
 
     // --- Zone heights ---
-    float hP = n1 * 6.0  + sin(uTime*0.35 + pos.x*0.35)*0.18; // Punjab: flat + grass sway
+    float hP = n1 * 120.0 + ridge * 40.0; // Grayscale jagged mountain
     float hH = n1 * 42.0 + n2 * 16.0;                          // Himachal: moderate hills
     float hK = n1 * 75.0 + n2 * 28.0  + n3 * 12.0;            // Kashmir: steep peaks
     float hL = n1 * 118.0 + ridge*55.0 + n3 * 22.0;            // Ladakh: dramatic jagged
@@ -333,9 +333,9 @@ const TERRAIN_FRAG = /* glsl */`
 
     // --- Zone colours by elevation ---
     // Punjab (vZone≈0)
-    vec3 cPunjabLow  = vec3(0.38, 0.42, 0.10); // dry grass
-    vec3 cPunjabHigh = vec3(0.55, 0.60, 0.18); // bright field
-    vec3 cPunjab = mix(cPunjabLow, cPunjabHigh, clamp(vElevation/6.0, 0.0, 1.0));
+    vec3 cPunjabLow  = vec3(0.05, 0.05, 0.05); // dark rock
+    vec3 cPunjabHigh = vec3(0.9, 0.9, 0.9); // snow peak
+    vec3 cPunjab = mix(cPunjabLow, cPunjabHigh, clamp(vElevation/100.0, 0.0, 1.0));
 
     // Himachal (vZone≈1)
     vec3 cHimLow  = vec3(0.10, 0.28, 0.10); // deep pine forest
@@ -488,7 +488,8 @@ const dummy = new THREE.Object3D();
 
   const rng = mulberry32(2);
   for (let i = 0; i < count; i++) {
-    const x  = (rng() - 0.5) * 700 + (rng() > 0.5 ? 60 : -60); // away from road
+    const side = rng() > 0.5 ? 1 : -1;
+    const x  = side * (60 + rng() * 640); // away from road
     const z  = -(rng() * 190 + 190); // Himachal Z range: -190 to -380
     const s  = 0.6 + rng() * 0.8;
     dummy.position.set(x, 0, z);
@@ -514,7 +515,8 @@ const dummy = new THREE.Object3D();
 
   const rng = mulberry32(3);
   for (let i = 0; i < countK; i++) {
-    const x = (rng() - 0.5) * 500 + (rng() > 0.5 ? 70 : -70);
+    const side = rng() > 0.5 ? 1 : -1;
+    const x = side * (70 + rng() * 430);
     const z = -(rng() * 170 + 380); // Kashmir range: -380 to -550
     dummy.position.set(x, 0, z);
     dummy.scale.setScalar(0.5 + rng() * 0.7);
@@ -536,7 +538,8 @@ const dummy = new THREE.Object3D();
 
   const rng = mulberry32(4);
   for (let i = 0; i < countL; i++) {
-    const x = (rng() - 0.5) * 600;
+    const side = rng() > 0.5 ? 1 : -1;
+    const x = side * (40 + rng() * 560);
     const z = -(rng() * 190 + 555); // Ladakh range: -555 to -745
     const s = 0.3 + rng() * 1.6;
     dummy.position.set(x, s * 2, z);
@@ -581,9 +584,11 @@ scene.add(dustPunjab, mistHimachal, mistKashmir, dustLadakh);
    10.  ROAD MARKER (gold cone fixed to curve at scrollT)
 ═══════════════════════════════════════════════════════════════════════════ */
 
-const markerGeo = new THREE.ConeGeometry(0.5, 1.4, 6, 1);
+const markerGeo = new THREE.ConeGeometry(2.2, 6, 8, 1);
 markerGeo.rotateX(Math.PI); // tip points forward
-const markerMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B });
+const markerMat = new THREE.MeshStandardMaterial({
+  color: 0x3DB39E, emissive: 0x3DB39E, emissiveIntensity: 1.4, roughness: 0.4,
+});
 const roadMarker = new THREE.Mesh(markerGeo, markerMat);
 roadMarker.visible = !isMobile; // hide on mobile (no fine pointer)
 scene.add(roadMarker);
@@ -828,8 +833,8 @@ function tick(now) {
 
   // --- Road marker ---
   if (roadMarker.visible) {
-    const markerPos = curve.getPointAt(tSafe);
-    markerPos.y -= 1.5; // sit slightly below camera (on road surface)
+    const markerPos = curve.getPointAt(Math.min(tSafe + 0.035, 1.0));
+    markerPos.y -= 1.0; // sit slightly below camera (on road surface)
     roadMarker.position.copy(markerPos);
 
     // Orient along curve tangent
