@@ -10,6 +10,8 @@
 
     <!-- Primary SEO -->
     <title>Abisek Travels | Cab Service Pathankot to Kashmir, Ladakh, Himachal Pradesh &amp; Uttarakhand</title>
+    <link rel="preload" as="image" href="assets/dest_dharamshala.png" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero_bg.png" fetchpriority="high">
     <meta name="description" content="Book reliable outstation cab service from Pathankot to Kashmir, Leh-Ladakh, Dharamshala, Chandigarh, Delhi &amp; Uttarakhand. Experienced driver, AC vehicle, transparent pricing. WhatsApp booking available 24/7.">
     <meta name="keywords" content="cab service Pathankot, Pathankot to Kashmir taxi, Pathankot to Dharamshala cab, Pathankot to Leh Ladakh cab, Pathankot to Chandigarh taxi, outstation cab Pathankot, hill station cab Punjab, Abisek Travels">
     <meta name="robots" content="index, follow">
@@ -147,8 +149,8 @@
 
         <!-- Layer 1: Himalayan cloud/mountain background video (Crossfaded for seamless loop) -->
         <div id="himalayaBgContainer" aria-hidden="true">
-          <video id="himalayaBgA" class="himalaya-video" muted playsinline src="assets/upscaled-video.mp4"></video>
-          <video id="himalayaBgB" class="himalaya-video" muted playsinline src="assets/upscaled-video.mp4" style="opacity: 0;"></video>
+          <video id="himalayaBgA" class="himalaya-video" autoplay muted playsinline loop preload="metadata" poster="assets/hero_bg.png" src="assets/upscaled-video.mp4"></video>
+          <video id="himalayaBgB" class="himalaya-video" muted playsinline preload="metadata" src="assets/upscaled-video.mp4" style="opacity: 0;"></video>
         </div>
 
         <!-- Layer 2: Atmospheric dark gradient overlay -->
@@ -240,8 +242,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
                 
                 <!-- Left: Translucent Glass Content Surface -->
-                <div class="about-glass-panel relative rounded-[2rem] p-8 sm:p-12 md:p-14 overflow-hidden"
-                     style="background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                <div class="about-glass-panel relative rounded-[2rem] p-8 sm:p-12 md:p-14 overflow-hidden bg-white/[0.04] backdrop-blur-md sm:backdrop-blur-[20px] border border-white/[0.12] shadow-[0_10px_20px_rgba(0,0,0,0.5)] sm:shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
                      
                     <!-- Subtle Glass Reflection / Edge Highlight -->
                     <div class="absolute inset-0 bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent pointer-events-none"></div>
@@ -287,8 +288,7 @@
                     <!-- Soft atmospheric shadow behind image -->
                     <div class="absolute inset-0 bg-black/60 blur-[40px] rounded-3xl scale-95 translate-y-6"></div>
                     
-                    <div class="about-image-panel relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] rounded-[1.5rem] overflow-hidden group transition-all duration-700 ease-out hover:-translate-y-2 hover:scale-[1.015]"
-                         style="border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2);">
+                    <div class="about-image-panel relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] rounded-[1.5rem] overflow-hidden group transition-all duration-700 ease-out hover:-translate-y-2 hover:scale-[1.015] border border-white/[0.15] shadow-[0_15px_30px_rgba(0,0,0,0.6)] sm:shadow-[0_30px_60px_rgba(0,0,0,0.6)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
                         
                         <!-- Subtle Image Overlay to preserve blacks but allow readability -->
                         <div class="absolute inset-0 bg-gradient-to-t from-[#05090f]/70 via-transparent to-transparent z-10 pointer-events-none"></div>

@@ -339,11 +339,13 @@
   top: 0;
   left: 0;
   height: 2px;
+  width: 100%;
+  transform: scaleX(0);
   background: linear-gradient(to right, var(--journey-gold), #fff6);
   z-index: 40;
   pointer-events: none;
   transform-origin: left center;
-  will-change: width;
+  will-change: transform;
 }
 
 /* ── 9. Reduced motion overrides ─────────────────────────────────────────── */
@@ -426,6 +428,15 @@
   .dest-card {
     width: min(75vw, 300px);
     height: min(100vw, 420px);
+  }
+}
+@media (max-width: 639px) {
+  .dest-card__inner {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+  .dest-card:not(.is-active):hover .dest-card__inner {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.4);
+    transform: none;
   }
 }
 .dest-card__parallax {
