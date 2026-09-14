@@ -138,7 +138,11 @@
     const carousel = document.getElementById('destCarousel');
     if (!carousel) return;
 
-    
+    // Preload all destination images for instant transitions
+    DESTINATIONS.forEach(d => {
+      const img = new Image();
+      img.src = d.image;
+    });
 
     // Build card elements
     DESTINATIONS.forEach((dest, i) => {
@@ -188,7 +192,6 @@
    */
   function cardTransform(offset) {
     const isMobile = window.innerWidth < 640;
-    const isTouch = window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches;
     const isTablet = window.innerWidth < 1024;
 
     const abs = Math.abs(offset);
@@ -293,14 +296,14 @@
       if (hCopy) {
         gsap.fromTo(hCopy,
           { opacity: 0.65 },
-          { opacity: 0.85, duration: 0.4, yoyo: true, repeat: 1, ease: 'power2.inOut', overwrite: 'auto' }
+          { opacity: 0.85, duration: 0.5, yoyo: true, repeat: 1, ease: 'power2.inOut', overwrite: 'auto' }
         );
       }
     }
 
     const cards = getCards();
     const isMobile = window.innerWidth < 640;
-    const dur   = prefersReduced || immediate ? 0 : (isMobile ? 0.55 : 0.7);
+    const dur   = prefersReduced || immediate ? 0 : 0.8;
     const ease  = 'power3.out';
 
     cards.forEach((card, i) => {
@@ -481,7 +484,7 @@
 
   function initParallax() {
     const isMobile = window.innerWidth < 640;
-    if (prefersReduced || isMobile || isTouch) return;
+    if (prefersReduced || isMobile) return;
     
     let mouseX = 0, mouseY = 0;
     const section = document.querySelector('.journey-section');
@@ -586,7 +589,6 @@
   ════════════════════════════════════════════════════════════════════════ */
 
   function initEntranceAnimation() {
-    const isMobile = window.innerWidth < 640;
     if (prefersReduced) return;
     
     const navbar = document.getElementById('navbar');
@@ -595,18 +597,16 @@
     const cards = getCards();
     
     // Set initial states for entrance
-      if (!isMobile) {
-        gsap.set(navbar, { y: -50, opacity: 0 });
-        gsap.set(heroCopy, { y: 20, opacity: 0 });
-        gsap.set(controls, { opacity: 0 });
-      }
+    gsap.set(navbar, { y: -50, opacity: 0 });
+    gsap.set(heroCopy, { y: 20, opacity: 0 });
+    gsap.set(controls, { opacity: 0 });
     
     // Animate active card specifically (from scale 0.9 and slightly further back)
     const activeCard = cards[activeIndex];
     if (activeCard) {
       gsap.fromTo(activeCard, 
         { scale: 0.9, z: -100, opacity: 0 },
-        { scale: 1, z: 0, opacity: 1, duration: isMobile ? 0.4 : 1.2, ease: 'power3.out', delay: 0 }
+        { scale: 1, z: 0, opacity: 1, duration: 1.5, ease: 'power3.out', delay: 0.2 }
       );
     }
     
@@ -615,14 +615,14 @@
       if (i === activeIndex) return;
       gsap.fromTo(card,
         { opacity: 0, scale: 0.4 },
-        { opacity: parseFloat(card.style.opacity) || 0.5, scale: parseFloat(card.style.transform.match(/scale\(([^)]+)\)/)?.[1]) || 0.7, duration: isMobile ? 0.4 : 1.2, ease: 'power3.out', delay: 05 }
+        { opacity: parseFloat(card.style.opacity) || 0.5, scale: parseFloat(card.style.transform.match(/scale\(([^)]+)\)/)?.[1]) || 0.7, duration: 1.5, ease: 'power3.out', delay: 0.3 }
       );
     });
 
     // Sequence the UI elements
     const tl = gsap.timeline({ delay: 0.1 });
     tl.to(navbar, { y: 0, opacity: 1, duration: 1, ease: 'power2.out' })
-      .to(heroCopy, { y: 0, opacity: 0.85, duration: isMobile ? 0.7 : 1.0, ease: "power3.out" }, "-=0.6")
+      .to(heroCopy, { y: 0, opacity: 0.85, duration: 1.2, ease: "power3.out" }, "-=0.6")
       .to(controls, { opacity: 1, duration: 1, ease: 'power2.out' }, "-=0.8");
   }
 
