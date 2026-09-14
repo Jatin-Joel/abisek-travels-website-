@@ -20,7 +20,8 @@ const MIME_TYPES = {
     '.webp': 'image/webp',
     '.webmanifest': 'application/manifest+json',
     '.xml': 'application/xml; charset=utf-8',
-    '.txt': 'text/plain; charset=utf-8'
+    '.txt': 'text/plain; charset=utf-8',
+    '.mp4': 'video/mp4'
 };
 
 const server = http.createServer((req, res) => {

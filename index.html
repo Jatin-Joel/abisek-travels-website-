@@ -85,35 +85,34 @@
     <!-- Custom Cursor (Visible only on Desktop fine-pointer devices) -->
     <div class="custom-cursor hidden lg:block" id="customCursor"></div>
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 sm:py-6 bg-white/95 backdrop-blur-md shadow-sm">
+    <!-- Navigation (Cinematic Minimal) -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6 bg-gradient-to-b from-black/60 to-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group">
-                    <img src="assets/logo_emblem.png" alt="Abisek Travels Logo" width="681" height="403" class="h-9 sm:h-10 md:h-11 w-auto shrink-0 transition-transform duration-300 group-hover:scale-105">
-                    <span class="text-lg sm:text-xl md:text-2xl font-poppins font-bold text-gray-900 tracking-wider uppercase flex items-center">
-                        ABISEK <span class="text-brand-teal ml-1.5 font-medium">TRAVELS</span>
+                    <img src="assets/logo_emblem.png" alt="Abisek Travels Logo" width="681" height="403" class="h-8 sm:h-9 w-auto shrink-0 transition-transform duration-300 group-hover:scale-105 filter brightness-0 invert">
+                    <span class="text-lg sm:text-xl font-poppins font-bold text-white tracking-widest uppercase flex items-center">
+                        ABISEK <span class="font-light ml-2 opacity-90">TRAVELS</span>
                     </span>
                 </a>
                 <!-- Desktop Menu Links -->
-                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-poppins">
-                    <a href="#home" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Home</a>
-                    <a href="#about" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">About</a>
-                    <a href="#services" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
-                    <a href="#destinations" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Routes</a>
-                    <a href="#testimonials" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Reviews</a>
-                    <a href="#faq" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">FAQ</a>
+                <div class="hidden md:flex items-center space-x-8 lg:space-x-12 font-poppins">
+                    <a href="#destinations" class="nav-link text-white/80 hover:text-white text-xs font-semibold tracking-[0.15em] uppercase transition-colors">Destinations</a>
+                    <a href="#services" class="nav-link text-white/80 hover:text-white text-xs font-semibold tracking-[0.15em] uppercase transition-colors">Trip Types</a>
+                    <a href="#about" class="nav-link text-white/80 hover:text-white text-xs font-semibold tracking-[0.15em] uppercase transition-colors">About</a>
+                    <a href="#testimonials" class="nav-link text-white/80 hover:text-white text-xs font-semibold tracking-[0.15em] uppercase transition-colors">Why Us</a>
+                    <a href="#contact" class="nav-link text-white/80 hover:text-white text-xs font-semibold tracking-[0.15em] uppercase transition-colors">Contact</a>
                 </div>
                 <!-- Desktop Book CTA -->
                 <div class="hidden md:block font-poppins">
-                    <a href="#booking" class="bg-brand-teal text-white font-semibold px-5 lg:px-6 py-2.5 rounded-lg hover:bg-brand-teal-hover transition-all duration-300 shadow-lg shadow-brand-teal/10 hover:shadow-brand-teal/20 hover:-translate-y-0.5 transform text-sm">
+                    <a href="#booking" class="bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium tracking-wide px-5 py-2 rounded hover:bg-white hover:text-black transition-all duration-300 text-xs uppercase">
                         Book Now
                     </a>
                 </div>
                 <!-- Mobile Burger Button -->
                 <div class="flex md:hidden">
-                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="text-gray-600 hover:text-white p-2 focus:outline-none rounded-lg active:bg-white/10">
+                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="text-white hover:text-brand-teal p-2 focus:outline-none">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -121,15 +120,14 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-gray-200 py-6 px-6 space-y-3 font-poppins shadow-2xl">
-            <a href="#home" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-2.5 border-b border-gray-200">Home</a>
-            <a href="#about" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-2.5 border-b border-gray-200">About</a>
-            <a href="#services" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-2.5 border-b border-gray-200">Services</a>
-            <a href="#destinations" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-2.5 border-b border-gray-200">Routes</a>
-            <a href="#testimonials" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-2.5 border-b border-gray-200">Reviews</a>
-            <a href="#faq" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-2.5 border-b border-gray-200">FAQ</a>
-            <div class="pt-2">
-                <a href="#booking" class="block w-full text-center bg-brand-teal text-white font-semibold py-3 rounded-xl hover:bg-brand-teal-hover transition-colors text-base">
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-6 space-y-3 font-poppins">
+            <a href="#destinations" class="block text-white/80 hover:text-white text-sm font-medium py-2.5 border-b border-white/10 uppercase tracking-widest">Destinations</a>
+            <a href="#services" class="block text-white/80 hover:text-white text-sm font-medium py-2.5 border-b border-white/10 uppercase tracking-widest">Trip Types</a>
+            <a href="#about" class="block text-white/80 hover:text-white text-sm font-medium py-2.5 border-b border-white/10 uppercase tracking-widest">About</a>
+            <a href="#testimonials" class="block text-white/80 hover:text-white text-sm font-medium py-2.5 border-b border-white/10 uppercase tracking-widest">Why Us</a>
+            <a href="#contact" class="block text-white/80 hover:text-white text-sm font-medium py-2.5 border-b border-white/10 uppercase tracking-widest">Contact</a>
+            <div class="pt-4">
+                <a href="#booking" class="block w-full text-center bg-white text-black font-semibold py-3 rounded hover:bg-gray-200 transition-colors text-sm uppercase tracking-wider">
                     Book Now
                 </a>
             </div>
@@ -137,62 +135,85 @@
     </nav>
 
     <!-- ═══════════════════════════════════════════════════════════════════
-         3D JOURNEY HERO — Scroll-driven road trip (Punjab → Himachal → Kashmir → Ladakh)
-         journey.js mounts the Three.js scene into #journeyCanvas.
-         journey-fallback.js activates #journeyFallback if WebGL is unavailable.
+         HIMALAYAN DESTINATION CAROUSEL HERO
+         himalaya-carousel.js drives the canvas frame player + 3D card carousel.
+         Background: 300-frame Himalayan cloud/mountain sequence on #himalayaBg.
+         Foreground: CSS-3D destination cards in #destCarousel.
     ══════════════════════════════════════════════════════════════════════ -->
-    <section id="home" class="journey-section" aria-label="Interactive 3D route journey">
+    <section id="home" class="journey-section" aria-label="Himalayan destination carousel">
 
-      <!-- Sticky inner wrapper: canvas sticks while the section scrolls -->
+      <!-- Sticky inner wrapper — sticks at top while section scrolls 500vh -->
       <div class="journey-sticky">
 
-        <!-- WebGL canvas — filled by journey.js -->
-        <canvas id="journeyCanvas" aria-hidden="true"></canvas>
+        <!-- Layer 1: Himalayan cloud/mountain background video (Crossfaded for seamless loop) -->
+        <div id="himalayaBgContainer" aria-hidden="true">
+          <video id="himalayaBgA" class="himalaya-video" muted playsinline src="assets/upscaled-video.mp4"></video>
+          <video id="himalayaBgB" class="himalaya-video" muted playsinline src="assets/upscaled-video.mp4" style="opacity: 0;"></video>
+        </div>
 
-        <!-- Fallback: shown when WebGL unavailable or low-power device -->
-        <div id="journeyFallback" class="journey-fallback" hidden></div>
+        <!-- Layer 2: Atmospheric dark gradient overlay -->
+        <div class="himalaya-overlay" aria-hidden="true"></div>
+          <!-- Subtle Vignette & Grain -->
+          <div class="absolute inset-0 pointer-events-none z-[1] mix-blend-overlay opacity-5 bg-[url('assets/noise.png')]" aria-hidden="true"></div>
+          <div class="absolute inset-0 pointer-events-none z-[2]" aria-hidden="true" style="background: radial-gradient(circle at center, transparent 40%, rgba(2, 5, 10, 0.5) 150%);"></div>
 
-        <!-- Thin top progress bar -->
-        <div id="journeyProgress" aria-hidden="true"></div>
+        <!-- Layer 3: 3D Destination card carousel (cards built by himalaya-carousel.js) -->
+        <div id="destCarousel" role="region" aria-label="Destination carousel" aria-live="polite"></div>
 
-        <!-- Hero copy — fades out as user scrolls past 15% -->
-        
-        <div class="journey-hero-copy w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-start text-left h-full" id="journeyHeroCopy" style="pointer-events: none;">
-          <h1 class="font-display font-bold text-5xl sm:text-7xl md:text-[6rem] uppercase leading-[0.85] tracking-tighter text-white drop-shadow-2xl mb-6">
-            THE WORLD IS<br>YOURS TO<br>EXPLORE
-          </h1>
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-4">
-              <p class="text-gray-200 font-sans font-medium text-sm sm:text-base max-w-md leading-relaxed drop-shadow-md">
-                Start your adventures today with us and start exploring the world with us. Make every journey special with the help of our experts and get maximum features at a dynamic price.
-              </p>
-              <div class="flex items-center gap-3 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                 <div class="flex -space-x-2">
-                    <div class="w-6 h-6 rounded-full bg-gray-200 border-2 border-transparent"></div>
-                    <div class="w-6 h-6 rounded-full bg-red-500 border-2 border-transparent"></div>
-                    <div class="w-6 h-6 rounded-full bg-blue-600 border-2 border-transparent"></div>
-                 </div>
-                 <span class="text-xs font-bold text-gray-900 leading-tight">1000+ trusted customers<br><span class="font-normal text-gray-300">and Wonderful memories</span></span>
-              </div>
+        <!-- Layer 4: Minimal Cinematic Hero Copy -->
+        <div class="journey-hero-copy" id="journeyHeroCopy">
+            <h1 class="font-poppins text-[#f9f9f9] text-[11px] sm:text-[13px] md:text-[14px] font-medium tracking-[0.35em] uppercase drop-shadow-md">
+              Explore the Mountains <span class="hidden sm:inline">&nbsp;·&nbsp;</span><br class="sm:hidden" /> Travel in Comfort
+            </h1>
           </div>
-          <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white font-sans text-sm font-medium animate-pulse drop-shadow-md">
-             Swipe up to explore more ^
+
+        <!-- Layer 5: Left/Right Carousel Controls -->
+        <div class="carousel-controls absolute inset-0 pointer-events-none z-30" aria-label="Carousel navigation">
+          <!-- Previous Button (Left edge) -->
+          <button
+            id="carouselPrev"
+            class="carousel-btn absolute left-4 sm:left-12 top-1/2 -translate-y-1/2 pointer-events-auto"
+            aria-label="Previous destination"
+            type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 sm:w-10 sm:h-10 text-white opacity-60 hover:opacity-100 transition-opacity">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <!-- Next Button (Right edge) -->
+          <button
+            id="carouselNext"
+            class="carousel-btn absolute right-4 sm:right-12 top-1/2 -translate-y-1/2 pointer-events-auto"
+            aria-label="Next destination"
+            type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 sm:w-10 sm:h-10 text-white opacity-60 hover:opacity-100 transition-opacity">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          
+          <!-- Subtle Progress Indicator (Bottom center) -->
+          <div class="absolute bottom-12 left-1/2 -translate-x-1/2 font-poppins text-white/40 text-[10px] sm:text-xs tracking-[0.3em] font-light" id="carouselCounter" aria-live="polite">
+             01 — 05
           </div>
         </div>
 
-        <!-- Region label HUD — bottom left, fades in/out per zone -->
-        <div id="journeyRegionLabel" aria-live="polite"></div>
+        <!-- HUD: Current destination name (Updated by carousel JS) - Removed since card has it -->
+        <div id="journeyRegionLabel" class="hidden" aria-live="polite"></div>
 
         <!-- Scroll cue — disappears on first scroll -->
         <div id="journeyScrollCue" aria-hidden="true">
           <span class="journey-scroll-cue__line"></span>
-          <span class="journey-scroll-cue__text">Scroll to travel</span>
+          <span class="journey-scroll-cue__text">Scroll to explore</span>
         </div>
+
+        <!-- Top progress bar -->
+        <div id="journeyProgress" aria-hidden="true"></div>
 
         <!-- Persistent WhatsApp CTA visible throughout the full journey scroll -->
         <a href="https://wa.me/917814442326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels"
            target="_blank"
            rel="noopener noreferrer"
-           class="journey-whatsapp"
+           class="journey-whatsapp fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 text-white/60 px-4 py-2 rounded-full font-sans text-xs tracking-wide transition-all hover:bg-white/10 hover:text-white hover:border-white/20"
            aria-label="Book via WhatsApp">
           <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
           <span>Book via WhatsApp</span>
@@ -200,42 +221,83 @@
 
       </div><!-- /.journey-sticky -->
     </section>
-    <!-- END 3D JOURNEY HERO -->
+    <!-- END HIMALAYAN CAROUSEL HERO -->
 
-    <!-- About Section -->
-    <section id="about" class="py-16 sm:py-24 lg:py-32 bg-light-bg relative border-t border-gray-200 scroll-animate">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
-                <div class="fade-in-left">
-                    <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2 font-poppins">Our Commitment</h2>
-                    <h3 class="text-2xl sm:text-3xl md:text-5xl font-poppins font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
-                        Reliable mountain travel for every journey.
-                    </h3>
-                    <p class="text-gray-600 text-base sm:text-lg mb-8 leading-relaxed font-sans">
-                        Abisek Travels is built on the foundation of trust, safety, and local expertise. Based in Pathankot, we specialize in high-altitude mountain terrain navigation, serving travelers headed to the serene hills of Dharamshala, the scenic valleys of Kashmir, and the rugged beauty of Leh-Ladakh. With 5+ years of driving experience, we guarantee a professional and seamless travel experience across North India.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 sm:gap-8 font-poppins">
-                        <div class="border-l-2 border-brand-teal pl-4">
-                            <div class="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
-                                <span class="counter-number" data-target="2000">0</span>+
+
+    <!-- About Section (Cinematic Glassmorphism) -->
+    <section id="about" class="py-20 sm:py-32 bg-[#05090f] relative overflow-hidden border-t border-white/5">
+        <!-- Layer 1: Atmospheric Background Gradients -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <!-- Subtle teal glow top-left -->
+            <div class="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-teal/5 rounded-full blur-[100px]"></div>
+            <!-- Subtle dark blue glow bottom-right -->
+            <div class="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-[#0c1f38]/30 rounded-full blur-[120px]"></div>
+            <!-- Noise overlay (very subtle) -->
+            <div class="absolute inset-0 bg-[url('assets/noise.png')] opacity-[0.015] mix-blend-overlay pointer-events-none"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+                
+                <!-- Left: Translucent Glass Content Surface -->
+                <div class="about-glass-panel relative rounded-[2rem] p-8 sm:p-12 md:p-14 overflow-hidden"
+                     style="background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                     
+                    <!-- Subtle Glass Reflection / Edge Highlight -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-white/[0.05] via-transparent to-transparent pointer-events-none"></div>
+                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+                    <div class="relative z-10">
+                        <h2 class="about-heading-sub text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-4 font-poppins">Our Commitment</h2>
+                        <h3 class="about-heading-main text-2xl sm:text-3xl md:text-5xl font-poppins font-bold text-white mb-6 sm:mb-8 leading-tight drop-shadow-md">
+                            Reliable mountain travel for every journey.
+                        </h3>
+                        <p class="about-paragraph text-gray-300 text-base sm:text-lg mb-10 leading-relaxed font-sans font-light">
+                            Abisek Travels is built on the foundation of trust, safety, and local expertise. Based in Pathankot, we specialize in high-altitude mountain terrain navigation, serving travelers headed to the serene hills of Dharamshala, the scenic valleys of Kashmir, and the rugged beauty of Leh-Ladakh. With 5+ years of driving experience, we guarantee a professional and seamless travel experience across North India.
+                        </p>
+                        
+                        <!-- Dimensional Statistics -->
+                        <div class="grid grid-cols-2 gap-6 sm:gap-8 font-poppins relative">
+                            <!-- Subtle ambient shadow behind stats -->
+                            <div class="absolute inset-0 bg-white/5 blur-2xl -z-10 rounded-full"></div>
+                            
+                            <div class="about-stat relative pl-6 border-l border-white/20">
+                                <div class="absolute left-[-1px] top-1/4 bottom-1/4 w-[2px] bg-brand-teal/40 blur-[2px]"></div>
+                                <div class="absolute left-[-1px] top-1/3 bottom-1/3 w-[2px] bg-brand-teal"></div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md tracking-tight">
+                                    <span class="counter-number" data-target="2000">0</span>+
+                                </div>
+                                <div class="text-gray-400 text-xs sm:text-sm tracking-widest uppercase font-medium">Trips Completed</div>
                             </div>
-                            <div class="text-gray-500 text-xs sm:text-sm tracking-wide">Trips Completed</div>
-                        </div>
-                        <div class="border-l-2 border-brand-teal pl-4">
-                            <div class="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
-                                <span class="counter-number" data-target="5">0</span>+
+                            
+                            <div class="about-stat relative pl-6 border-l border-white/20">
+                                <div class="absolute left-[-1px] top-1/4 bottom-1/4 w-[2px] bg-brand-teal/40 blur-[2px]"></div>
+                                <div class="absolute left-[-1px] top-1/3 bottom-1/3 w-[2px] bg-brand-teal"></div>
+                                <div class="text-3xl sm:text-4xl font-bold text-white mb-2 drop-shadow-md tracking-tight">
+                                    <span class="counter-number" data-target="5">0</span>+
+                                </div>
+                                <div class="text-gray-400 text-xs sm:text-sm tracking-widest uppercase font-medium">Years Experience</div>
                             </div>
-                            <div class="text-gray-500 text-xs sm:text-sm tracking-wide">Years Experience</div>
                         </div>
                     </div>
                 </div>
-                <div class="relative fade-in-right">
-                    <div class="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] bg-white rounded-2xl overflow-hidden relative group shadow-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-teal/20 to-transparent z-20 pointer-events-none"></div>
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500 z-10 pointer-events-none"></div>
-                        <img src="assets/about_clean.png" alt="Driver's hand on steering wheel" loading="lazy" decoding="async" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+
+                <!-- Right: Floating Dimensional Image -->
+                <div class="about-image-wrapper relative perspective-[1200px] h-full flex items-center justify-center">
+                    <!-- Soft atmospheric shadow behind image -->
+                    <div class="absolute inset-0 bg-black/60 blur-[40px] rounded-3xl scale-95 translate-y-6"></div>
+                    
+                    <div class="about-image-panel relative w-full aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] rounded-[1.5rem] overflow-hidden group transition-all duration-700 ease-out hover:-translate-y-2 hover:scale-[1.015]"
+                         style="border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2);">
+                        
+                        <!-- Subtle Image Overlay to preserve blacks but allow readability -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#05090f]/70 via-transparent to-transparent z-10 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-[#05090f]/10 group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none"></div>
+                        
+                        <img src="assets/about_clean.png" alt="Driver's hand on steering wheel" loading="lazy" decoding="async" class="w-full h-full object-cover object-center scale-[1.03] group-hover:scale-100 transition-transform duration-1000 ease-out relative z-0">
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -822,9 +884,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
 
-    <!-- Journey fallback (plain script — activates if WebGL fails) -->
-    <script src="journey-fallback.js"></script>
-    <!-- Journey 3D engine (ES module — Three.js via importmap) -->
-    <script type="module" src="journey.js"></script>
+    <!-- Himalayan carousel (canvas frame sequencer + 3D card carousel + scroll) -->
+    <script src="himalaya-carousel.js"></script>
 </body>
 </html>
