@@ -33,6 +33,11 @@
       name:     'Himachal Pradesh',
       location: 'Dharamshala · Manali · Dalhousie',
       image:    'assets/dest_dharamshala.png',
+      // srcset candidates — generate these with ImageMagick or Squoosh:
+      //   convert dest_dharamshala.png -resize 400x  dest_dharamshala-400w.webp
+      //   convert dest_dharamshala.png -resize 800x  dest_dharamshala-800w.webp
+      //   convert dest_dharamshala.png -resize 1200x dest_dharamshala-1200w.webp
+      srcset:   'assets/dest_dharamshala-400w.webp 400w, assets/dest_dharamshala-800w.webp 800w, assets/dest_dharamshala-1200w.webp 1200w',
       cta:      'Explore',
     },
     {
@@ -40,6 +45,7 @@
       name:     'Kashmir',
       location: 'Srinagar · Gulmarg · Pahalgam',
       image:    'assets/dest_kashmir.png',
+      srcset:   'assets/dest_kashmir-400w.webp 400w, assets/dest_kashmir-800w.webp 800w, assets/dest_kashmir-1200w.webp 1200w',
       cta:      'Explore',
     },
     {
@@ -47,6 +53,7 @@
       name:     'Leh-Ladakh',
       location: 'Leh · Nubra Valley · Pangong',
       image:    'assets/dest_leh_ladakh.png',
+      srcset:   'assets/dest_leh_ladakh-400w.webp 400w, assets/dest_leh_ladakh-800w.webp 800w, assets/dest_leh_ladakh-1200w.webp 1200w',
       cta:      'Explore',
     },
     {
@@ -54,6 +61,7 @@
       name:     'Uttarakhand',
       location: 'Mussoorie · Nainital · Rishikesh',
       image:    'assets/dest_nainital.png',
+      srcset:   'assets/dest_nainital-400w.webp 400w, assets/dest_nainital-800w.webp 800w, assets/dest_nainital-1200w.webp 1200w',
       cta:      'Explore',
     },
     {
@@ -61,6 +69,7 @@
       name:     'Pathankot',
       location: 'Local & Outstation Transfers',
       image:    'assets/dest_pathankot.png',
+      srcset:   'assets/dest_pathankot-400w.webp 400w, assets/dest_pathankot-800w.webp 800w, assets/dest_pathankot-1200w.webp 1200w',
       cta:      'Book Now',
     },
   ];
@@ -73,18 +82,47 @@
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ═══════════════════════════════════════════════════════════════════════
+     2. DEVICE TIER (set by device-tier.js before this script runs)
+  ════════════════════════════════════════════════════════════════════════ */
+
+  // Fallback: if device-tier.js somehow didn't run, default to 'high'
+  const tier = window.__deviceTier || 'high';
+  const isLowTier = tier === 'low';
+
+  // Video source selection — map tier to available file
+  // Provide hero-720p.mp4 for mid-tier (encode at ~1 Mbps, 1280×720)
+  // Keep upscaled-video.mp4 as the high-tier source
+  const VIDEO_SRC = {
+    high: 'assets/upscaled-video.mp4',
+    mid:  'assets/hero-720p.mp4',
+    // low: (no video)
+  };
+
   // Background Video Crossfade Engine
   function initSeamlessVideoLoop() {
     const vidA = document.getElementById('himalayaBgA');
     const vidB = document.getElementById('himalayaBgB');
     if (!vidA || !vidB) return;
 
+    // LOW TIER: don't load or play video at all — poster image is already visible
+    if (isLowTier) {
+      // Ensure poster remains visible; no src = no bytes downloaded
+      vidA.style.opacity = 1;
+      return;
+    }
+
+    // REDUCED MOTION: also skip playback, show static first frame
     if (prefersReduced) {
-      // Fallback: just show first frame of A
+      vidA.src = VIDEO_SRC[tier] || VIDEO_SRC.high;
       vidA.style.opacity = 1;
       vidB.style.opacity = 0;
       return;
     }
+
+    // MID / HIGH: set src now (browser starts buffering at this point, not before)
+    const src = VIDEO_SRC[tier] || VIDEO_SRC.high;
+    vidA.src = src;
 
     let activeVid = vidA;
     let inactiveVid = vidB;
@@ -104,15 +142,19 @@
         isCrossfading = true;
         
         // Prepare and play the inactive video from the start
+        // Set src lazily on vidB only when we first need it
+        if (!inactiveVid.src) {
+          inactiveVid.src = src;
+        }
         inactiveVid.currentTime = 0;
         inactiveVid.play().catch(() => {});
         
-        // Perform the crossfade
-        gsap.to(inactiveVid, { opacity: 1, duration: crossfadeDuration, ease: "none" });
-        gsap.to(activeVid, { 
-          opacity: 0, 
-          duration: crossfadeDuration, 
-          ease: "none", 
+        // Perform the crossfade (opacity only — GPU compositing)
+        gsap.to(inactiveVid, { opacity: 1, duration: crossfadeDuration, ease: 'none' });
+        gsap.to(activeVid, {
+          opacity: 0,
+          duration: crossfadeDuration,
+          ease: 'none',
           onComplete: () => {
             activeVid.pause();
             
@@ -138,17 +180,18 @@
     const carousel = document.getElementById('destCarousel');
     if (!carousel) return;
 
-    // Preload all destination images for instant transitions
-    DESTINATIONS.forEach(d => {
-      const img = new Image();
-      img.src = d.image;
-    });
-
     // Build card elements
     DESTINATIONS.forEach((dest, i) => {
       const card = document.createElement('div');
       card.className   = 'dest-card';
       card.dataset.index = String(i);
+
+      // srcset: card display size is ~380px desktop, ~300px tablet, ~75vw mobile
+      // If WebP variants don't exist yet, browser falls back to src PNG gracefully.
+      // sizes attribute tells browser which rendered width to expect before layout.
+      const srcsetAttr = dest.srcset
+        ? `srcset="${dest.srcset}" sizes="(max-width: 639px) 75vw, (max-width: 1023px) 300px, 380px"`
+        : '';
 
       card.innerHTML = `
         <div class="dest-card__parallax">
@@ -156,10 +199,13 @@
             <div class="dest-card__img-wrap">
               <img
                 src="${dest.image}"
+                ${srcsetAttr}
                 alt="${dest.name}"
                 class="dest-card__img"
                 loading="${i === 0 ? 'eager' : 'lazy'}"
                 decoding="async"
+                width="380"
+                height="540"
               >
             </div>
             <div class="dest-card__glass-edge"></div>
@@ -310,19 +356,19 @@
       // Toggle is-active for CSS hover states
       if (i === activeIndex) {
         card.classList.add('is-active');
-        // Trigger Glint Effect ONCE
-        if (!immediate && !prefersReduced) {
+        // Trigger Glint Effect ONCE (skip on low tier)
+        if (!immediate && !prefersReduced && !isLowTier) {
           const glint = card.querySelector('.dest-card__glint');
           if (glint) {
             glint.classList.remove('glint-run');
-            void glint.offsetWidth; // trigger reflow
+            void glint.offsetWidth; // trigger reflow (intentional, single frame)
             glint.classList.add('glint-run');
           }
         }
       } else {
         card.classList.remove('is-active');
-        // Reset parallax
-        if (!prefersReduced && !isMobile) {
+        // Reset parallax (skip on low tier & mobile — no parallax there anyway)
+        if (!prefersReduced && !isMobile && !isLowTier) {
           const parallaxEl = card.querySelector('.dest-card__parallax');
           if (parallaxEl) {
             gsap.to(parallaxEl, { rotateY: 0, rotateX: 0, x: 0, y: 0, duration: 0.8, ease: 'power2.out' });
@@ -331,26 +377,54 @@
       }
 
       const offset = i - activeIndex;
-      // Wrap offset for circular feel (though we don't wrap visually beyond ±2)
       const t = cardTransform(offset);
 
-      const tl = gsap.to(card, {
-        x:          t.x,
-        z:          t.z,
-        rotateY:    t.rotateY,
-        scale:      t.scale,
-        opacity:    t.opacity,
-        filter:     t.filter,
-        zIndex:     t.zIndex,
-        duration:   dur,
-        ease:       ease,
-        force3D:    true,
-        onComplete: () => {
-          if (i === cards.length - 1) isAnimating = false;
-        },
-      });
+      // ── Set non-compositable properties via style (no GSAP tween cost) ──
+      // filter causes a paint; set it directly so there's no per-frame repaint
+      card.style.filter = t.filter || '';
+      // zIndex doesn't animate meaningfully; set directly
+      card.style.zIndex = String(t.zIndex);
+
+      // ── Apply will-change only during active animation ──
+      if (!immediate && dur > 0) {
+        card.style.willChange = 'transform, opacity';
+      }
+
+      if (isLowTier) {
+        // ── LOW TIER: flat 2D transition — only transform (translateX) + opacity ──
+        // No rotateY, no z, no perspective depth. Pure compositor path.
+        gsap.to(card, {
+          x:        t.x,
+          opacity:  t.opacity,
+          scale:    t.scale,
+          duration: immediate ? 0 : 0.5,
+          ease:     'power2.out',
+          force3D:  true,
+          onComplete: () => {
+            card.style.willChange = 'auto';
+            if (i === cards.length - 1) isAnimating = false;
+          },
+        });
+      } else {
+        // ── MID / HIGH TIER: full 3D carousel ──
+        gsap.to(card, {
+          x:          t.x,
+          z:          t.z,
+          rotateY:    t.rotateY,
+          scale:      t.scale,
+          opacity:    t.opacity,
+          duration:   dur,
+          ease:       ease,
+          force3D:    true,
+          onComplete: () => {
+            card.style.willChange = 'auto';
+            if (i === cards.length - 1) isAnimating = false;
+          },
+        });
+      }
     });
   }
+
 
   /* ═══════════════════════════════════════════════════════════════════════
      6. COUNTER & HUD
@@ -484,7 +558,7 @@
 
   function initParallax() {
     const isMobile = window.innerWidth < 640;
-    if (prefersReduced || isMobile) return;
+    if (prefersReduced || isMobile || isLowTier) return;
     
     let mouseX = 0, mouseY = 0;
     const section = document.querySelector('.journey-section');
@@ -499,6 +573,15 @@
       }
     }, { passive: true });
 
+    section.addEventListener('mouseleave', () => {
+      // Clear will-change when mouse leaves to free compositor memory
+      const cards = getCards();
+      const activeCard = cards[activeIndex];
+      if (!activeCard) return;
+      const parallaxEl = activeCard.querySelector('.dest-card__parallax');
+      if (parallaxEl) parallaxEl.style.willChange = 'auto';
+    }, { passive: true });
+
     function updateParallax() {
       if (isAnimating) return; // Prevent fighting GSAP transitions
       const cards = getCards();
@@ -507,6 +590,8 @@
 
       const parallaxEl = activeCard.querySelector('.dest-card__parallax');
       if (parallaxEl) {
+        // Set will-change only while actively moving
+        parallaxEl.style.willChange = 'transform';
         gsap.to(parallaxEl, {
           rotateY: mouseX * 2.5,
           rotateX: -mouseY * 2.5,
@@ -518,6 +603,7 @@
       }
     }
   }
+
 
   /* ═══════════════════════════════════════════════════════════════════════
      10. TOUCH / SWIPE SUPPORT

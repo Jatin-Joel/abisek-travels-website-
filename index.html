@@ -50,6 +50,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
+    <!-- Device tier detection (runs sync; writes window.__deviceTier + data-tier attr) -->
+    <script src="device-tier.js"></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,9 +149,13 @@
       <div class="journey-sticky">
 
         <!-- Layer 1: Himalayan cloud/mountain background video (Crossfaded for seamless loop) -->
+        <!-- NOTE: src is intentionally absent — device-tier.js + himalaya-carousel.js set it   -->
+        <!-- conditionally: low tier never fetches video bytes; mid/high load appropriate file.  -->
         <div id="himalayaBgContainer" aria-hidden="true">
-          <video id="himalayaBgA" class="himalaya-video" muted playsinline src="assets/upscaled-video.mp4"></video>
-          <video id="himalayaBgB" class="himalaya-video" muted playsinline src="assets/upscaled-video.mp4" style="opacity: 0;"></video>
+          <video id="himalayaBgA" class="himalaya-video" muted playsinline
+                 poster="assets/hero_bg.png"></video>
+          <video id="himalayaBgB" class="himalaya-video" muted playsinline
+                 style="opacity: 0;"></video>
         </div>
 
         <!-- Layer 2: Atmospheric dark gradient overlay -->

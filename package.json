@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Jatin-Joel/abisek-travels-website-/issues"
   },
-  "homepage": "https://github.com/Jatin-Joel/abisek-travels-website-#readme"
+  "homepage": "https://github.com/Jatin-Joel/abisek-travels-website-#readme",
+  "devDependencies": {
+    "puppeteer": "^25.11.0",
+    "sharp": "^0.35.4"
+  }
 }
