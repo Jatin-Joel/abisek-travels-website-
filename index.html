@@ -3,546 +3,961 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <meta name="theme-color" content="#3DB39E">
-    <!-- Preserved SEO Tags — DO NOT CHANGE without approval -->
+    <meta name="theme-color" content="#3db39e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Primary SEO — DO NOT EDIT without approval -->
     <title>Abisek Travels | Cab Service Pathankot to Kashmir, Ladakh, Himachal Pradesh &amp; Uttarakhand</title>
-    <meta name="description" content="Book outstation cab services from Pathankot to Himachal Pradesh, Kashmir, Ladakh, and Uttarakhand. Transparent pricing, expert mountain drivers, and 24/7 support.">
+    <meta name="description" content="Book reliable outstation cab service from Pathankot to Kashmir, Leh-Ladakh, Dharamshala, Chandigarh, Delhi &amp; Uttarakhand. Experienced driver, AC vehicle, transparent pricing. WhatsApp booking available 24/7.">
+    <meta name="keywords" content="cab service Pathankot, Pathankot to Kashmir taxi, Pathankot to Dharamshala cab, Pathankot to Leh Ladakh cab, Pathankot to Chandigarh taxi, outstation cab Pathankot, hill station cab Punjab, Abisek Travels">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://abisektravels.in/">
 
-    <!-- Preconnect &amp; Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abisektravels.in/">
+    <meta property="og:title" content="Abisek Travels | Cab Service from Pathankot to Kashmir, Ladakh &amp; Himachal">
+    <meta property="og:description" content="Safe, affordable outstation cab service from Pathankot to Kashmir, Leh-Ladakh, Himachal Pradesh, Uttarakhand, Chandigarh &amp; Delhi. Book instantly on WhatsApp.">
+    <meta property="og:image" content="https://abisektravels.in/assets/og_image.jpg">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Abisek Travels | Pathankot Cab Service — Local &amp; Outstation">
+    <meta name="twitter:description" content="Book cab from Pathankot to Kashmir, Ladakh, Himachal, Uttarakhand, Delhi &amp; Chandigarh. WhatsApp booking, transparent pricing.">
+    <meta name="twitter:image" content="https://abisektravels.in/assets/og_image.jpg">
 
-    <link rel="icon" type="image/svg+xml" href="assets/logo_emblem.svg">
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Hero image preload -->
     <link rel="preload" as="image" href="assets/hero-fallback.webp" type="image/webp" fetchpriority="high">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- GSAP (needed for carousel hero) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!-- Tailwind CDN — layout utilities only; colors overridden below -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: { 'xs': '475px' },
+                    colors: {
+                        'brand-teal':       '#3DB39E',
+                        'brand-teal-hover': '#2a9b88',
+                        'light-bg':         '#f9fafb',
+                        'card-bg':          '#ffffff',
+                    },
+                    fontFamily: {
+                        // All font-poppins and font-sans classes now use new fonts
+                        display: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans:    ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        poppins: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="journey.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-    <script src="device-tier.js" defer></script>
-
-    <style>
-        /* ---- util: margin-top shorthand ---- */
-        .mt-sm { margin-top: var(--space-sm); }
-        .mt-md { margin-top: var(--space-md); }
-        .mt-lg { margin-top: var(--space-lg); }
-        /* ---- hover colour helper (no JS needed) ---- */
-        a.hover-teal:hover { color: var(--color-primary); }
-        /* ---- Services teaser cards ---- */
-        .services-teaser { padding: var(--space-2xl) 0; background-color: var(--color-surface-base); border-top: 1px solid var(--color-border); }
-        .service-card { padding: var(--space-lg); background: var(--color-surface-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-card); }
-        .service-card svg { color: var(--color-primary); margin-bottom: var(--space-md); }
-        /* ---- fleet section on dark bg ---- */
-        .fleet-section { background-color: var(--color-canvas-base); padding: var(--space-2xl) 0; border-top: 1px solid var(--color-border); }
-        .fleet-card { background: var(--color-surface-base); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-lg); color: var(--color-text-primary); }
-        .fleet-card ul li { color: var(--color-text-secondary); }
-    </style>
+    <!-- Device tier detection (runs sync before GSAP carousel) -->
+    <script src="device-tier.js"></script>
 </head>
-<body>
+<body class="bg-light-bg text-gray-800 overflow-x-hidden font-sans selection:bg-brand-teal selection:text-white">
 
-    <!-- ===================== HEADER ===================== -->
-    <header class="site-header" id="navbar">
-        <div class="container">
-            <a href="/" class="flex items-center gap-sm">
-                <img src="assets/logo_emblem.svg" alt="Abisek Travels" style="height:32px;">
-                <span class="text-editorial text-primary" style="letter-spacing:0.1em;text-transform:uppercase;">Abisek <span style="font-weight:400">Travels</span></span>
-            </a>
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="/" class="nav-link">Home</a>
-                <a href="services.html" class="nav-link">Services</a>
-                <a href="fleet.html" class="nav-link">Our Vehicles</a>
-                <a href="driver.html" class="nav-link">The Driver</a>
-                <a href="booking.html" class="nav-link">Book Now</a>
-            </nav>
-            <div class="flex items-center gap-sm">
-                <a href="tel:+919876543210" class="btn btn-text" style="display:none;" id="phoneBtn">
-                    <svg class="icon-sm" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" fill="currentColor"/></svg>
-                    Call Us
+    <!-- Custom cursor (desktop only) -->
+    <div class="custom-cursor hidden lg:block" id="customCursor"></div>
+
+    <!-- ================================================================
+         NAVBAR
+    ================================================================ -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 sm:py-5 bg-white/95 backdrop-blur-md shadow-sm" style="backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
+                    <img src="assets/logo_emblem.png" alt="Abisek Travels Logo" width="681" height="403"
+                         class="h-9 sm:h-10 md:h-11 w-auto shrink-0 transition-transform duration-300 group-hover:scale-105">
+                    <span class="text-lg sm:text-xl font-poppins font-bold text-gray-900 tracking-wider uppercase flex items-center">
+                        ABISEK <span class="text-brand-teal ml-1.5 font-medium">TRAVELS</span>
+                    </span>
                 </a>
-                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                <!-- Desktop links -->
+                <div class="hidden md:flex items-center space-x-5 lg:space-x-7 font-poppins">
+                    <a href="/" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Home</a>
+                    <a href="services.html" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
+                    <a href="fleet.html" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Our Vehicles</a>
+                    <a href="driver.html" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">The Driver</a>
+                    <a href="#testimonials" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Reviews</a>
+                    <a href="#faq" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">FAQ</a>
+                </div>
+                <!-- Book Now CTA -->
+                <div class="hidden md:block font-poppins">
+                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-5 lg:px-6 py-2.5 rounded-lg hover:bg-brand-teal-hover transition-all duration-300 shadow-lg shadow-brand-teal/10 hover:shadow-brand-teal/20 hover:-translate-y-0.5 transform text-sm">
+                        Book Now
+                    </a>
+                </div>
+                <!-- Mobile burger -->
+                <div class="flex md:hidden">
+                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="text-gray-600 hover:text-brand-teal p-2 focus:outline-none rounded-lg">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
 
-    <main>
+        <!-- Mobile drawer -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-gray-200 py-6 px-6 space-y-1 font-poppins shadow-2xl">
+            <a href="/" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Home</a>
+            <a href="services.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Services</a>
+            <a href="fleet.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Our Vehicles</a>
+            <a href="driver.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">The Driver</a>
+            <a href="#testimonials" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Reviews</a>
+            <a href="#faq" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">FAQ</a>
+            <div class="pt-3">
+                <a href="booking.html" class="block w-full text-center bg-brand-teal text-white font-semibold py-3.5 rounded-xl hover:bg-brand-teal-hover transition-colors text-base min-h-[44px]">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
 
-        <!-- ===================== 1. HERO (UNTOUCHED) ===================== -->
-        <section id="home" class="journey-section" aria-label="Himalayan destination carousel">
-            <div class="journey-sticky">
-                <div id="himalayaBgContainer" aria-hidden="true">
-                    <img id="heroFallback" class="himalaya-fallback" src="assets/hero-fallback.webp" alt="" fetchpriority="high" decoding="sync">
-                    <video id="himalayaBgA" class="himalaya-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-fallback.webp" src="assets/upscaled-video.mp4"></video>
-                    <video id="himalayaBgB" class="himalaya-video" muted playsinline preload="auto" poster="assets/hero-fallback.webp" style="opacity:0;"></video>
+    <!-- ================================================================
+         1. HERO — mp4 video + fallback image + CSS-3D destination cards
+    ================================================================ -->
+    <section id="home" class="journey-section" aria-label="Destination carousel">
+        <div class="journey-sticky">
+
+            <!-- Background: fallback image + crossfading video -->
+            <div id="himalayaBgContainer" aria-hidden="true">
+                <img id="heroFallback" class="himalaya-fallback" src="assets/hero-fallback.webp" alt="" fetchpriority="high" decoding="sync">
+                <!-- Video only on non-mobile — device-tier.js sets body[data-tier] -->
+                <video id="himalayaBgA" class="himalaya-video" autoplay muted loop playsinline preload="auto"
+                       poster="assets/hero-fallback.webp" src="assets/upscaled-video.mp4"></video>
+                <video id="himalayaBgB" class="himalaya-video" muted playsinline preload="auto"
+                       poster="assets/hero-fallback.webp" style="opacity:0;"></video>
+            </div>
+
+            <!-- Inline: bind fallback→video fade immediately so it fires even if carousel JS is slow -->
+            <script>
+                (function() {
+                    var v = document.getElementById('himalayaBgA');
+                    var f = document.getElementById('heroFallback');
+                    if (!v || !f) return;
+                    // On low-tier/mobile, skip video entirely
+                    if (window.__deviceTier === 'low') {
+                        v.removeAttribute('src'); v.load();
+                        var vb = document.getElementById('himalayaBgB');
+                        if (vb) { vb.removeAttribute('src'); vb.load(); }
+                        return;
+                    }
+                    function onPlaying() {
+                        v.removeEventListener('playing', onPlaying);
+                        f.style.transition = 'opacity 0.5s ease-out';
+                        f.style.opacity = '0';
+                        setTimeout(function() { f.style.display = 'none'; }, 500);
+                    }
+                    if (!v.paused && v.currentTime > 0) { onPlaying(); }
+                    else { v.addEventListener('playing', onPlaying, { once: true }); }
+                    v.addEventListener('error', function() { /* keep fallback */ });
+                })();
+            </script>
+
+            <!-- Dark overlays -->
+            <div class="himalaya-overlay" aria-hidden="true"></div>
+            <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(circle at center,transparent 40%,rgba(2,5,10,0.5) 150%);" aria-hidden="true"></div>
+
+            <!-- CSS-3D destination cards (built by himalaya-carousel.js) -->
+            <div id="destCarousel" role="region" aria-label="Destination carousel" aria-live="polite"></div>
+
+            <!-- Hero copy -->
+            <div class="journey-hero-copy" id="journeyHeroCopy">
+                <h1 class="font-poppins text-[#f9f9f9] text-[11px] sm:text-[13px] md:text-[14px] font-medium tracking-[0.35em] uppercase drop-shadow-md text-center">
+                    Reliable Cabs &nbsp;·&nbsp; Local &amp; Outstation
+                </h1>
+            </div>
+
+            <!-- Carousel controls -->
+            <div class="carousel-controls" style="position:absolute;inset:0;pointer-events:none;z-index:30;" aria-label="Carousel navigation">
+                <button id="carouselPrev" class="carousel-btn" type="button" aria-label="Previous destination"
+                        style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button id="carouselNext" class="carousel-btn" type="button" aria-label="Next destination"
+                        style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+                <div id="carouselCounter" style="position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.3em;font-family:'Plus Jakarta Sans',sans-serif;">01 / 05</div>
+            </div>
+
+            <!-- Scroll cue -->
+            <div id="journeyScrollCue" aria-hidden="true">
+                <span class="journey-scroll-cue__line"></span>
+                <span class="journey-scroll-cue__text">Scroll to explore</span>
+            </div>
+
+            <!-- Progress bar -->
+            <div id="journeyProgress" aria-hidden="true"></div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         2. OUR COMMITMENT
+    ================================================================ -->
+    <section id="about" class="py-16 sm:py-24 lg:py-32 bg-light-bg relative border-t border-gray-200 scroll-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+                <div class="fade-in-left">
+                    <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2 font-poppins">Our Commitment</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
+                        Reliable cab service for every journey.
+                    </h3>
+                    <p class="text-gray-600 text-base sm:text-lg mb-8 leading-relaxed font-sans">
+                        Abisek Travels is built on trust, safety, and local know-how. Based in Pathankot, we cover local city rides, airport and railway station transfers, and outstation trips across North India — from quick Chandigarh runs to multi-day Kashmir and Leh-Ladakh tours. With 5+ years of driving experience, we guarantee a comfortable and hassle-free ride every time.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 sm:gap-8 font-poppins">
+                        <div class="border-l-2 border-brand-teal pl-4">
+                            <div class="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
+                                <span class="counter-number" data-target="2000">0</span>+
+                            </div>
+                            <div class="text-gray-500 text-xs sm:text-sm tracking-wide">Trips Completed</div>
+                        </div>
+                        <div class="border-l-2 border-brand-teal pl-4">
+                            <div class="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
+                                <span class="counter-number" data-target="5">0</span>+
+                            </div>
+                            <div class="text-gray-500 text-xs sm:text-sm tracking-wide">Years Experience</div>
+                        </div>
+                    </div>
                 </div>
-                <script>
-                    (function() {
-                        var v = document.getElementById('himalayaBgA');
-                        var f = document.getElementById('heroFallback');
-                        if (!v || !f) return;
-                        function onPlaying() {
-                            v.removeEventListener('playing', onPlaying);
-                            f.style.transition = 'opacity 0.5s ease-out';
-                            f.style.opacity = '0';
-                            setTimeout(function() { f.style.display = 'none'; }, 500);
-                        }
-                        if (!v.paused && v.currentTime > 0) { onPlaying(); }
-                        else { v.addEventListener('playing', onPlaying, { once: true }); }
-                    })();
-                </script>
-                <div class="himalaya-overlay" aria-hidden="true"></div>
-                <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(circle at center,transparent 40%,rgba(2,5,10,0.5) 150%);" aria-hidden="true"></div>
+                <div class="relative fade-in-right">
+                    <div class="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] bg-white rounded-2xl overflow-hidden relative group shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-teal/20 to-transparent z-20 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500 z-10 pointer-events-none"></div>
+                        <img src="assets/about_clean.png" alt="Driver's hand on steering wheel — Abisek Travels"
+                             loading="lazy" decoding="async"
+                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div id="destCarousel" role="region" aria-label="Destination carousel" aria-live="polite"></div>
+    <!-- ================================================================
+         3. MEET YOUR DRIVER
+    ================================================================ -->
+    <section id="driver" class="py-16 sm:py-24 lg:py-32 bg-white relative border-t border-gray-200 scroll-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+                <!-- Text -->
+                <div class="order-2 lg:order-1 fade-in-left">
+                    <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-3 sm:mb-4 font-poppins">Meet Your Driver</h2>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-5 sm:mb-6 leading-tight">
+                        Experienced,<br>Professional<br>&amp; Friendly.
+                    </h3>
+                    <p class="text-gray-600 text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed font-sans">
+                        Your safety and comfort are our top priorities. Meet Abisek Atwal, our driver with extensive knowledge of local and outstation routes across North India — known for punctuality, safe driving, and friendly service.
+                    </p>
+                    <!-- Stat cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 font-poppins fade-in mb-8">
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 flex items-start gap-4 hover:border-brand-teal/20 transition-all duration-300">
+                            <i data-lucide="award" class="w-7 h-7 sm:w-8 sm:h-8 text-brand-teal shrink-0 mt-0.5"></i>
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-gray-900 leading-none mb-1">
+                                    <span class="counter-number" data-target="5">0</span>+
+                                </div>
+                                <div class="text-xs sm:text-sm text-gray-500">Years Exp.</div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200 flex items-start gap-4 hover:border-brand-teal/20 transition-all duration-300">
+                            <i data-lucide="map-pin" class="w-7 h-7 sm:w-8 sm:h-8 text-brand-teal shrink-0 mt-0.5"></i>
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-gray-900 leading-none mb-1">
+                                    <span class="counter-number" data-target="2000">0</span>+
+                                </div>
+                                <div class="text-xs sm:text-sm text-gray-500">Total Trips</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="driver.html" class="inline-flex items-center gap-2 bg-brand-teal text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-teal-hover transition-all duration-300 text-sm font-poppins min-h-[44px]">
+                        Know Your Driver
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <!-- Photo -->
+                <div class="order-1 lg:order-2 relative fade-in-right">
+                    <div class="relative h-[340px] xs:h-[400px] sm:h-[450px] md:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group hover:border-brand-teal/30 transition-all duration-500">
+                        <img src="assets/driver.png"
+                             alt="Abisek Atwal — Professional Driver, Abisek Travels"
+                             loading="lazy" decoding="async"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             style="object-position:center 15%;">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                        <!-- Name + rating overlay -->
+                        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 font-poppins">
+                            <div class="text-xl sm:text-2xl font-bold text-white mb-1.5">Abisek Atwal</div>
+                            <div class="flex items-center gap-1.5 sm:gap-2">
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-teal" style="fill:#3db39e"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-teal" style="fill:#3db39e"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-teal" style="fill:#3db39e"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-teal" style="fill:#3db39e"></i>
+                                <i data-lucide="star" class="w-4 h-4 sm:w-5 sm:h-5 text-brand-teal" style="fill:#3db39e"></i>
+                                <span class="text-gray-400 text-xs sm:text-sm ml-1">(4.9 rating)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-teal/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="journey-hero-copy" id="journeyHeroCopy">
-                    <h1 class="text-caps text-primary" style="letter-spacing:0.35em;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,0.5);">
-                        Traverse The High Passes<br>With Quiet Mastery
-                    </h1>
+    <!-- ================================================================
+         4. TRAVEL SOLUTIONS (SERVICES)
+    ================================================================ -->
+    <section id="services" class="py-16 sm:py-24 lg:py-32 bg-light-bg relative border-t border-gray-200 scroll-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2 font-poppins">What We Offer</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Professional Cab Services.</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 font-poppins">
+                <!-- Local City Rides -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="navigation-2" class="w-6 h-6 sm:w-8 sm:h-8 text-brand-teal"></i>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Local City Rides</h4>
+                    <p class="text-gray-500 text-sm sm:text-base font-sans">Hourly or half-day hire within Pathankot and nearby towns. Errands, doctor visits, meetings — we wait and bring you back.</p>
+                </div>
+                <!-- Airport / Railway -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="plane" class="w-6 h-6 sm:w-8 sm:h-8 text-brand-teal"></i>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Airport &amp; Railway Transfers</h4>
+                    <p class="text-gray-500 text-sm sm:text-base font-sans">On-time pickups and drop-offs at Pathankot station, Amritsar airport, Chandigarh, and Delhi. No last-minute stress.</p>
+                </div>
+                <!-- One-Way Outstation -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="navigation" class="w-6 h-6 sm:w-8 sm:h-8 text-brand-teal"></i>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">One-Way Outstation</h4>
+                    <p class="text-gray-500 text-sm sm:text-base font-sans">Reach your destination without the round-trip cost. Ideal for drop-offs at hotels, hill stations, or home stays.</p>
+                </div>
+                <!-- Round Trip -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="repeat" class="w-6 h-6 sm:w-8 sm:h-8 text-brand-teal"></i>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Round Trip</h4>
+                    <p class="text-gray-500 text-sm sm:text-base font-sans">Perfect for short getaways. Your driver waits at the destination and brings you back safely, on your schedule.</p>
+                </div>
+                <!-- Hill Tours -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-teal/10 rounded-xl flex items-center justify-center mb-5 sm:mb-6">
+                        <i data-lucide="mountain" class="w-6 h-6 sm:w-8 sm:h-8 text-brand-teal"></i>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">Hill Tours (Multi-Day)</h4>
+                    <p class="text-gray-500 text-sm sm:text-base font-sans">Dedicated cab for Leh-Ladakh, Kashmir circuits, Himachal Pradesh, or Uttarakhand — flexible itinerary, experienced driver.</p>
+                </div>
+                <!-- View all -->
+                <div class="bg-brand-teal/5 border-2 border-dashed border-brand-teal/30 rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center text-center gap-4">
+                    <i data-lucide="grid" class="w-10 h-10 text-brand-teal/50"></i>
+                    <p class="text-gray-600 font-poppins font-medium">Looking for something specific?</p>
+                    <a href="services.html" class="bg-brand-teal text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] flex items-center">
+                        View all services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         5. WHY TRAVEL WITH US
+    ================================================================ -->
+    <section id="why-us" class="py-16 sm:py-24 bg-white relative border-t border-gray-200 scroll-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-14 fade-in">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Why Travel With Us?</h3>
+                <p class="text-gray-500 mt-3 max-w-2xl mx-auto font-sans">Here's what sets Abisek Travels apart from a regular cab booking.</p>
+            </div>
+            <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 font-poppins">
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mx-auto bg-brand-teal/10 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="package" class="w-6 h-6 text-brand-teal"></i>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Flexible Bookings</div>
+                    <div class="text-gray-500 text-sm font-sans">Local hour hire, fixed outstation trips, or full multi-day tours — we fit your plan, not the other way around.</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mx-auto bg-brand-teal/10 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="clock" class="w-6 h-6 text-brand-teal"></i>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Punctual &amp; Reliable</div>
+                    <div class="text-gray-500 text-sm font-sans">We arrive on time, every time. Your driver calls the night before to confirm and never keeps you waiting.</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mx-auto bg-brand-teal/10 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="indian-rupee" class="w-6 h-6 text-brand-teal"></i>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Transparent Pricing</div>
+                    <div class="text-gray-500 text-sm font-sans">No hidden charges. The fare is agreed before the trip starts. Tolls and taxes are discussed upfront.</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mx-auto bg-brand-teal/10 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="phone-call" class="w-6 h-6 text-brand-teal"></i>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">24/7 Support</div>
+                    <div class="text-gray-500 text-sm font-sans">Reachable by call or WhatsApp before, during and after your trip. We don't go offline mid-journey.</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mx-auto bg-brand-teal/10 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="map" class="w-6 h-6 text-brand-teal"></i>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Wide Route Coverage</div>
+                    <div class="text-gray-500 text-sm font-sans">From Pathankot local rides to Ladakh multi-day tours — we cover Punjab, Himachal, J&amp;K, Uttarakhand, Delhi, Chandigarh and Pune.</div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm text-center hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 mx-auto bg-brand-teal/10 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="star" class="w-6 h-6 text-brand-teal"></i>
+                    </div>
+                    <div class="text-gray-900 font-bold mb-2">Trusted by Customers</div>
+                    <div class="text-gray-500 text-sm font-sans">2,000+ trips and a 4.9 rating. Families, solo travellers and business passengers all come back to us.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         6. POPULAR ROUTES
+    ================================================================ -->
+    <section id="destinations" class="py-16 sm:py-24 lg:py-32 bg-light-bg relative border-t border-gray-200 scroll-animate font-poppins">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 sm:mb-16 fade-in">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900 mb-2">Popular Routes &amp; Packages</h3>
+                <p class="text-gray-500 max-w-2xl mx-auto font-sans">Our most-booked outstation cab routes from Pathankot.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Pathankot Local -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_pathankot.png" alt="Pathankot cab service" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot Local &amp; Airport Drop</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹999/trip</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 5.0
+                        </div>
+                        <a href="booking.html?route=pathankot-local" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
                 </div>
 
-                <div class="carousel-controls" style="position:absolute;inset:0;pointer-events:none;z-index:30;" aria-label="Carousel navigation">
-                    <button id="carouselPrev" class="carousel-btn" style="position:absolute;left:2rem;top:50%;transform:translateY(-50%);pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;" type="button" aria-label="Previous destination">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="icon-lg"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <!-- Himachal Pradesh -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_dharamshala.png" alt="Himachal Pradesh cab from Pathankot" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Himachal Pradesh</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹2,499/day</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 4.8
+                        </div>
+                        <a href="booking.html?route=himachal" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Kashmir -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_kashmir.png" alt="Pathankot to Srinagar Kashmir taxi" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Kashmir</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹3,499/day</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 5.0
+                        </div>
+                        <a href="booking.html?route=kashmir" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Chandigarh -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_chandigarh.png" alt="Pathankot to Chandigarh cab" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Chandigarh</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹4,500/trip</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 4.7
+                        </div>
+                        <a href="booking.html?route=chandigarh" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Delhi -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_delhi.png" alt="Pathankot to Delhi outstation cab" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Delhi</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹8,500/trip</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 4.9
+                        </div>
+                        <a href="booking.html?route=delhi" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Leh-Ladakh -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_leh_ladakh.png" alt="Pathankot to Leh Ladakh cab" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Leh-Ladakh</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹4,499/day</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 5.0
+                        </div>
+                        <a href="booking.html?route=leh-ladakh" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 3 — new destinations -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <!-- Uttarakhand -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4">
+                        <img src="assets/dest_nainital.png" alt="Pathankot to Uttarakhand cab" loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Uttarakhand</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Starting from ₹4,499/day</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <div class="flex items-center gap-1 text-gray-700 font-bold text-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-teal" style="fill:#3db39e"></i> 4.8
+                        </div>
+                        <a href="booking.html?route=uttarakhand" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Pune — gradient placeholder, get a quote -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow p-4 flex flex-col group">
+                    <div class="relative h-48 rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-teal-100 to-gray-200 flex items-center justify-center">
+                        <span class="text-gray-400 text-sm font-poppins">Photo coming soon</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-gray-900 mb-1">Pathankot to Pune</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4 flex-1">Get a quote for outstation trip</p>
+                    <div class="flex items-center justify-between border-t border-gray-100 pt-4">
+                        <span class="text-gray-400 text-xs font-sans">Long-distance</span>
+                        <a href="booking.html?route=pune" class="bg-brand-teal text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand-teal-hover transition-colors min-h-[36px] flex items-center">Get a Quote</a>
+                    </div>
+                </div>
+
+                <!-- Custom CTA card -->
+                <div class="bg-brand-teal/5 border-2 border-dashed border-brand-teal/30 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-3">
+                    <i data-lucide="map-pin" class="w-10 h-10 text-brand-teal/50"></i>
+                    <p class="font-bold text-gray-800 font-poppins">Don't see your route?</p>
+                    <p class="text-gray-500 text-sm font-sans">We go anywhere. Ask us for a custom quote.</p>
+                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] flex items-center">
+                        Request a Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         7. FLEET TEASER (hidden until SHOW_FLEET = true in site-config.js)
+    ================================================================ -->
+    <section id="fleet-teaser" class="py-16 sm:py-24 bg-white border-t border-gray-200 scroll-animate" style="display:none;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-14 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2 font-poppins">Our Vehicles</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">The Cars We Drive</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 font-poppins">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <img src="assets/ertiga_profile.png" alt="Maruti Suzuki Ertiga cab" loading="lazy" class="w-full h-48 object-contain mb-4">
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Maruti Suzuki Ertiga</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4">Comfortable, fuel-efficient, and easy to manoeuvre on hill roads. Ideal for most outstation trips.</p>
+                    <a href="booking.html?vehicle=ertiga" class="bg-brand-teal text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-brand-teal-hover transition-colors min-h-[44px] inline-flex items-center">Book Now</a>
+                </div>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 hover:border-brand-teal/30 transition-all duration-300">
+                    <div class="w-full h-48 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
+                        <span class="text-gray-400 text-sm font-poppins">Photo coming soon</span>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Toyota Innova Crysta</h4>
+                    <p class="text-gray-500 text-sm font-sans mb-4">Spacious and smooth — great for larger groups and long multi-day trips.</p>
+                    <a href="booking.html?vehicle=innova" class="bg-brand-teal text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-brand-teal-hover transition-colors min-h-[44px] inline-flex items-center">Book Now</a>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="fleet.html" class="border border-brand-teal text-brand-teal font-semibold px-6 py-3 rounded-lg hover:bg-brand-teal hover:text-white transition-colors text-sm font-poppins inline-flex items-center gap-2 min-h-[44px]">
+                    See all vehicle details <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         8. CUSTOMER REVIEWS (hidden until SHOW_REVIEWS = true in site-config.js)
+    ================================================================ -->
+    <section id="testimonials" class="py-16 sm:py-24 lg:py-32 bg-white relative border-t border-gray-200 scroll-animate" style="display:none;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-poppins">
+            <div class="text-center mb-12 sm:mb-20 fade-in">
+                <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2">Reviews</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">What our customers say.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Review 1 — Rohan Malhotra -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl relative border border-gray-200 hover:border-brand-teal/20 transition-all duration-300 shadow-lg flex flex-col">
+                    <div class="text-6xl sm:text-7xl text-brand-teal/10 font-serif absolute top-3 left-4 pointer-events-none">"</div>
+                    <p class="text-gray-600 mb-6 sm:mb-8 relative z-10 text-sm sm:text-base leading-relaxed pt-2 sm:pt-4 italic font-sans flex-1">
+                        "Honestly wasn't expecting much for the price but the drive to Dharamshala was really comfortable. Driver showed up 10 mins early, no unnecessary stops, AC was working fine, and he knew a shortcut near Kangra that saved us 30–40 mins. Would book again without thinking twice."
+                    </p>
+                    <div class="flex items-center gap-3 sm:gap-4 border-t border-gray-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-bold text-sm sm:text-base shrink-0">R</div>
+                        <div>
+                            <div class="text-gray-900 font-bold text-sm">Rohan Malhotra</div>
+                            <div class="text-brand-teal text-xs font-sans">Traveled to Dharamshala</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 — Priya Sharma -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl relative border border-gray-200 hover:border-brand-teal/20 transition-all duration-300 shadow-lg flex flex-col">
+                    <div class="text-6xl sm:text-7xl text-brand-teal/10 font-serif absolute top-3 left-4 pointer-events-none">"</div>
+                    <p class="text-gray-600 mb-6 sm:mb-8 relative z-10 text-sm sm:text-base leading-relaxed pt-2 sm:pt-4 italic font-sans flex-1">
+                        "We were a family of 5 going to Kashmir — two kids and my in-laws. The driver was very patient, stopped when the kids needed a break, didn't make us feel rushed at all. My mother-in-law specifically said she felt safe the whole time, which means a lot."
+                    </p>
+                    <div class="flex items-center gap-3 sm:gap-4 border-t border-gray-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-bold text-sm sm:text-base shrink-0">P</div>
+                        <div>
+                            <div class="text-gray-900 font-bold text-sm">Priya Sharma</div>
+                            <div class="text-brand-teal text-xs font-sans">Family Trip to Kashmir</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 — Karan Singh -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl relative border border-gray-200 hover:border-brand-teal/20 transition-all duration-300 shadow-lg flex flex-col">
+                    <div class="text-6xl sm:text-7xl text-brand-teal/10 font-serif absolute top-3 left-4 pointer-events-none">"</div>
+                    <p class="text-gray-600 mb-6 sm:mb-8 relative z-10 text-sm sm:text-base leading-relaxed pt-2 sm:pt-4 italic font-sans flex-1">
+                        "Had an early morning meeting in Chandigarh and needed to get back to Pathankot the same evening. Driver called the night before to confirm the time — that alone was reassuring. Reached on time, no drama at all. Will use again for sure."
+                    </p>
+                    <div class="flex items-center gap-3 sm:gap-4 border-t border-gray-200 pt-4 mt-auto">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-bold text-sm sm:text-base shrink-0">K</div>
+                        <div>
+                            <div class="text-gray-900 font-bold text-sm">Karan Singh</div>
+                            <div class="text-brand-teal text-xs font-sans">Business Trip, Chandigarh ↔ Pathankot</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         9. QUICK ENQUIRY / CTA
+    ================================================================ -->
+    <section id="booking" class="py-16 sm:py-24 lg:py-32 bg-light-bg relative border-t border-gray-200 scroll-animate">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Form -->
+                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-xl relative z-10 font-poppins">
+                    <h3 class="text-2xl sm:text-3xl font-display font-bold text-gray-900 mb-2">Ready to book?<br>Let's plan your trip.</h3>
+                    <p class="text-gray-500 text-sm font-sans mb-8">Fill in the form below and we'll send you a quote within minutes via WhatsApp.</p>
+
+                    <form id="whatsappBookingForm" class="space-y-5">
+                        <div>
+                            <label class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Your Name</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i data-lucide="user" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <input type="text" id="bookingName" required autocomplete="name"
+                                       class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all duration-300 font-sans"
+                                       placeholder="Your full name">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">WhatsApp Number</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i data-lucide="phone" class="w-4 h-4 text-gray-400"></i>
+                                    </div>
+                                    <input type="tel" id="bookingWhatsapp" required autocomplete="tel"
+                                           class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all duration-300 font-sans"
+                                           placeholder="+91 XXXXX XXXXX">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Destination</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <i data-lucide="map-pin" class="w-4 h-4 text-gray-400"></i>
+                                    </div>
+                                    <input type="text" id="bookingDrop" required
+                                           class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all duration-300 font-sans"
+                                           placeholder="Where are you going?">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Pickup Location</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <i data-lucide="navigation" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <input type="text" id="bookingPickup" required
+                                       class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all duration-300 font-sans"
+                                       placeholder="Pathankot Railway Station / Airport...">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Travel Date &amp; Message</label>
+                            <div class="relative">
+                                <div class="absolute top-4 left-4 pointer-events-none">
+                                    <i data-lucide="message-square" class="w-4 h-4 text-gray-400"></i>
+                                </div>
+                                <textarea id="bookingMessage" rows="3"
+                                          class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all duration-300 font-sans resize-none"
+                                          placeholder="Travel date, number of passengers, any special requirements..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <button type="submit" class="flex-1 bg-brand-teal text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-brand-teal/30 hover:bg-brand-teal-hover hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 min-h-[44px]">
+                                <i data-lucide="send" class="w-4 h-4"></i> Send via WhatsApp
+                            </button>
+                            <a href="booking.html" class="flex-1 border-2 border-brand-teal text-brand-teal font-bold py-3.5 px-8 rounded-full hover:bg-brand-teal hover:text-white transition-all duration-300 flex items-center justify-center gap-2 min-h-[44px] text-sm">
+                                Full Booking Form
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Image grid -->
+                <div class="hidden lg:grid grid-cols-2 gap-4 h-full">
+                    <div class="space-y-4">
+                        <img src="assets/dest_kashmir.png" alt="Kashmir" class="w-full h-48 object-cover rounded-2xl shadow-sm">
+                        <img src="assets/dest_dharamshala.png" alt="Himachal Pradesh" class="w-full h-64 object-cover rounded-2xl shadow-sm">
+                    </div>
+                    <div class="space-y-4 pt-12">
+                        <img src="assets/dest_leh_ladakh.png" alt="Leh-Ladakh" class="w-full h-64 object-cover rounded-2xl shadow-sm">
+                        <img src="assets/dest_nainital.png" alt="Uttarakhand" class="w-full h-48 object-cover rounded-2xl shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         10. FAQ
+    ================================================================ -->
+    <section id="faq" class="py-16 sm:py-24 bg-white relative border-t border-gray-200 scroll-animate scroll-mt-28">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-14 fade-in font-poppins">
+                <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2">Common Questions</h2>
+                <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">Frequently Asked</h3>
+            </div>
+            <div class="space-y-3.5 sm:space-y-4 font-poppins" id="faqAccordion">
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand-teal/15 transition-all duration-300">
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left min-h-[56px]" aria-expanded="false">
+                        <span class="text-gray-900 font-semibold text-sm sm:text-base pr-4">How do I get a fare estimate before booking?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-teal shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <button id="carouselNext" class="carousel-btn" style="position:absolute;right:2rem;top:50%;transform:translateY(-50%);pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;" type="button" aria-label="Next destination">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="icon-lg"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed">Send us a WhatsApp message with your pickup location, destination, and travel date. We'll reply with an exact quote — usually within a few minutes. No obligation to book after asking.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand-teal/15 transition-all duration-300">
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left min-h-[56px]" aria-expanded="false">
+                        <span class="text-gray-900 font-semibold text-sm sm:text-base pr-4">How far in advance should I book?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-teal shrink-0 transition-transform duration-300 faq-icon"></i>
                     </button>
-                    <div id="carouselCounter" class="text-caps" style="position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);">01 / 05</div>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed">For local Pathankot trips, same-day booking is usually fine. For outstation trips — especially during peak season (May–June, October) — booking 2–3 days ahead is recommended to guarantee availability.</p>
+                    </div>
                 </div>
-                <div id="journeyProgress" aria-hidden="true"></div>
-            </div>
-        </section>
-
-        <!-- ===================== 2. POPULAR ROUTES ===================== -->
-        <section id="routes" class="corridors-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="text-caps text-gold mb-sm" style="display:block;">Where We Go</span>
-                    <h2 class="text-h1">Popular Routes</h2>
-                    <p class="text-body-md text-secondary mt-4">Cab service from Pathankot to the Himalayas and beyond — Himachal Pradesh, Kashmir, Ladakh, Uttarakhand, and more.</p>
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand-teal/15 transition-all duration-300">
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left min-h-[56px]" aria-expanded="false">
+                        <span class="text-gray-900 font-semibold text-sm sm:text-base pr-4">What happens if I need to cancel or reschedule?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-teal shrink-0 transition-transform duration-300 faq-icon"></i>
+                    </button>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed">Cancellations more than 24 hours before departure incur no charge. For last-minute cancellations (within 24 hours), a small fee may apply. We always try to be flexible — just let us know as early as possible.</p>
+                    </div>
                 </div>
-
-                <div class="grid grid-3 gap-lg">
-                    <!-- Himachal -->
-                    <div class="card">
-                        <div class="corridor-meta">
-                            <div>
-                                <h3 class="text-h3 mb-xs">Himachal Pradesh</h3>
-                                <div class="text-caps text-muted">Dharamshala · Dalhousie · Manali · Shimla</div>
-                            </div>
-                        </div>
-                        <p class="text-body-md text-secondary mb-md">Comfortable cab rides through hill stations, pine forests, and mountain towns. Great for families and weekend getaways.</p>
-                        <button class="btn btn-text open-modal" data-route="himachal" data-title="Himachal Pradesh">View on map &#8594;</button>
-                        <br>
-                        <a href="booking.html?route=himachal" class="btn btn-secondary mt-sm" style="width:100%;justify-content:center;">Book this route</a>
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand-teal/15 transition-all duration-300">
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left min-h-[56px]" aria-expanded="false">
+                        <span class="text-gray-900 font-semibold text-sm sm:text-base pr-4">What payment methods do you accept?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-teal shrink-0 transition-transform duration-300 faq-icon"></i>
+                    </button>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed">We accept cash, UPI (GPay, PhonePe, Paytm), and bank transfers. Payment is usually settled at the end of the trip. For multi-day tours, a partial advance may be required at the time of booking.</p>
                     </div>
-                    <!-- Kashmir -->
-                    <div class="card">
-                        <div class="corridor-meta">
-                            <div>
-                                <h3 class="text-h3 mb-xs">Jammu &amp; Kashmir</h3>
-                                <div class="text-caps text-muted">Srinagar · Gulmarg · Pahalgam · Sonamarg</div>
-                            </div>
-                        </div>
-                        <p class="text-body-md text-secondary mb-md">Taxi service from Pathankot to Srinagar and the Kashmir Valley. Scenic drives through passes and meadows.</p>
-                        <button class="btn btn-text open-modal" data-route="kashmir" data-title="Jammu &amp; Kashmir">View on map &#8594;</button>
-                        <br>
-                        <a href="booking.html?route=kashmir" class="btn btn-secondary mt-sm" style="width:100%;justify-content:center;">Book this route</a>
-                    </div>
-                    <!-- Ladakh -->
-                    <div class="card">
-                        <div class="corridor-meta">
-                            <div>
-                                <h3 class="text-h3 mb-xs">Leh-Ladakh</h3>
-                                <div class="text-caps text-muted">Manali · Jispa · Leh · Nubra · Pangong</div>
-                            </div>
-                        </div>
-                        <p class="text-body-md text-secondary mb-md">Outstation cab to Leh via Manali or via Srinagar. High-altitude roads through some of India's most dramatic landscapes.</p>
-                        <button class="btn btn-text open-modal" data-route="ladakh" data-title="Leh-Ladakh">View on map &#8594;</button>
-                        <br>
-                        <a href="booking.html?route=ladakh" class="btn btn-secondary mt-sm" style="width:100%;justify-content:center;">Book this route</a>
-                    </div>
-                    <!-- Uttarakhand -->
-                    <div class="card">
-                        <div class="corridor-meta">
-                            <div>
-                                <h3 class="text-h3 mb-xs">Uttarakhand</h3>
-                                <div class="text-caps text-muted">Nainital · Mussoorie · Rishikesh · Auli</div>
-                            </div>
-                        </div>
-                        <p class="text-body-md text-secondary mb-md">Reliable cab service across the Garhwal and Kumaon hills — from pilgrim routes to ski resorts and adventure camps.</p>
-                        <button class="btn btn-text open-modal" data-route="uttarakhand" data-title="Uttarakhand">View on map &#8594;</button>
-                        <br>
-                        <a href="booking.html?route=uttarakhand" class="btn btn-secondary mt-sm" style="width:100%;justify-content:center;">Book this route</a>
-                    </div>
-                    <!-- Pathankot / Punjab -->
-                    <div class="card">
-                        <div class="corridor-meta">
-                            <div>
-                                <h3 class="text-h3 mb-xs">Pathankot &amp; Punjab</h3>
-                                <div class="text-caps text-muted">Amritsar · Jalandhar · Dalhousie gateway</div>
-                            </div>
-                        </div>
-                        <p class="text-body-md text-secondary mb-md">Local and outstation cab from Pathankot within Punjab — city transfers, station pickups, and day trips.</p>
-                        <button class="btn btn-text open-modal" data-route="punjab" data-title="Pathankot &amp; Punjab">View on map &#8594;</button>
-                        <br>
-                        <a href="booking.html?route=punjab" class="btn btn-secondary mt-sm" style="width:100%;justify-content:center;">Book this route</a>
-                    </div>
-                    <!-- Delhi / Chandigarh -->
-                    <div class="card">
-                        <div class="corridor-meta">
-                            <div>
-                                <h3 class="text-h3 mb-xs">Delhi &amp; Chandigarh</h3>
-                                <div class="text-caps text-muted">Airport &amp; railway station transfers</div>
-                            </div>
-                        </div>
-                        <p class="text-body-md text-secondary mb-md">Pick up from Delhi airport or Chandigarh station and head straight to the mountains — no vehicle swap needed.</p>
-                        <button class="btn btn-text open-modal" data-route="delhi" data-title="Delhi &amp; Chandigarh">View on map &#8594;</button>
-                        <br>
-                        <a href="booking.html?route=delhi" class="btn btn-secondary mt-sm" style="width:100%;justify-content:center;">Book this route</a>
+                </div>
+                <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand-teal/15 transition-all duration-300">
+                    <button class="faq-btn w-full flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 text-left min-h-[56px]" aria-expanded="false">
+                        <span class="text-gray-900 font-semibold text-sm sm:text-base pr-4">How much luggage can I carry?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-teal shrink-0 transition-transform duration-300 faq-icon"></i>
+                    </button>
+                    <div class="faq-body hidden px-5 sm:px-6 pb-4 sm:pb-5">
+                        <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed">The Ertiga comfortably handles 3–4 large suitcases in the boot. If you have a large group or extra gear, mention it when booking so we can plan accordingly.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ===================== 3. SERVICES TEASER ===================== -->
-        <section class="services-teaser">
-            <div class="container">
-                <div class="section-header">
-                    <span class="text-caps text-primary mb-sm" style="display:block;">What We Offer</span>
-                    <h2 class="text-h1">Our Services</h2>
-                </div>
-                <div class="grid grid-4 gap-md">
-                    <div class="service-card">
-                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                        <h3 class="text-h3 mb-xs">Outstation Trips</h3>
-                        <p class="text-body-sm text-secondary">Multi-day cab bookings to Himachal, Kashmir, Ladakh, and Uttarakhand. One-way and round trips available.</p>
+    <!-- ================================================================
+         FOOTER
+    ================================================================ -->
+    <footer class="bg-white pt-16 sm:pt-20 pb-12 sm:pb-8 border-t border-gray-200 font-poppins">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-14">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-4 sm:mb-5">
+                        <img src="assets/logo_emblem.png" alt="Abisek Travels Logo" width="681" height="403"
+                             loading="lazy" decoding="async" class="h-10 sm:h-12 md:h-14 w-auto shrink-0">
+                        <span class="text-lg sm:text-xl font-bold text-gray-900 tracking-widest uppercase">
+                            ABISEK <span class="text-brand-teal font-medium">TRAVELS</span>
+                        </span>
                     </div>
-                    <div class="service-card">
-                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <h3 class="text-h3 mb-xs">Local Rides</h3>
-                        <p class="text-body-sm text-secondary">Hourly or half-day cab hire within Pathankot, Jammu, and nearby cities for errands, meetings, or sightseeing.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                        <h3 class="text-h3 mb-xs">Airport &amp; Railway Transfers</h3>
-                        <p class="text-body-sm text-secondary">On-time pickups and drop-offs at Pathankot station, Amritsar airport, Chandigarh, and Delhi.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        <h3 class="text-h3 mb-xs">Custom Multi-Day Tours</h3>
-                        <p class="text-body-sm text-secondary">Plan your own itinerary — we provide the cab, driver, and flexibility. Ideal for groups, families, and corporate offsite trips.</p>
-                    </div>
-                </div>
-                <div class="mt-lg">
-                    <a href="services.html" class="btn btn-secondary">View all services</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 4. WHY CHOOSE US ===================== -->
-        <section id="why-us" class="why-us">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="text-caps text-primary mb-sm" style="display:block;">Our Commitment</span>
-                    <h2 class="text-h1">Why Choose Abisek Travels</h2>
-                </div>
-                <div class="grid grid-4 gap-lg">
-                    <div class="feature-item text-center">
-                        <svg class="icon-lg feature-icon mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                        <h3 class="text-h3 mb-xs">Experienced Mountain Drivers</h3>
-                        <p class="text-body-sm text-secondary">Well-trained for high-altitude roads, steep hairpin bends, and mountain weather conditions.</p>
-                    </div>
-                    <div class="feature-item text-center">
-                        <svg class="icon-lg feature-icon mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <h3 class="text-h3 mb-xs">Clean, Well-Maintained Vehicles</h3>
-                        <p class="text-body-sm text-secondary">Our cars are serviced regularly and cleaned before every trip. No surprises on the road.</p>
-                    </div>
-                    <div class="feature-item text-center">
-                        <svg class="icon-lg feature-icon mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                        <h3 class="text-h3 mb-xs">Transparent Pricing</h3>
-                        <p class="text-body-sm text-secondary">No hidden charges. Tolls, taxes, and any extras are discussed and agreed before the trip starts.</p>
-                    </div>
-                    <div class="feature-item text-center">
-                        <svg class="icon-lg feature-icon mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <h3 class="text-h3 mb-xs">24/7 Support</h3>
-                        <p class="text-body-sm text-secondary">Reachable by call or WhatsApp before, during, and after your trip. We don't go offline mid-journey.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 5. VEHICLE TEASER ===================== -->
-        <section id="vehicles" class="fleet-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="text-caps text-primary mb-sm" style="display:block;">Our Vehicles</span>
-                    <h2 class="text-h1">The Cars We Drive</h2>
-                </div>
-                <div class="grid grid-2 gap-lg">
-                    <div class="fleet-card">
-                        <h3 class="text-h3 mb-xs">Toyota Innova Crysta</h3>
-                        <p class="text-body-md text-secondary mb-md">A large, comfortable cab ideal for families and groups. Smooth ride on both highways and mountain roads.</p>
-                        <ul class="text-body-sm mb-md" style="list-style:inside;">
-                            <li>Seats up to 6 passengers + driver</li>
-                            <li>Air-conditioned</li>
-                            <li>Large boot for luggage</li>
-                        </ul>
-                        <a href="booking.html?vehicle=innova" class="btn btn-primary">Book Now</a>
-                    </div>
-                    <div class="fleet-card">
-                        <h3 class="text-h3 mb-xs">Maruti Suzuki Ertiga</h3>
-                        <p class="text-body-md text-secondary mb-md">Efficient and comfortable for smaller groups and shorter trips. Easy to manoeuvre on narrow hill roads.</p>
-                        <ul class="text-body-sm mb-md" style="list-style:inside;">
-                            <li>Seats up to 6 passengers + driver</li>
-                            <li>Air-conditioned</li>
-                            <li>Good luggage space</li>
-                        </ul>
-                        <a href="booking.html?vehicle=ertiga" class="btn btn-primary">Book Now</a>
-                    </div>
-                </div>
-                <div class="mt-lg">
-                    <a href="fleet.html" class="btn btn-secondary">See full vehicle details</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 6. HOW IT WORKS ===================== -->
-        <section class="how-it-works">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="text-caps text-gold mb-sm" style="display:block;">Simple Process</span>
-                    <h2 class="text-h1">How to Book</h2>
-                </div>
-                <div class="grid grid-3 gap-md">
-                    <div class="step-card">
-                        <div class="step-number">01</div>
-                        <h3 class="text-h3 mb-xs">Choose Your Route</h3>
-                        <p class="text-body-sm text-secondary">Tell us where you want to go, your travel dates, and how many people are travelling.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">02</div>
-                        <h3 class="text-h3 mb-xs">We Confirm the Details</h3>
-                        <p class="text-body-sm text-secondary">We share the fare, vehicle, and pickup time. No surprises — everything is agreed upfront.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">03</div>
-                        <h3 class="text-h3 mb-xs">Sit Back and Ride</h3>
-                        <p class="text-body-sm text-secondary">Your driver arrives on time. Relax while we handle the driving, so you can enjoy the journey.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 7. DRIVER TEASER ===================== -->
-        <section class="driver-teaser">
-            <div class="container driver-teaser-inner">
-                <div>
-                    <div class="driver-photo" style="background:var(--color-surface-container);overflow:hidden;position:relative;">
-                        <img src="assets/driver.png" alt="Our driver" onerror="this.parentElement.style.background='var(--color-surface-elevated)'" style="width:100%;height:100%;object-fit:cover;display:block;">
-                    </div>
-                </div>
-                <div>
-                    <span class="text-caps text-gold mb-sm" style="display:block;">Our Driver</span>
-                    <h2 class="text-h1 mb-md">Meet Your Driver</h2>
-                    <p class="text-editorial text-teal mb-md">Behind the wheel on every Himalayan route</p>
-                    <p class="text-body-lg text-secondary mb-lg">A good driver makes or breaks a mountain trip. Ours knows these roads in all seasons — the passes, the conditions, and when to stop and let the weather pass.</p>
-                    <a href="driver.html" class="btn btn-secondary">Know Your Driver</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 8. CUSTOMER REVIEWS (hidden until real reviews added) ===================== -->
-        <!-- REVIEWS_HIDDEN_FLAG: set to "true" below to show this section -->
-        <section id="reviews" class="testimonials" style="display:none;" aria-hidden="true" data-reviews-pending="true">
-            <div class="container">
-                <div class="section-header">
-                    <span class="text-caps text-gold mb-sm" style="display:block;">What Guests Say</span>
-                    <h2 class="text-h1">Customer Reviews</h2>
-                </div>
-                <div class="grid grid-2 gap-lg" id="reviewCards">
-                    <!-- Real reviews will go here. See CONTENT-TO-VERIFY.md -->
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 9. FAQ ===================== -->
-        <section id="faq" class="faq-section">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="text-h1">Common Questions</h2>
-                </div>
-                <div style="max-width:800px;margin:0 auto;">
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What are your rates for outstation trips? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">Rates depend on the distance, route, and vehicle. We always share a clear quote before you confirm. Contact us for an estimate for your specific route.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What is your cancellation policy? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">Cancellations made at least 48 hours before the trip get a full refund of the advance. Cancellations after that may forfeit the advance. Please confirm details at the time of booking.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">How much luggage can I bring? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">The Innova Crysta can comfortably fit 3–4 large suitcases. The Ertiga fits 2–3. If you have a lot of luggage or camping gear, let us know when you book and we'll plan accordingly.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do you carry oxygen for high-altitude sickness? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">We can arrange a portable oxygen cylinder for Ladakh and Spiti Valley routes on request. Please ask when booking.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do I need permits for Ladakh or Rohtang? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">Yes — inner-line permits for Ladakh and the Rohtang permit are required and are the traveller's responsibility. We'll guide you through the process and ensure the vehicle has the correct documentation.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What payment methods do you accept? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">We accept UPI (GPay, PhonePe, Paytm), bank transfer, and cash. A partial advance is usually collected at the time of booking for multi-day trips.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Where do you pick up from? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">We pick up from Pathankot (junction, cantt, or your door), Amritsar airport, Chandigarh station, and Delhi NCR. Just let us know your starting point.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do you drive at night on mountain roads? <span class="text-primary" aria-hidden="true">+</span></div>
-                        <div class="faq-answer" role="region">For safety reasons, we don't drive on high mountain passes at night. We plan routes to ensure you reach high-altitude sections during daylight hours. Night driving is fine on highways.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== 10. FINAL CTA ===================== -->
-        <section class="booking-cta">
-            <div class="container">
-                <h2 class="text-h1 mb-md">Ready to Go?</h2>
-                <p class="text-body-lg text-secondary mb-lg" style="max-width:600px;margin-inline:auto;">Book your cab from Pathankot today — choose your destination, pick your vehicle, and we'll take care of the rest.</p>
-                <div class="flex justify-center gap-md">
-                    <a href="booking.html" class="btn btn-primary">Book Now</a>
-                    <a href="https://wa.me/919876543210" class="btn btn-whatsapp">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    <p class="text-gray-500 leading-relaxed text-sm font-sans mb-6">
+                        Reliable cab service from Pathankot — local rides, airport transfers, and outstation trips across North India.
+                    </p>
+                    <a href="https://wa.me/917814442326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels"
+                       class="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-5 py-3 rounded-xl hover:bg-[#1ebe5d] transition-colors shadow-lg shadow-[#25D366]/10 active:scale-95">
+                        <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
                         Chat on WhatsApp
                     </a>
                 </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <img src="assets/logo_emblem.svg" alt="Abisek Travels" style="height:48px;margin-bottom:var(--space-md);">
-                <p class="text-body-sm text-muted mb-md">Cab service from Pathankot to Himachal Pradesh, Kashmir, Ladakh &amp; Uttarakhand.</p>
-                <div class="flex gap-md">
-                    <!-- Social links — add real URLs in CONTENT-TO-VERIFY.md -->
-                    <a href="#" class="text-secondary hover-teal" aria-label="Facebook" style="line-height:1;">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
-                    </a>
-                    <a href="#" class="text-secondary hover-teal" aria-label="Instagram" style="line-height:1;">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153.555.556.899 1.11 1.153 1.772.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772c-.556.555-1.11.899-1.772 1.153-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.8-7.5a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
-                    </a>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-gray-900 font-bold mb-4 sm:mb-5 uppercase tracking-wider text-xs sm:text-sm">Quick Links</h4>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-500 text-sm font-sans">
+                        <li><a href="/" class="hover:text-brand-teal transition-colors">Home</a></li>
+                        <li><a href="services.html" class="hover:text-brand-teal transition-colors">Services</a></li>
+                        <li><a href="fleet.html" class="hover:text-brand-teal transition-colors">Our Vehicles</a></li>
+                        <li><a href="driver.html" class="hover:text-brand-teal transition-colors">The Driver</a></li>
+                        <li><a href="#testimonials" class="hover:text-brand-teal transition-colors">Customer Reviews</a></li>
+                        <li><a href="#faq" class="hover:text-brand-teal transition-colors">FAQ</a></li>
+                        <li><a href="booking.html" class="hover:text-brand-teal transition-colors font-semibold">Book Now</a></li>
+                    </ul>
+                </div>
+                <!-- We Cover -->
+                <div>
+                    <h4 class="text-gray-900 font-bold mb-4 sm:mb-5 uppercase tracking-wider text-xs sm:text-sm">We Cover</h4>
+                    <ul class="space-y-2.5 sm:space-y-3 text-gray-500 text-sm font-sans">
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Pathankot &amp; Punjab</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Himachal Pradesh</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Jammu &amp; Kashmir</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Leh-Ladakh</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Uttarakhand</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Delhi &amp; Chandigarh</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-teal shrink-0"></i>Pune &amp; long-distance</li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-gray-900 font-bold mb-4 sm:mb-5 uppercase tracking-wider text-xs sm:text-sm">Contact</h4>
+                    <ul class="space-y-3.5 sm:space-y-4 text-gray-500 text-sm font-sans">
+                        <li>
+                            <a href="tel:+917814442326" class="flex items-center gap-2 hover:text-brand-teal transition-colors">
+                                <i data-lucide="phone" class="w-4 h-4 text-brand-teal shrink-0"></i>
+                                +91 78144 42326
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:abhishekattwal02@gmail.com" class="flex items-center gap-2 hover:text-brand-teal transition-colors break-all">
+                                <i data-lucide="mail" class="w-4 h-4 text-brand-teal shrink-0"></i>
+                                abhishekattwal02@gmail.com
+                            </a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
+                            Pathankot Junction,<br>Punjab 145001, India
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div>
-                <h4 class="text-caps mb-sm text-primary">Quick Links</h4>
-                <ul style="list-style:none;padding:0;" class="text-body-sm text-secondary">
-                    <li class="mb-xs"><a href="/" class="hover-teal">Home</a></li>
-                    <li class="mb-xs"><a href="services.html" class="hover-teal">Services</a></li>
-                    <li class="mb-xs"><a href="fleet.html" class="hover-teal">Our Vehicles</a></li>
-                    <li class="mb-xs"><a href="driver.html" class="hover-teal">The Driver</a></li>
-                    <li class="mb-xs"><a href="booking.html" class="hover-teal">Book Now</a></li>
-                </ul>
+            <div class="border-t border-gray-200 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-gray-500 text-xs sm:text-sm font-sans text-center sm:text-left">
+                <span>© <span id="copyrightYear">2026</span> Abisek Travels. All rights reserved.</span>
+                <span class="text-gray-400 text-xs">Cab service from Pathankot · Punjab, India</span>
             </div>
-            <div>
-                <h4 class="text-caps mb-sm text-primary">Our Office</h4>
-                <p class="text-body-sm mb-xs text-secondary">Pathankot, Punjab 145001</p>
-                <!-- Contact: add real phone + email in CONTENT-TO-VERIFY.md -->
-                <p class="text-body-sm mb-xs text-secondary mt-sm">
-                    <a href="tel:+919876543210" class="hover-teal">+91 98765 43210</a>
-                </p>
-            </div>
-        </div>
-        <div class="container" style="border-top:1px solid var(--color-border);margin-top:var(--space-xl);padding-top:var(--space-md);text-align:center;">
-            <p class="text-body-sm text-muted">© 2026 Abisek Travels. All rights reserved. · Outstation cab service from Pathankot, Punjab.</p>
         </div>
     </footer>
 
-    <!-- ===================== ROUTE MAP MODAL ===================== -->
-    <div class="modal-overlay" id="routeMapModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-content">
-            <button class="modal-close" id="closeMapModalBtn" aria-label="Close route map">
-                <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-            </button>
-            <div style="padding:var(--space-xl);">
-                <h2 class="text-h1 mb-sm" id="modalTitle">Route</h2>
-                <p class="text-body-lg text-secondary mb-lg">Interactive route map coming soon. In the meantime, book directly or chat with us on WhatsApp for a detailed route plan.</p>
-                <div style="width:100%;height:280px;background:var(--color-surface-ground);border-radius:var(--radius-card);border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);">
-                    <span class="text-caps">Map coming soon</span>
-                </div>
-                <div class="mt-lg flex gap-md">
-                    <a href="booking.html" class="btn btn-primary" id="modalBookBtn">Book this route</a>
-                    <a href="https://wa.me/919876543210" class="btn btn-whatsapp">
-                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                        Ask on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ================================================================
+         MOBILE STICKY BOTTOM BAR (≤768px)
+    ================================================================ -->
+    <!-- Mobile Book Now pill (left) -->
+    <a href="booking.html" id="mobileBookNow"
+       class="md:hidden fixed bottom-6 left-4 z-50 bg-brand-teal text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-full shadow-2xl shadow-brand-teal/30 flex items-center gap-2 hover:bg-brand-teal-hover transition-all duration-300 active:scale-95 min-h-[44px]">
+        <i data-lucide="calendar-check" class="w-4 h-4"></i>
+        Book Now
+    </a>
+    <!-- WhatsApp button (right, always visible) -->
+    <a href="https://wa.me/917814442326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels"
+       id="floatingWhatsapp"
+       class="fixed bottom-6 right-4 sm:bottom-8 sm:right-6 bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] z-50 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+       aria-label="Chat on WhatsApp" style="min-width:44px;min-height:44px;">
+        <div class="absolute inset-0 bg-[#25D366] rounded-full opacity-40 animate-ping"></div>
+        <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-7 sm:h-7 relative z-10 fill-current" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+    </a>
 
-    <!-- ===================== SCRIPTS ===================== -->
-    <script>
-        // FAQ Accordion (keyboard accessible)
-        document.querySelectorAll('.faq-question').forEach(q => {
-            const toggle = () => {
-                const ans = q.nextElementSibling;
-                const icon = q.querySelector('span');
-                const isOpen = ans.style.display === 'block';
-                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-                document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
-                document.querySelectorAll('.faq-question').forEach(x => x.setAttribute('aria-expanded', 'false'));
-                if (!isOpen) {
-                    ans.style.display = 'block';
-                    icon.textContent = '−';
-                    q.setAttribute('aria-expanded', 'true');
-                }
-            };
-            q.addEventListener('click', toggle);
-            q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-        });
-
-        // Route Modal
-        const modal = document.getElementById('routeMapModal');
-        const closeBtn = document.getElementById('closeMapModalBtn');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBookBtn = document.getElementById('modalBookBtn');
-
-        document.querySelectorAll('.open-modal').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const routeId = btn.getAttribute('data-route');
-                const title = btn.getAttribute('data-title') || routeId;
-                modalTitle.textContent = title;
-                modalBookBtn.href = 'booking.html?route=' + routeId;
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                closeBtn.focus();
-            });
-        });
-
-        const closeModal = () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
-
-        // Show call button on desktop
-        if (window.innerWidth >= 1024) document.getElementById('phoneBtn').style.display = '';
-    </script>
+    <!-- ================================================================
+         SCRIPTS — order matters
+    ================================================================ -->
+    <!-- Lucide icon bundle (replaces data-lucide="" attributes) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Site JS (mobile menu, FAQ accordion, scroll animations, counters, cursor) -->
+    <script src="script.js"></script>
+    <!-- Site config & feature flags (runs after DOM ready) -->
+    <script src="js/site-config.js"></script>
+    <!-- Carousel (video hero + 3D destination cards) -->
     <script src="himalaya-carousel.js" defer></script>
+
 </body>
 </html>
