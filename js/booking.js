@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── URL prefill ────────────────────────────────────────────────────────────
   const params = new URLSearchParams(window.location.search);
   const routeMap = {
-    'pathankot-local': 'Pathankot (Local)',
-    'himachal':        'Himachal Pradesh',
-    'kashmir':         'Jammu & Kashmir',
-    'chandigarh':      'Pathankot to Chandigarh',
-    'delhi':           'Pathankot to Delhi',
-    'leh-ladakh':      'Leh-Ladakh',
-    'uttarakhand':     'Uttarakhand',
-    'pune':            'Pune (Long Distance)',
+    'pathankot-local': 'Pathankot City',
+    'himachal':        'Dharamshala / McLeod Ganj',
+    'kashmir':         'Srinagar',
+    'chandigarh':      'Chandigarh',
+    'delhi':           'Delhi',
+    'leh-ladakh':      'Leh',
+    'uttarakhand':     'Other',
+    'pune':            'Pune',
   };
   const vehicleMap = {
     'innova': 'Toyota Innova Crysta',
@@ -32,7 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const tripField    = document.getElementById('tripType');
 
   if (dropField && params.get('route')) {
-    dropField.value = routeMap[params.get('route')] || params.get('route');
+    const desiredVal = routeMap[params.get('route')] || params.get('route');
+    dropField.value = desiredVal;
+    if (!dropField.value) {
+      Array.from(dropField.options).forEach(function (o) {
+        if (o.text.toLowerCase().includes(desiredVal.toLowerCase())) {
+          o.selected = true;
+        }
+      });
+    }
   }
   if (vehicleField && params.get('vehicle')) {
     vehicleField.value = vehicleMap[params.get('vehicle')] || params.get('vehicle');
@@ -67,7 +75,9 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    const bookingRef = 'ABK-' + Math.floor(1000 + Math.random() * 9000);
     const data = {
+      bookingRef: bookingRef,
       name:       document.getElementById('name')?.value.trim() || '',
       phone:      document.getElementById('phone')?.value.trim() || '',
       pickup:     document.getElementById('pickup')?.value.trim() || '',
@@ -100,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── WhatsApp send ──────────────────────────────────────────────────────────
   function sendViaWhatsApp(d) {
     const lines = [
+      'Booking Reference: ' + d.bookingRef,
       'Hi, I\'d like to book a cab with Abisek Travels.',
       '',
       'Name: ' + d.name,

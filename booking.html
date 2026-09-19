@@ -73,8 +73,8 @@
                 </a>
                 <div class="hidden md:flex items-center space-x-5 lg:space-x-7 font-poppins">
                     <a href="/" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Home</a>
-                    <a href="services.html" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
-                    <a href="fleet.html" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Our Vehicles</a>
+                    <a href="driver.html#services" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
+                    <a href="driver.html#fleet" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Our Vehicles</a>
                     <a href="driver.html" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">The Driver</a>
                     <a href="/#faq" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">FAQ</a>
                 </div>
@@ -90,8 +90,8 @@
         </div>
         <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-gray-200 py-6 px-6 space-y-1 font-poppins shadow-2xl">
             <a href="/" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Home</a>
-            <a href="services.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Services</a>
-            <a href="fleet.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Our Vehicles</a>
+            <a href="driver.html#services" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Services</a>
+            <a href="driver.html#fleet" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Our Vehicles</a>
             <a href="driver.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">The Driver</a>
             <div class="pt-3">
                 <a href="booking.html" class="block w-full text-center bg-brand-teal text-white font-semibold py-3.5 rounded-xl min-h-[44px]">Book Now</a>
@@ -165,18 +165,39 @@
                                         <label for="pickup" class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Pickup Location *</label>
                                         <div class="relative">
                                             <i data-lucide="navigation" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
-                                            <input type="text" id="pickup" name="pickup" required
-                                                   class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all"
-                                                   placeholder="Pathankot Railway Station, Delhi Airport…">
+                                            
+<select id="pickup" name="pickup" required class="w-full bg-light-bg border border-gray-200 rounded-xl px-10 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all appearance-none">
+    <option value="" disabled selected>Select pickup location</option>
+    <option value="Pathankot City">Pathankot City</option>
+    <option value="Pathankot Cantt (PTKC)">Pathankot Cantt (PTKC) Railway</option>
+    <option value="Pathankot Airport (IXP)">Pathankot Airport (IXP)</option>
+    <option value="Amritsar Airport (ATQ)">Amritsar Airport (ATQ)</option>
+    <option value="Delhi (Any)">Delhi (Any location)</option>
+    <option value="Chandigarh (Any)">Chandigarh (Any location)</option>
+    <option value="Other">Other (Please specify in notes)</option>
+</select>
                                         </div>
                                     </div>
                                     <div>
                                         <label for="drop" class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Drop Location *</label>
                                         <div class="relative">
                                             <i data-lucide="map-pin" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
-                                            <input type="text" id="drop" name="drop" required
-                                                   class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all"
-                                                   placeholder="Destination city or address">
+                                            
+<select id="drop" name="drop" required class="w-full bg-light-bg border border-gray-200 rounded-xl px-10 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all appearance-none">
+    <option value="" disabled selected>Select drop location</option>
+    <option value="Pathankot City">Pathankot City</option>
+    <option value="Dalhousie">Dalhousie</option>
+    <option value="Dharamshala / McLeod Ganj">Dharamshala / McLeod Ganj</option>
+    <option value="Manali">Manali</option>
+    <option value="Shimla">Shimla</option>
+    <option value="Srinagar">Srinagar / Kashmir</option>
+    <option value="Leh">Leh-Ladakh</option>
+    <option value="Amritsar">Amritsar</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Pune">Pune</option>
+    <option value="Other">Other (Please specify in notes)</option>
+</select>
                                         </div>
                                     </div>
                                 </div>
@@ -330,8 +351,8 @@
                 <span>© <span id="copyrightYear">2026</span> Abisek Travels. All rights reserved.</span>
                 <div class="flex flex-wrap gap-4 justify-center">
                     <a href="/" class="hover:text-brand-teal transition-colors">Home</a>
-                    <a href="services.html" class="hover:text-brand-teal transition-colors">Services</a>
-                    <a href="fleet.html" class="hover:text-brand-teal transition-colors">Our Vehicles</a>
+                    <a href="driver.html#services" class="hover:text-brand-teal transition-colors">Services</a>
+                    <a href="driver.html#fleet" class="hover:text-brand-teal transition-colors">Our Vehicles</a>
                     <a href="driver.html" class="hover:text-brand-teal transition-colors">The Driver</a>
                     <a href="tel:+917814442326" class="hover:text-brand-teal transition-colors">+91 78144 42326</a>
                 </div>
