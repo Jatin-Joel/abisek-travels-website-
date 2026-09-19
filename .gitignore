@@ -4,3 +4,4 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+\nstitch-theme/\nStitch theme/\nCONTENT-TO-VERIFY.md\n.env\nscratch/\napply-seo.js\nbuild-index.js\nextract.js\nfix-booking.js\nmerge.js\nrefactor.js\nold_index.html\nold_site_index.html\nstitch-home.html
