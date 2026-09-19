@@ -62,49 +62,52 @@
 <body class="bg-light-bg text-gray-800 overflow-x-hidden font-sans">
 
     <!-- NAVBAR -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 sm:py-5 bg-white/95 backdrop-blur-md shadow-sm">
+    <nav id="navbar" class="fixed top-0 w-full z-50 nav-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
-                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
-                    <img src="assets/logo_emblem.png" alt="Abisek Travels" width="681" height="403" class="h-9 sm:h-10 w-auto shrink-0 group-hover:scale-105 transition-transform">
-                    <span class="text-lg sm:text-xl font-poppins font-bold text-gray-900 tracking-wider uppercase">
-                        ABISEK <span class="text-brand-teal ml-1.5 font-medium">TRAVELS</span>
+            <div class="flex items-center justify-between h-20 sm:h-24">
+                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group z-50">
+                    <img src="assets/logo_emblem.png" alt="Abisek Travels" class="nav-logo h-9 sm:h-10 md:h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105">
+                    <span class="nav-brand text-lg sm:text-xl font-poppins font-bold tracking-wider uppercase transition-colors duration-200">
+                        ABISEK <span class="nav-brand-highlight ml-1 font-medium transition-colors duration-200">TRAVELS</span>
                     </span>
                 </a>
-                <div class="hidden md:flex items-center space-x-5 lg:space-x-7 font-poppins">
-                    <a href="/" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Home</a>
-                    <a href="driver.html#services" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
-                    <a href="driver.html#fleet" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Our Vehicles</a>
-                    <a href="driver.html" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">The Driver</a>
-                    <a href="/#faq" class="hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">FAQ</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-poppins h-full">
+                    <a href="/" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Home</a>
+                    <a href="/#destinations" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Routes</a>
+                    <a href="driver.html" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Know Your Driver</a>
+                    <a href="/#faq" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">FAQ</a>
                 </div>
-                <div class="hidden md:block">
-                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-5 py-2.5 rounded-lg text-sm font-poppins min-h-[44px] inline-flex items-center">Book Now</a>
+                <div class="hidden md:block font-poppins z-50">
+                    <a href="booking.html" class="bg-brand-teal text-white font-bold px-6 py-2.5 hover:bg-brand-teal-hover transition-colors duration-200 text-sm inline-flex items-center" style="border-radius: 4px;">Book Now</a>
                 </div>
-                <div class="flex md:hidden">
-                    <button id="mobileMenuBtn" aria-label="Open menu" class="text-gray-600 p-2 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                <div class="flex md:hidden z-50">
+                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="nav-mobile-btn p-2 focus:outline-none rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-gray-200 py-6 px-6 space-y-1 font-poppins shadow-2xl">
-            <a href="/" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Home</a>
-            <a href="driver.html#services" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Services</a>
-            <a href="driver.html#fleet" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Our Vehicles</a>
-            <a href="driver.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">The Driver</a>
-            <div class="pt-3">
-                <a href="booking.html" class="block w-full text-center bg-brand-teal text-white font-semibold py-3.5 rounded-xl min-h-[44px]">Book Now</a>
+
+        <!-- Mobile drawer -->
+        <div id="mobileMenu" class="hidden absolute top-0 left-0 w-full bg-[#02050a] text-white border-b border-gray-800 pt-24 pb-6 px-6 space-y-1 font-poppins shadow-2xl z-40 transition-all duration-300">
+            <a href="/" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Home</a>
+            <a href="/#destinations" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Routes</a>
+            <a href="driver.html" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Know Your Driver</a>
+            <a href="/#faq" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">FAQ</a>
+            <div class="pt-6 pb-2">
+                <a href="booking.html" class="mobile-nav-link block w-full text-center bg-brand-teal text-white font-bold py-4 hover:bg-brand-teal-hover transition-colors text-base min-h-[44px]" style="border-radius: 4px;">
+                    Book Now
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- PAGE HERO -->
-    <div class="pt-28 sm:pt-32 pb-10 sm:pb-14 bg-white border-b border-gray-200">
+    <div class="pt-32 pb-16 bg-[#02050a] text-white border-b border-gray-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <p class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-3 font-poppins">Cab Booking</p>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4">Book Your Ride</h1>
-            <p class="text-gray-500 text-base sm:text-lg font-sans leading-relaxed">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4">Book Your Ride</h1>
+            <p class="text-gray-300 text-base sm:text-lg font-sans leading-relaxed">
                 Fill in the form below and we'll confirm your booking via WhatsApp within minutes.
             </p>
         </div>
@@ -125,7 +128,7 @@
 
                                 <!-- Trip type -->
                                 <div>
-                                    <label for="tripType" class="block font-semibold text-gray-600 mb-2 text-xs uppercase tracking-wider">Trip Type *</label>
+                                    <label for="tripType" class="block font-semibold text-gray-400 mb-2 text-xs uppercase tracking-wider">Trip Type *</label>
                                     <select id="tripType" name="tripType" required
                                             class="w-full bg-light-bg border border-gray-200 rounded-xl px-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all">
                                         <option value="">— Select a trip type —</option>

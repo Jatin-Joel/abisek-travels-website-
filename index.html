@@ -101,56 +101,45 @@
 <body class="bg-light-bg text-gray-800 overflow-x-hidden font-sans selection:bg-brand-teal selection:text-white">
 
     <!-- Custom cursor (desktop only) -->
-    <div class="custom-cursor hidden lg:block" id="customCursor"></div>
+    
 
     <!-- ================================================================
          NAVBAR
     ================================================================ -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4 sm:py-5 bg-white/95 backdrop-blur-md shadow-sm" style="backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
+    <nav id="navbar" class="fixed top-0 w-full z-50 nav-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group">
-                    <img src="assets/logo_emblem.png" alt="Abisek Travels" width="681" height="403"
-                         class="h-9 sm:h-10 md:h-11 w-auto shrink-0 transition-transform duration-300 group-hover:scale-105">
-                    <span class="text-lg sm:text-xl font-poppins font-bold text-gray-900 tracking-wider uppercase flex items-center">
-                        ABISEK <span class="text-brand-teal ml-1.5 font-medium">TRAVELS</span>
+            <div class="flex items-center justify-between h-20 sm:h-24">
+                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group z-50">
+                    <img src="assets/logo_emblem.png" alt="Abisek Travels" class="nav-logo h-9 sm:h-10 md:h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105">
+                    <span class="nav-brand text-lg sm:text-xl font-poppins font-bold tracking-wider uppercase transition-colors duration-200">
+                        ABISEK <span class="nav-brand-highlight ml-1 font-medium transition-colors duration-200">TRAVELS</span>
                     </span>
                 </a>
-                <!-- Desktop links -->
-                <div class="hidden md:flex items-center space-x-5 lg:space-x-7 font-poppins">
-                    <a href="/" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Home</a>
-                    <a href="driver.html#services" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Services</a>
-                    <a href="driver.html#fleet" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Our Vehicles</a>
-                    <a href="driver.html" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">The Driver</a>
-                    <a href="#testimonials" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">Reviews</a>
-                    <a href="#faq" class="nav-link hover:text-brand-teal text-sm font-medium tracking-wide uppercase transition-colors">FAQ</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-poppins h-full">
+                    <a href="/" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Home</a>
+                    <a href="/#destinations" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Routes</a>
+                    <a href="driver.html" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Know Your Driver</a>
+                    <a href="/#faq" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">FAQ</a>
                 </div>
-                <!-- Book Now CTA -->
-                <div class="hidden md:block font-poppins">
-                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-5 lg:px-6 py-2.5 rounded-lg hover:bg-brand-teal-hover transition-all duration-300 shadow-lg shadow-brand-teal/10 hover:shadow-brand-teal/20 hover:-translate-y-0.5 transform text-sm">
-                        Book Now
-                    </a>
+                <div class="hidden md:block font-poppins z-50">
+                    <a href="booking.html" class="bg-brand-teal text-white font-bold px-6 py-2.5 hover:bg-brand-teal-hover transition-colors duration-200 text-sm inline-flex items-center" style="border-radius: 4px;">Book Now</a>
                 </div>
-                <!-- Mobile burger -->
-                <div class="flex md:hidden">
-                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="text-gray-600 hover:text-brand-teal p-2 focus:outline-none rounded-lg">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
+                <div class="flex md:hidden z-50">
+                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="nav-mobile-btn p-2 focus:outline-none rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200">
+                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile drawer -->
-        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-gray-200 py-6 px-6 space-y-1 font-poppins shadow-2xl">
-            <a href="/" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Home</a>
-            <a href="driver.html#services" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Services</a>
-            <a href="driver.html#fleet" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Our Vehicles</a>
-            <a href="driver.html" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">The Driver</a>
-            <a href="#testimonials" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">Reviews</a>
-            <a href="#faq" class="block text-gray-800 hover:text-brand-teal text-base font-medium py-3 border-b border-gray-100">FAQ</a>
-            <div class="pt-3">
-                <a href="booking.html" class="block w-full text-center bg-brand-teal text-white font-semibold py-3.5 rounded-xl hover:bg-brand-teal-hover transition-colors text-base min-h-[44px]">
+        <div id="mobileMenu" class="hidden absolute top-0 left-0 w-full bg-white border-b border-gray-200 pt-24 pb-6 px-6 space-y-1 font-poppins shadow-2xl z-40 transition-all duration-300">
+            <a href="/" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Home</a>
+            <a href="/#destinations" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Routes</a>
+            <a href="driver.html" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Know Your Driver</a>
+            <a href="/#faq" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">FAQ</a>
+            <div class="pt-6 pb-2">
+                <a href="booking.html" class="mobile-nav-link block w-full text-center bg-brand-teal text-white font-bold py-4 hover:bg-brand-teal-hover transition-colors text-base min-h-[44px]" style="border-radius: 4px;">
                     Book Now
                 </a>
             </div>
@@ -207,7 +196,7 @@
 
             <!-- Hero copy -->
             <div class="journey-hero-copy" id="journeyHeroCopy">
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-gray-900 mb-6 drop-shadow-sm">Abisek Travels: Reliable Cabs for Every Journey</h1>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-white mb-6 drop-shadow-sm">Abisek Travels: Reliable Cabs for Every Journey</h1>
             </div>
 
             <!-- Carousel controls -->

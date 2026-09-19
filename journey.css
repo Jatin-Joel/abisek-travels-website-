@@ -26,6 +26,7 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100dvh;
   width: 100%;
   overflow: hidden;
 }
@@ -102,7 +103,8 @@
   text-align: center;
   padding: 0 1.5rem;
   pointer-events: none;
-  z-index: 20;
+  z-index: 150;
+  padding-top: 80px; /* offset for nav */
   will-change: opacity, transform;
 }
 @media (max-width: 639px) {
@@ -273,7 +275,7 @@
   transition: opacity 0.6s ease;
 }
 
-.journey-scroll-cue__line {
+.journey-scroll-cue__line { display: none; 
   display: block;
   width: 1.5px;
   height: 2.5rem;
@@ -334,7 +336,7 @@
 
 /* ── 8. Progress indicator (thin line at top of viewport during journey) ──── */
 
-#journeyProgress {
+#journeyProgress { display: none; 
   position: absolute;
   top: 0;
   left: 0;

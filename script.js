@@ -233,3 +233,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// Premium Navbar Scroll & Mobile Menu
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById('navbar');
+    const onScroll = () => {
+        if (!navbar) return;
+        if (window.scrollY > 40) {
+            navbar.classList.remove('nav-transparent');
+            navbar.classList.add('nav-scrolled');
+        } else {
+            navbar.classList.add('nav-transparent');
+            navbar.classList.remove('nav-scrolled');
+        }
+    };
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const mLinks = mobileMenu.querySelectorAll('a.mobile-nav-link');
+        mLinks.forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') mobileMenu.classList.add('hidden');
+        });
+    }
+});
