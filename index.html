@@ -23,6 +23,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
 
+    <!-- Preload Hero Fallback Background Image (under 17 KB) -->
+    <link rel="preload" as="image" href="assets/hero-fallback.webp" type="image/webp" fetchpriority="high">
+
     <!-- Open Graph (Facebook / WhatsApp preview) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abisektravels.in/">
@@ -148,15 +151,32 @@
       <!-- Sticky inner wrapper — sticks at top while section scrolls 500vh -->
       <div class="journey-sticky">
 
-        <!-- Layer 1: Himalayan cloud/mountain background video (Crossfaded for seamless loop) -->
-        <!-- NOTE: src is intentionally absent — device-tier.js + himalaya-carousel.js set it   -->
-        <!-- conditionally: low tier never fetches video bytes; mid/high load appropriate file.  -->
+        <!-- Layer 1: Himalayan cloud/mountain background (Instant fallback image + crossfaded video) -->
         <div id="himalayaBgContainer" aria-hidden="true">
-          <video id="himalayaBgA" class="himalaya-video" muted playsinline
-                 poster="assets/hero_bg.png"></video>
-          <video id="himalayaBgB" class="himalaya-video" muted playsinline
-                 style="opacity: 0;"></video>
+          <img id="heroFallback" class="himalaya-fallback" src="assets/hero-fallback.webp" alt="" fetchpriority="high" decoding="sync">
+          <video id="himalayaBgA" class="himalaya-video" autoplay muted loop playsinline preload="auto"
+                 poster="assets/hero-fallback.webp" src="assets/upscaled-video.mp4"></video>
+          <video id="himalayaBgB" class="himalaya-video" muted playsinline preload="auto"
+                 poster="assets/hero-fallback.webp" style="opacity: 0;"></video>
         </div>
+        <script>
+          (function() {
+            var v = document.getElementById('himalayaBgA');
+            var f = document.getElementById('heroFallback');
+            if (!v || !f) return;
+            function onPlaying() {
+              v.removeEventListener('playing', onPlaying);
+              f.style.transition = 'opacity 0.5s ease-out';
+              f.style.opacity = '0';
+              setTimeout(function() { f.style.display = 'none'; }, 500);
+            }
+            if (!v.paused && v.currentTime > 0) {
+              onPlaying();
+            } else {
+              v.addEventListener('playing', onPlaying, { once: true });
+            }
+          })();
+        </script>
 
         <!-- Layer 2: Atmospheric dark gradient overlay -->
         <div class="himalaya-overlay" aria-hidden="true"></div>

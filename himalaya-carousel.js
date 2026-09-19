@@ -91,11 +91,10 @@
   const isLowTier = tier === 'low';
 
   // Video source selection — map tier to available file
-  // Provide hero-720p.mp4 for mid-tier (encode at ~1 Mbps, 1280×720)
-  // Keep upscaled-video.mp4 as the high-tier source
+  // Keep upscaled-video.mp4 as primary source
   const VIDEO_SRC = {
     high: 'assets/upscaled-video.mp4',
-    mid:  'assets/hero-720p.mp4',
+    mid:  'assets/upscaled-video.mp4',
     // low: (no video)
   };
 
@@ -103,26 +102,48 @@
   function initSeamlessVideoLoop() {
     const vidA = document.getElementById('himalayaBgA');
     const vidB = document.getElementById('himalayaBgB');
+    const fallbackImg = document.getElementById('heroFallback');
     if (!vidA || !vidB) return;
 
-    // LOW TIER: don't load or play video at all — poster image is already visible
+    // Helper to fade fallback image out over ~0.5s when video actually plays
+    let fallbackRemoved = false;
+    function fadeOutFallback() {
+      if (fallbackRemoved || !fallbackImg) return;
+      fallbackRemoved = true;
+      fallbackImg.style.transition = 'opacity 0.5s ease-out';
+      fallbackImg.style.opacity = '0';
+      setTimeout(() => {
+        if (fallbackImg) fallbackImg.style.display = 'none';
+      }, 500);
+    }
+
+    if (fallbackImg) {
+      if (!vidA.paused && vidA.currentTime > 0) {
+        fadeOutFallback();
+      } else {
+        vidA.addEventListener('playing', fadeOutFallback, { once: true });
+      }
+    }
+
+    // LOW TIER: don't load or play video at all — fallback image is already visible
     if (isLowTier) {
-      // Ensure poster remains visible; no src = no bytes downloaded
-      vidA.style.opacity = 1;
+      vidA.pause();
+      vidA.removeAttribute('src');
+      vidA.load();
       return;
     }
 
-    // REDUCED MOTION: also skip playback, show static first frame
+    // REDUCED MOTION: also skip playback, show static fallback
     if (prefersReduced) {
-      vidA.src = VIDEO_SRC[tier] || VIDEO_SRC.high;
-      vidA.style.opacity = 1;
-      vidB.style.opacity = 0;
+      vidA.pause();
       return;
     }
 
-    // MID / HIGH: set src now (browser starts buffering at this point, not before)
+    // MID / HIGH: ensure src is set
     const src = VIDEO_SRC[tier] || VIDEO_SRC.high;
-    vidA.src = src;
+    if (!vidA.getAttribute('src')) {
+      vidA.src = src;
+    }
 
     let activeVid = vidA;
     let inactiveVid = vidB;
@@ -130,7 +151,9 @@
     const crossfadeDuration = 0.8; // smooth 800ms blend
 
     // Kickoff initial video
-    activeVid.play().catch(() => {});
+    activeVid.play().catch(() => {
+      // If autoplay fails, fallback image remains visible
+    });
 
     function checkLoop() {
       requestAnimationFrame(checkLoop);
