@@ -99,6 +99,147 @@
 </script>
 </head>
 <body class="bg-light-bg text-gray-800 overflow-x-hidden font-sans selection:bg-brand-teal selection:text-white">
+<style>
+  #preloader {
+    position: fixed; inset: 0; z-index: 9999999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background-color: var(--color-surface-ground, #192225);
+    color: var(--color-text-primary, #F7F5F0);
+    transition: opacity 0.3s ease;
+  }
+  @media (prefers-color-scheme: light) {
+    #preloader { background-color: #ffffff; color: #111827; }
+  }
+  .preloader-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px; letter-spacing: 0.05em; font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .preloader-brand span { font-weight: 400; }
+  .preloader-track {
+    width: 140px; height: 2px; border-radius: 2px;
+    background-color: rgba(128,128,128,0.2);
+    overflow: hidden;
+  }
+  .preloader-fill {
+    width: 100%; height: 100%;
+    background-color: var(--color-primary, #3db39e);
+    transform-origin: left; transform: scaleX(0);
+    transition: transform 0.2s ease-out;
+  }
+</style>
+<noscript><style>#preloader { display: none !important; }</style></noscript>
+<div id="preloader" role="status" aria-label="Loading">
+    <div class="preloader-brand">ABISEK <span>TRAVELS</span></div>
+    <div class="preloader-track">
+        <div class="preloader-fill" id="preloaderFill"></div>
+    </div>
+</div>
+<script>
+(function(){
+  if (sessionStorage.getItem('abisek-loaded')) {
+    var p = document.getElementById('preloader');
+    if(p) {
+      p.style.opacity = '0';
+      setTimeout(function(){ p.remove(); }, 150);
+    }
+    return;
+  }
+  
+  document.body.style.overflow = 'hidden';
+  
+  var gsapPaused = false;
+  var gsapInterval = setInterval(function() {
+      if (window.gsap && window.gsap.globalTimeline && !gsapPaused) {
+          window.gsap.globalTimeline.pause();
+          gsapPaused = true;
+      }
+  }, 10);
+
+  var fill = document.getElementById('preloaderFill');
+  var progress = 0;
+  function update(val) {
+      if(val > progress) progress = val;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          fill.style.transform = 'scaleX(1)';
+      } else {
+          fill.style.transform = 'scaleX(' + (progress/100) + ')';
+      }
+  }
+
+  var assets = 0;
+  var totalAssets = 5; 
+  function checkDone() {
+      assets++;
+      update((assets / totalAssets) * 100);
+      if(assets >= totalAssets) finish();
+  }
+
+  var finished = false;
+  function finish() {
+      if(finished) return;
+      finished = true;
+      update(100);
+      sessionStorage.setItem('abisek-loaded', 'true');
+      
+      var p = document.getElementById('preloader');
+      if(!p) return;
+      
+      setTimeout(function() {
+          p.style.opacity = '0';
+          setTimeout(function() {
+              document.body.style.overflow = '';
+              p.remove();
+              clearInterval(gsapInterval);
+              clearInterval(cardInterval);
+              if(window.gsap && window.gsap.globalTimeline) window.gsap.globalTimeline.play();
+          }, 300);
+      }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250);
+  }
+
+  if(document.fonts && document.fonts.ready) { document.fonts.ready.then(checkDone); } else { checkDone(); }
+  if(document.readyState === 'complete') { checkDone(); } else { window.addEventListener('load', checkDone); }
+
+  window.addEventListener('DOMContentLoaded', function() {
+      var vid = document.getElementById('himalayaBgA');
+      if(vid && window.__deviceTier !== 'low') {
+          if(vid.readyState >= 3) { checkDone(); }
+          else {
+              vid.addEventListener('canplaythrough', checkDone, {once:true});
+              vid.addEventListener('error', checkDone, {once:true});
+          }
+      } else { checkDone(); }
+
+      var img = document.getElementById('heroFallback');
+      if(img) {
+          if(img.complete) { checkDone(); }
+          else {
+              img.addEventListener('load', checkDone, {once:true});
+              img.addEventListener('error', checkDone, {once:true});
+          }
+      } else { checkDone(); }
+  });
+
+  var cardsDone = false;
+  var cardInterval = setInterval(function() {
+      if(cardsDone) return;
+      var imgs = document.querySelectorAll('.dest-card__img');
+      if(imgs.length === 0) return; 
+      
+      var allLoaded = true;
+      for(var i=0; i<imgs.length; i++) {
+          if(!imgs[i].complete) { allLoaded = false; break; }
+      }
+      if(allLoaded) {
+          cardsDone = true;
+          checkDone();
+      }
+  }, 50);
+
+  setTimeout(finish, 4000);
+})();
+</script>
+
     <div id="customCursor" class="custom-cursor" aria-hidden="true"></div>
 
     <!-- Custom cursor (desktop only) -->
