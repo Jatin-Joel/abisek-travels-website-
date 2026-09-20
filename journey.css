@@ -92,21 +92,7 @@
 
 /* ── 4. Hero copy overlay ────────────────────────────────────────────────── */
 
-.journey-hero-copy {
-  position: absolute;
-  top: calc(50% - 370px);
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  text-align: center;
-  padding: 0 1.5rem;
-  pointer-events: none;
-  z-index: 150;
-  padding-top: 80px; /* offset for nav */
-  will-change: opacity, transform;
-}
+
 @media (max-width: 639px) {
   .journey-hero-copy {
     top: calc(50% - 290px);
@@ -390,14 +376,9 @@
    ========================================================================== */
 
 #destCarousel {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(calc(-50% - 40px));
-  height: 60vh;
-  min-height: 400px;
-  max-height: 700px;
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
   perspective: 1400px;
   perspective-origin: center center;
   z-index: 10;
@@ -408,10 +389,6 @@
 }
 @media (max-width: 639px) {
   #destCarousel {
-    top: 50%;
-    transform: translateY(calc(-50% - 20px));
-    height: 60vh;
-    max-height: 450px;
     perspective: 900px;
   }
 }

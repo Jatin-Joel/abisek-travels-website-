@@ -238,18 +238,50 @@ document.addEventListener('DOMContentLoaded', () => {
 // Premium Navbar Scroll & Mobile Menu
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
-    const onScroll = () => {
-        if (!navbar) return;
-        if (window.scrollY > 40) {
-            navbar.classList.remove('nav-transparent');
-            navbar.classList.add('nav-scrolled');
-        } else {
-            navbar.classList.add('nav-transparent');
-            navbar.classList.remove('nav-scrolled');
-        }
-    };
-    window.addEventListener('scroll', onScroll, {passive: true});
-    onScroll();
+    if (!navbar) return;
+
+    // Use IntersectionObserver on the hero section for accurate transitioning
+    const heroSection = document.getElementById('home') || document.querySelector('.hero-section'); 
+    
+    if (heroSection) {
+        // Trigger when the hero section leaves the top bounds minus navbar height
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    navbar.classList.remove('nav-transparent');
+                    navbar.classList.add('nav-scrolled');
+                } else {
+                    navbar.classList.add('nav-transparent');
+                    navbar.classList.remove('nav-scrolled');
+                }
+            });
+        }, {
+            // When the bottom of the hero crosses the top of the viewport
+            rootMargin: "-56px 0px 0px 0px",
+            threshold: 0
+        });
+        observer.observe(heroSection);
+    } else {
+        // Fallback for pages without a clear hero
+        let ticking = false;
+        const onScroll = () => {
+            if (window.scrollY > 56) {
+                navbar.classList.remove('nav-transparent');
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.add('nav-transparent');
+                navbar.classList.remove('nav-scrolled');
+            }
+            ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(onScroll);
+                ticking = true;
+            }
+        }, {passive: true});
+        onScroll(); // initial check
+    }
 
     const mobileBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');

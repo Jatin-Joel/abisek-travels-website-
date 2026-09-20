@@ -209,8 +209,49 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 /* ==========================================================================
    PREMIUM NAVBAR (Transparent to Frosted)
    ========================================================================== */
+:root {
+  --nav-bg: rgba(255, 255, 255, 0.85);
+  --nav-bg-solid: rgba(255, 255, 255, 0.98);
+  --nav-text: #111827;
+  --nav-text-muted: #4b5563;
+  --nav-border: rgba(0, 0, 0, 0.05);
+  --nav-logo-filter: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nav-bg: rgba(25, 34, 37, 0.85); /* Matches color-surface-ground */
+    --nav-bg-solid: rgba(25, 34, 37, 0.98);
+    --nav-text: #F7F5F0;
+    --nav-text-muted: rgba(247, 245, 240, 0.8);
+    --nav-border: rgba(255, 255, 255, 0.05);
+    --nav-logo-filter: brightness(0) invert(1);
+  }
+}
+
 #navbar {
-    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, backdrop-filter 0.2s ease, color 0.2s ease;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease, color 0.25s ease;
+}
+#navbar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+#navbar.nav-transparent::before {
+    opacity: 1; /* Subtle gradient scrim only when transparent */
+}
+
+/* Base Nav Inner Heights */
+.nav-inner {
+    height: 56px; /* Desktop default */
+    transition: height 0.25s ease;
+}
+@media (max-width: 767px) {
+    .nav-inner { height: 52px; }
 }
 
 /* Transparent State (Top) */
@@ -242,37 +283,43 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
 /* Frosted State (Scrolled) */
 #navbar.nav-scrolled {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: var(--nav-bg);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--nav-border);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    color: #111827;
+    color: var(--nav-text);
 }
 #navbar.nav-scrolled .nav-logo {
-    filter: none; 
+    filter: var(--nav-logo-filter);
 }
 #navbar.nav-scrolled .nav-brand {
-    color: #111827;
+    color: var(--nav-text);
 }
 #navbar.nav-scrolled .nav-brand-highlight {
     color: var(--color-primary, #3db39e);
 }
 #navbar.nav-scrolled .nav-link {
-    color: #4b5563;
+    color: var(--nav-text-muted);
 }
 #navbar.nav-scrolled .nav-link:hover,
 #navbar.nav-scrolled .nav-link.active {
-    color: #111827;
+    color: var(--nav-text);
 }
 #navbar.nav-scrolled .nav-mobile-btn {
-    color: #4b5563;
+    color: var(--nav-text-muted);
+}
+#navbar.nav-scrolled .nav-inner {
+    height: 52px; /* Thinner on desktop when scrolled */
+}
+@media (max-width: 767px) {
+    #navbar.nav-scrolled .nav-inner { height: 48px; }
 }
 
 /* Fallback for browsers without backdrop-filter */
 @supports not (backdrop-filter: blur(8px)) {
     #navbar.nav-scrolled {
-        background-color: rgba(255, 255, 255, 0.98);
+        background-color: var(--nav-bg-solid);
     }
 }
 
@@ -297,5 +344,6 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
 @media (prefers-reduced-motion: reduce) {
     #navbar { transition: none !important; }
+    .nav-inner { transition: none !important; }
     .nav-link::after { transition: none !important; }
 }

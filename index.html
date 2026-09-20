@@ -108,38 +108,38 @@
     ================================================================ -->
     <nav id="navbar" class="fixed top-0 w-full z-50 nav-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 sm:h-24">
-                <a href="/" class="flex items-center gap-2.5 sm:gap-3 group z-50">
-                    <img src="assets/logo_emblem.png" alt="Abisek Travels" class="nav-logo h-9 sm:h-10 md:h-11 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105">
-                    <span class="nav-brand text-lg sm:text-xl font-poppins font-bold tracking-wider uppercase transition-colors duration-200">
+            <div class="nav-inner flex items-center justify-between transition-all duration-250">
+                <a href="/" class="flex items-center gap-2.5 group z-50">
+                    <img src="assets/logo_emblem.png" alt="Abisek Travels" class="nav-logo h-7 md:h-8 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105">
+                    <span class="nav-brand text-[15px] sm:text-base font-poppins font-bold tracking-wider uppercase transition-colors duration-200">
                         ABISEK <span class="nav-brand-highlight ml-1 font-medium transition-colors duration-200">TRAVELS</span>
                     </span>
                 </a>
-                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 font-poppins h-full">
-                    <a href="/" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Home</a>
-                    <a href="/#destinations" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Routes</a>
-                    <a href="driver.html" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">Know Your Driver</a>
-                    <a href="/#faq" class="nav-link text-[13px] font-semibold tracking-[0.08em] uppercase flex items-center h-full">FAQ</a>
+                <div class="hidden md:flex items-center space-x-6 font-poppins h-full">
+                    <a href="/" class="nav-link text-xs font-semibold tracking-wide uppercase flex items-center h-full">Home</a>
+                    <a href="/#destinations" class="nav-link text-xs font-semibold tracking-wide uppercase flex items-center h-full">Routes</a>
+                    <a href="driver.html" class="nav-link text-xs font-semibold tracking-wide uppercase flex items-center h-full">Know Your Driver</a>
+                    <a href="/#faq" class="nav-link text-xs font-semibold tracking-wide uppercase flex items-center h-full">FAQ</a>
                 </div>
                 <div class="hidden md:block font-poppins z-50">
-                    <a href="booking.html" class="bg-brand-teal text-white font-bold px-6 py-2.5 hover:bg-brand-teal-hover transition-colors duration-200 text-sm inline-flex items-center" style="border-radius: 4px;">Book Now</a>
+                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-4 py-1.5 hover:bg-brand-teal-hover transition-colors duration-200 text-[14px] inline-flex items-center rounded">Book Now</a>
                 </div>
                 <div class="flex md:hidden z-50">
-                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="nav-mobile-btn p-2 focus:outline-none rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200">
-                        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="nav-mobile-btn p-1.5 focus:outline-none rounded min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200">
+                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile drawer -->
-        <div id="mobileMenu" class="hidden absolute top-0 left-0 w-full bg-white border-b border-gray-200 pt-24 pb-6 px-6 space-y-1 font-poppins shadow-2xl z-40 transition-all duration-300">
-            <a href="/" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Home</a>
-            <a href="/#destinations" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Routes</a>
-            <a href="driver.html" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">Know Your Driver</a>
-            <a href="/#faq" class="mobile-nav-link block text-gray-800 hover:text-brand-teal text-base font-bold tracking-wide py-4 border-b border-gray-100">FAQ</a>
-            <div class="pt-6 pb-2">
-                <a href="booking.html" class="mobile-nav-link block w-full text-center bg-brand-teal text-white font-bold py-4 hover:bg-brand-teal-hover transition-colors text-base min-h-[44px]" style="border-radius: 4px;">
+        <div id="mobileMenu" class="hidden absolute top-0 left-0 w-full bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 pt-16 pb-6 px-6 space-y-1 font-poppins shadow-2xl z-40 transition-all duration-300">
+            <a href="/" class="mobile-nav-link block text-gray-800 dark:text-gray-100 hover:text-brand-teal text-sm font-bold tracking-wide py-3 border-b border-gray-100 dark:border-gray-800">Home</a>
+            <a href="/#destinations" class="mobile-nav-link block text-gray-800 dark:text-gray-100 hover:text-brand-teal text-sm font-bold tracking-wide py-3 border-b border-gray-100 dark:border-gray-800">Routes</a>
+            <a href="driver.html" class="mobile-nav-link block text-gray-800 dark:text-gray-100 hover:text-brand-teal text-sm font-bold tracking-wide py-3 border-b border-gray-100 dark:border-gray-800">Know Your Driver</a>
+            <a href="/#faq" class="mobile-nav-link block text-gray-800 dark:text-gray-100 hover:text-brand-teal text-sm font-bold tracking-wide py-3 border-b border-gray-100 dark:border-gray-800">FAQ</a>
+            <div class="pt-5 pb-1">
+                <a href="booking.html" class="mobile-nav-link block w-full text-center bg-brand-teal text-white font-bold py-3 hover:bg-brand-teal-hover transition-colors text-sm rounded min-h-[44px]">
                     Book Now
                 </a>
             </div>
@@ -168,7 +168,6 @@
                     var v = document.getElementById('himalayaBgA');
                     var f = document.getElementById('heroFallback');
                     if (!v || !f) return;
-                    // On low-tier/mobile, skip video entirely
                     if (window.__deviceTier === 'low') {
                         v.removeAttribute('src'); v.load();
                         var vb = document.getElementById('himalayaBgB');
@@ -183,7 +182,7 @@
                     }
                     if (!v.paused && v.currentTime > 0) { onPlaying(); }
                     else { v.addEventListener('playing', onPlaying, { once: true }); }
-                    v.addEventListener('error', function() { /* keep fallback */ });
+                    v.addEventListener('error', function() { });
                 })();
             </script>
 
@@ -191,35 +190,42 @@
             <div class="himalaya-overlay" aria-hidden="true"></div>
             <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(circle at center,transparent 40%,rgba(2,5,10,0.5) 150%);" aria-hidden="true"></div>
 
-            <!-- CSS-3D destination cards (built by himalaya-carousel.js) -->
-            <div id="destCarousel" role="region" aria-label="Destination carousel" aria-live="polite"></div>
+            <!-- NORMAL FLOW CONTENT CONTAINER -->
+            <!-- We add pt-[104px] (about 26rem/6.5rem) to clear navbar (80px) + 24px clearance -->
+            <div class="relative z-10 w-full h-full flex flex-col justify-between items-center" style="padding-top: 64px; padding-bottom: 24px;">
+                
+                <!-- Hero copy (SEO only) -->
+                <div class="sr-only">
+                    <h1>Abisek Travels: Reliable Cabs for Every Journey</h1>
+                    <p>Local rides, airport transfers, and outstation trips from Pathankot.</p>
+                </div>
 
-            <!-- Hero copy -->
-            <div class="journey-hero-copy" id="journeyHeroCopy">
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-display font-bold text-white mb-6 drop-shadow-sm">Abisek Travels: Reliable Cabs for Every Journey</h1>
+                <!-- CSS-3D destination cards (built by himalaya-carousel.js) -->
+                <!-- The carousel container is now a flex child. The absolute cards will center within it. -->
+                <div id="destCarousel" class="relative w-full flex-grow flex items-center justify-center" role="region" aria-label="Destination carousel" aria-live="polite" style="min-height: 300px;"></div>
+
+                <!-- CTA + Counter -->
+                <div class="flex flex-col items-center justify-center gap-4 z-20 flex-shrink-0 mt-4">
+                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-8 py-3 rounded hover:bg-brand-teal-hover transition-colors shadow-lg text-sm sm:text-base pointer-events-auto">
+                        Book Your Ride
+                    </a>
+                    <div id="carouselCounter" style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.3em;font-family:'Plus Jakarta Sans',sans-serif;">01 / 05</div>
+                </div>
+
+                <!-- Carousel controls (left/right arrows) -->
+                <!-- We place them absolute within the flow container to span the edges -->
+                <div class="absolute inset-0 pointer-events-none z-30 flex items-center justify-between px-2 sm:px-6">
+                    <button id="carouselPrev" class="carousel-btn" type="button" aria-label="Previous destination"
+                            style="pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;transition:opacity 0.2s;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button id="carouselNext" class="carousel-btn" type="button" aria-label="Next destination"
+                            style="pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;transition:opacity 0.2s;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+
             </div>
-
-            <!-- Carousel controls -->
-            <div class="carousel-controls" style="position:absolute;inset:0;pointer-events:none;z-index:30;" aria-label="Carousel navigation">
-                <button id="carouselPrev" class="carousel-btn" type="button" aria-label="Previous destination"
-                        style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </button>
-                <button id="carouselNext" class="carousel-btn" type="button" aria-label="Next destination"
-                        style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </button>
-                <div id="carouselCounter" style="position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.3em;font-family:'Plus Jakarta Sans',sans-serif;">01 / 05</div>
-            </div>
-
-            <!-- Scroll cue -->
-            <div id="journeyScrollCue" aria-hidden="true">
-                <span class="journey-scroll-cue__line"></span>
-                <span class="journey-scroll-cue__text">Scroll to explore</span>
-            </div>
-
-            <!-- Progress bar -->
-            <div id="journeyProgress" aria-hidden="true"></div>
         </div>
     </section>
 
