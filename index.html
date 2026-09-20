@@ -122,7 +122,7 @@
                     <a href="/#faq" class="nav-link text-xs font-semibold tracking-wide uppercase flex items-center h-full">FAQ</a>
                 </div>
                 <div class="hidden md:block font-poppins z-50">
-                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-4 py-1.5 hover:bg-brand-teal-hover transition-colors duration-200 text-[14px] inline-flex items-center rounded">Book Now</a>
+                    <a href="booking.html" class="nav-book-btn font-semibold px-4 py-1.5 transition-colors duration-200 text-[14px] inline-flex items-center rounded">Book Now</a>
                 </div>
                 <div class="flex md:hidden z-50">
                     <button id="mobileMenuBtn" aria-label="Open Navigation Menu" class="nav-mobile-btn p-1.5 focus:outline-none rounded min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-200">
@@ -204,12 +204,35 @@
                 <!-- The carousel container is now a flex child. The absolute cards will center within it. -->
                 <div id="destCarousel" class="relative w-full flex-grow flex items-center justify-center" role="region" aria-label="Destination carousel" aria-live="polite" style="min-height: 300px;"></div>
 
-                <!-- CTA + Counter -->
-                <div class="flex flex-col items-center justify-center gap-4 z-20 flex-shrink-0 mt-4">
-                    <a href="booking.html" class="bg-brand-teal text-white font-semibold px-8 py-3 rounded hover:bg-brand-teal-hover transition-colors shadow-lg text-sm sm:text-base pointer-events-auto">
-                        Book Your Ride
-                    </a>
-                    <div id="carouselCounter" style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.3em;font-family:'Plus Jakarta Sans',sans-serif;">01 / 05</div>
+                <!-- CTA & Indicators -->
+                <div class="flex flex-col items-center justify-center z-20 flex-shrink-0 mt-4 sm:mt-6 w-full max-w-[320px] sm:max-w-none px-4 sm:px-0">
+                    
+                    <!-- Carousel Indicators -->
+                    <div id="carouselIndicators" class="flex gap-2 justify-center mb-6" role="tablist">
+                        <button class="indicator-dot active" role="tab" aria-selected="true" aria-label="Destination 1"></button>
+                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 2"></button>
+                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 3"></button>
+                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 4"></button>
+                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 5"></button>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center pointer-events-auto">
+                        <a href="booking.html" class="hero-primary-btn">
+                            <span>Book Your Ride</span>
+                            <svg class="arrow-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <div class="shine-sweep"></div>
+                        </a>
+                        <a href="https://wa.me/917814442326" target="_blank" class="hero-ghost-btn">
+                            WhatsApp us
+                        </a>
+                    </div>
+                    
+                    <!-- Subtext -->
+                    <p class="mt-4 text-[13px] text-white/50 font-sans tracking-wide">Fixed fares · 24/7 service · 2000+ trips</p>
+                    
+                    <!-- Hidden counter for JS compatibility -->
+                    <div id="carouselCounter" class="hidden">01 / 05</div>
                 </div>
 
                 <!-- Carousel controls (left/right arrows) -->
