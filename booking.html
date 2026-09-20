@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <meta name="theme-color" content="#3db39e">
     <title>Abisek Travels | Cab & Taxi Service - Local, Airport & Outstation</title>
-    <meta name="description" content="Abisek Travels offers reliable cab and taxi service from Pathankot: local rides, airport transfers and outstation trips to Delhi, Chandigarh, Pune, Himachal and Kashmir. Book on WhatsApp.">
+    <meta name="description" content="Abisek Travels offers reliable cab and taxi service from any location: local rides, airport transfers and outstation trips to Delhi, Chandigarh, Pune, Himachal and Kashmir. Book on WhatsApp.">
     <meta property="og:title" content="Abisek Travels | Cab & Taxi Service - Local, Airport & Outstation">
-    <meta property="og:description" content="Abisek Travels offers reliable cab and taxi service from Pathankot: local rides, airport transfers and outstation trips to Delhi, Chandigarh, Pune, Himachal and Kashmir. Book on WhatsApp.">
+    <meta property="og:description" content="Abisek Travels offers reliable cab and taxi service from any location: local rides, airport transfers and outstation trips to Delhi, Chandigarh, Pune, Himachal and Kashmir. Book on WhatsApp.">
     <meta property="og:site_name" content="Abisek Travels">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Abisek Travels | Cab & Taxi Service - Local, Airport & Outstation">
-    <meta name="twitter:description" content="Abisek Travels offers reliable cab and taxi service from Pathankot: local rides, airport transfers and outstation trips to Delhi, Chandigarh, Pune, Himachal and Kashmir. Book on WhatsApp.">
+    <meta name="twitter:description" content="Abisek Travels offers reliable cab and taxi service from any location: local rides, airport transfers and outstation trips to Delhi, Chandigarh, Pune, Himachal and Kashmir. Book on WhatsApp.">
     <link rel="canonical" href="https://abisektravels.in/booking.html">
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -170,16 +170,22 @@
                                         <div class="relative">
                                             <i data-lucide="navigation" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
                                             
-<select id="pickup" name="pickup" required class="w-full bg-light-bg border border-gray-200 rounded-xl px-10 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all appearance-none">
-    <option value="" disabled selected>Select pickup location</option>
-    <option value="Pathankot City">Pathankot City</option>
-    <option value="Pathankot Cantt (PTKC)">Pathankot Cantt (PTKC) Railway</option>
-    <option value="Pathankot Airport (IXP)">Pathankot Airport (IXP)</option>
-    <option value="Amritsar Airport (ATQ)">Amritsar Airport (ATQ)</option>
-    <option value="Delhi (Any)">Delhi (Any location)</option>
-    <option value="Chandigarh (Any)">Chandigarh (Any location)</option>
-    <option value="Other">Other (Please specify in notes)</option>
+<select id="pickup" name="pickup" required class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all appearance-none font-sans">
+    <option value="" disabled selected>Select pickup location…</option>
+    <option value="Pathankot">Pathankot</option>
+    <option value="Amritsar">Amritsar</option>
+    <option value="Jalandhar">Jalandhar</option>
+    <option value="Chandigarh">Chandigarh</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Pune">Pune</option>
+    <option value="Other">Other location</option>
 </select>
+<div id="otherPickupWrapper" class="relative mt-3 hidden">
+    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+        <i data-lucide="map-pin" class="w-4 h-4 text-gray-400"></i>
+    </div>
+    <input type="text" id="otherPickup" name="otherPickup" class="w-full bg-light-bg border border-gray-200 rounded-xl pl-10 pr-4 py-3.5 text-gray-900 text-base focus:outline-none focus:border-brand-teal focus:ring-1 focus:ring-brand-teal transition-all font-sans" placeholder="Enter city or address...">
+</div>
                                         </div>
                                     </div>
                                     <div>
@@ -275,7 +281,7 @@
                                 </div>
 
                                 <!-- Fare estimate (hidden if no rates set) -->
-                                <div id="fareEstimateBox" class="bg-brand-teal/5 border border-brand-teal/20 rounded-2xl p-5 hidden">
+                                <div id="fareEstimateBox" class="bg-brand-teal/5 border border-brand-teal/20 rounded-2xl p-5" style="display: none;">
                                     <div class="flex items-center gap-2 mb-2">
                                         <i data-lucide="indian-rupee" class="w-5 h-5 text-brand-teal"></i>
                                         <span class="font-bold text-gray-900 font-poppins">Estimated Fare</span>

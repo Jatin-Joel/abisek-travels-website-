@@ -63,13 +63,47 @@ document.addEventListener('DOMContentLoaded', function () {
     if (v) tripField.value = v;
   }
 
-  // ── Fare estimate ─────────────────────────────────────────────────────────
-  // Shown only when BOOKING_CONFIG.rates has real values (set in booking-config.js).
+  
+  
+  const pickupField = document.getElementById('pickup');
+  const otherPickupWrapper = document.getElementById('otherPickupWrapper');
+  const fareEstimateText = document.getElementById('fareEstimateText');
   const fareBox = document.getElementById('fareEstimateBox');
-  if (fareBox && typeof BOOKING_CONFIG !== 'undefined') {
-    const hasRates = Object.values(BOOKING_CONFIG.rates || {}).some(Boolean);
-    fareBox.style.display = hasRates ? '' : 'none';
+
+  if (pickupField && otherPickupWrapper) {
+      pickupField.addEventListener('change', function() {
+          if (pickupField.value === 'Other') {
+              otherPickupWrapper.classList.remove('hidden');
+              document.getElementById('otherPickup').required = true;
+          } else {
+              otherPickupWrapper.classList.add('hidden');
+              document.getElementById('otherPickup').required = false;
+          }
+          updateFareDisplay();
+      });
   }
+  
+  if (dropField) dropField.addEventListener('change', updateFareDisplay);
+
+  function updateFareDisplay() {
+      if (!fareBox) return;
+      
+      const pickupVal = pickupField ? pickupField.value : '';
+      const dropVal = dropField ? dropField.value : '';
+      
+      fareBox.style.display = ''; // Always show now because we use it for status
+      
+      if (pickupVal === 'Other' || (pickupVal && pickupVal !== 'Pathankot')) {
+          fareEstimateText.textContent = 'Custom quote via WhatsApp';
+      } else if (pickupVal && dropVal) {
+          fareEstimateText.textContent = 'Get a custom quote';
+      } else {
+          fareEstimateText.textContent = 'Calculating…';
+      }
+  }
+  
+  // Initialize display
+  updateFareDisplay();
 
   // ── Form submit ────────────────────────────────────────────────────────────
   form.addEventListener('submit', function (e) {
