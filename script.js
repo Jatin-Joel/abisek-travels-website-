@@ -36,11 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Custom Cursor Tracker (Desktop & Fine-pointer devices only)
+    // 3. Custom Cursor Tracker (Enhancement only, native cursor remains)
     const cursor = document.getElementById('customCursor');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isFinePointer = window.matchMedia('(pointer: fine)').matches;
 
-    if (cursor && isFinePointer && window.innerWidth >= 1024) {
+    if (cursor && isFinePointer && !prefersReducedMotion) {
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
         let cursorX = mouseX;
@@ -56,24 +57,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        // Smooth cursor follow (lerp)
         const renderCursor = () => {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-            cursorX += dx * 0.2;
-            cursorY += dy * 0.2;
-            cursor.style.left = `${cursorX}px`;
-            cursor.style.top = `${cursorY}px`;
+            // Smooth lerp
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            
+            // Use translate3d instead of top/left for performance
+            cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
             requestAnimationFrame(renderCursor);
         };
-        renderCursor();
+        requestAnimationFrame(renderCursor);
 
         // Hover effect for interactive elements
-        const hoverables = document.querySelectorAll('a, button, input, select, textarea, [role="button"], #mobileMenuBtn');
-        hoverables.forEach((el) => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
+        const setupHover = () => {
+            const hoverables = document.querySelectorAll('a, button, input, select, textarea, [role="button"]');
+            hoverables.forEach((el) => {
+                if (!el.hasAttribute('data-cursor-bound')) {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+                    el.setAttribute('data-cursor-bound', 'true');
+                }
+            });
+        };
+        
+        setupHover();
+        setInterval(setupHover, 2000);
     }
 
     // 4. Parallax Hero Background & Navbar Scroll styling (Passive for performance)

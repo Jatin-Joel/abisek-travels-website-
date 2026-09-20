@@ -82,11 +82,123 @@ img, picture, svg, video {
 }
 
 /* 5. Custom Cursor (Desktop Only / Fine Pointers Only) */
-@media (min-width: 1024px) and (pointer: fine) and (hover: hover) {
-    body, a, button, input, select, textarea, [role="button"] {
-        cursor: none !important;
-    }
+
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid var(--color-primary, #3db39e);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.3); /* thin white outline */
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    z-index: 999999; /* above everything */
+    transition: width 0.15s ease-out, height 0.15s ease-out, background-color 0.15s ease-out;
+    opacity: 0; /* invisible until moved */
 }
+
+.custom-cursor.hover {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(61, 179, 158, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .custom-cursor { display: none !important; }
+}
+@media (pointer: coarse), (hover: none) {
+    .custom-cursor { display: none !important; }
+}
+
+==================================
+   Brand Design Tokens & Theme Variables
+   ========================================================================== */
+:root {
+    /* ── Primary & Accent Colors ───────────────────────────────── */
+    --color-primary: #3db39e;           /* Mint Teal */
+    --color-primary-hover: #2a9b88;     /* Darker teal for interactive hover */
+    --color-accent: #3db39e;
+    --color-bg: #f9fafb;                /* Light background */
+    --color-surface: #ffffff;           /* Pure white card surface */
+    --color-text-main: #111827;         /* Heading & dark text */
+    --color-text-muted: #6b7280;        /* Secondary body text */
+    --color-border: #e5e7eb;            /* Light gray border */
+
+    /* ── Brand Logo Colors ─────────────────────────────────────── */
+    --logo-mountain: #ede9d9;          /* Off-white / cream mountain */
+    --logo-road: #32343a;              /* Slate road asphalt */
+    --logo-road-line: #ede9d9;         /* Cream center road divider */
+    --logo-pin: var(--color-primary);  /* Teal GPS location pin */
+}
+
+/* ==========================================================================
+   Abisek Travels Style System & Mobile Responsive Engine
+   ========================================================================== */
+
+/* 1. Global Typography & Sharpness Optimizations */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    touch-action: manipulation;
+}
+
+/* 2. Image Sharpness & Responsive Reset */
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
+}
+
+/* Prevent stretched images */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 3. Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg, #f9fafb);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 999px;
+    border: 2px solid var(--color-bg, #f9fafb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary, #3db39e);
+}
+
+/* 4. Text Selection */
+::selection {
+    background-color: var(--color-primary, #3db39e);
+    color: #ffffff;
+}
+
+/* 5. Custom Cursor (Desktop Only / Fine Pointers Only) */
+
 
 .custom-cursor {
     width: 10px;
