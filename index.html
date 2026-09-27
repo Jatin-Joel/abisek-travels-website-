@@ -44,8 +44,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- GSAP (needed for carousel hero) -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <!-- Tailwind CDN — layout utilities only; colors overridden below -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -238,7 +238,7 @@
 
   setTimeout(finish, 4000);
 })();
-</script>
+</script loading="lazy">
 
     <div id="customCursor" class="custom-cursor" aria-hidden="true"></div>
 
@@ -954,12 +954,12 @@
                 <!-- Image grid -->
                 <div class="hidden lg:grid grid-cols-2 gap-4 h-full">
                     <div class="space-y-4">
-                        <img src="assets/dest_kashmir.png" alt="Kashmir" class="w-full h-48 object-cover rounded-2xl shadow-sm">
-                        <img src="assets/dest_dharamshala.png" alt="Himachal Pradesh" class="w-full h-64 object-cover rounded-2xl shadow-sm">
+                        <img src="assets/dest_kashmir.png" alt="Kashmir" class="w-full h-48 object-cover rounded-2xl shadow-sm" loading="lazy">
+                        <img src="assets/dest_dharamshala.png" alt="Himachal Pradesh" class="w-full h-64 object-cover rounded-2xl shadow-sm" loading="lazy">
                     </div>
                     <div class="space-y-4 pt-12">
-                        <img src="assets/dest_leh_ladakh.png" alt="Leh-Ladakh" class="w-full h-64 object-cover rounded-2xl shadow-sm">
-                        <img src="assets/dest_nainital.png" alt="Uttarakhand" class="w-full h-48 object-cover rounded-2xl shadow-sm">
+                        <img src="assets/dest_leh_ladakh.png" alt="Leh-Ladakh" class="w-full h-64 object-cover rounded-2xl shadow-sm" loading="lazy">
+                        <img src="assets/dest_nainital.png" alt="Uttarakhand" class="w-full h-48 object-cover rounded-2xl shadow-sm" loading="lazy">
                     </div>
                 </div>
             </div>

@@ -1,3 +1,6 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 /* ==========================================================================
    Journey Hero — 3D Scroll-Driven Scene Styles
    Scope: .journey-section and all #journey* / .journey-* elements only.
@@ -25,7 +28,7 @@
 .journey-sticky {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 100dvh;
   height: 100dvh;
   width: 100%;
   overflow: hidden;

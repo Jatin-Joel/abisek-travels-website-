@@ -9,10 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
     
     if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', (e) => {
+        const toggleMenu = (e) => {
+            if (e.type === 'touchstart') e.preventDefault(); // Prevent double-firing or delay
             e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
-        });
+        };
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileMenuBtn.addEventListener('touchstart', toggleMenu, { passive: false });
         
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
@@ -88,25 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     const heroBg = document.getElementById('heroBg');
 
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        
-        // Navbar scrolled state
-        if (navbar) {
-            if (scrollY > 30) {
-                navbar.classList.add('scrolled');
-                navbar.classList.remove('py-4', 'sm:py-6');
-                navbar.classList.add('py-3');
-            } else {
-                navbar.classList.remove('scrolled');
-                navbar.classList.remove('py-3');
-                navbar.classList.add('py-4', 'sm:py-6');
-            }
-        }
-
-        // Hero parallax
-        if (heroBg && window.innerWidth >= 768) {
-            heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                
+                // Hero parallax
+                if (heroBg && window.innerWidth >= 768) {
+                    heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
+                }
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
     }, { passive: true });
 
@@ -291,16 +288,4 @@ document.addEventListener('DOMContentLoaded', () => {
         onScroll(); // initial check
     }
 
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        const mLinks = mobileMenu.querySelectorAll('a.mobile-nav-link');
-        mLinks.forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') mobileMenu.classList.add('hidden');
-        });
-    }
 });

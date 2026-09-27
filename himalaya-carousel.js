@@ -355,9 +355,18 @@
     if (isAnimating && !immediate && !fromScroll) return;
     if (!immediate && !fromScroll) isAnimating = true;
 
+    // UPDATE SCROLL POSITION to sync Native Scroll with Carousel State
+    if (!fromScroll && window.journeyST) {
+      // Calculate the center of the scroll range for this index
+      const targetProgress = (newIndex + 0.5) / TOTAL;
+      const targetY = window.journeyST.start + (window.journeyST.end - window.journeyST.start) * targetProgress;
+      window.scrollTo({ top: targetY, behavior: 'auto' });
+    }
+
     activeIndex = newIndex;
     updateCounter();
     updateHUD();
+    updateIndicators();
     
     // Optional Micro-Animation on tagline transition
     if (!immediate) {
@@ -473,6 +482,19 @@
     label.style.opacity = '1';
   }
 
+  function updateIndicators() {
+    const dots = document.querySelectorAll('.indicator-dot');
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+        dot.setAttribute('aria-selected', 'true');
+      } else {
+        dot.classList.remove('active');
+        dot.setAttribute('aria-selected', 'false');
+      }
+    });
+  }
+
   /* ═══════════════════════════════════════════════════════════════════════
      7. SCROLL-TRIGGER BINDING
   ════════════════════════════════════════════════════════════════════════ */
@@ -495,7 +517,7 @@
     const scrollCue = document.getElementById('journeyScrollCue');
     let scrollCueHidden = false;
 
-    ScrollTrigger.create({
+    window.journeyST = ScrollTrigger.create({
       trigger:    section,
       start:      'top top',
       end:        'bottom bottom',
@@ -555,6 +577,13 @@
 
     btnNext.addEventListener('click', () => {
       goToDestination(activeIndex + 1);
+    });
+
+    const dots = document.querySelectorAll('.indicator-dot');
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToDestination(index);
+      });
     });
 
     // Keyboard navigation
