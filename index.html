@@ -36,7 +36,7 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Hero image preload -->
-    <link rel="preload" as="image" href="assets/hero-fallback.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero_bg.webp" type="image/webp" fetchpriority="high">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,7 +168,7 @@
   }
 
   var assets = 0;
-  var totalAssets = 5; 
+  var totalAssets = 3; 
   function checkDone() {
       assets++;
       update((assets / totalAssets) * 100);
@@ -191,8 +191,6 @@
               document.body.style.overflow = '';
               p.remove();
               clearInterval(gsapInterval);
-              clearInterval(cardInterval);
-              if(window.gsap && window.gsap.globalTimeline) window.gsap.globalTimeline.play();
           }, 300);
       }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250);
   }
@@ -201,16 +199,7 @@
   if(document.readyState === 'complete') { checkDone(); } else { window.addEventListener('load', checkDone); }
 
   window.addEventListener('DOMContentLoaded', function() {
-      var vid = document.getElementById('himalayaBgA');
-      if(vid && window.__deviceTier !== 'low') {
-          if(vid.readyState >= 3) { checkDone(); }
-          else {
-              vid.addEventListener('canplaythrough', checkDone, {once:true});
-              vid.addEventListener('error', checkDone, {once:true});
-          }
-      } else { checkDone(); }
-
-      var img = document.getElementById('heroFallback');
+      var img = document.getElementById('heroBgImg');
       if(img) {
           if(img.complete) { checkDone(); }
           else {
@@ -220,25 +209,9 @@
       } else { checkDone(); }
   });
 
-  var cardsDone = false;
-  var cardInterval = setInterval(function() {
-      if(cardsDone) return;
-      var imgs = document.querySelectorAll('.dest-card__img');
-      if(imgs.length === 0) return; 
-      
-      var allLoaded = true;
-      for(var i=0; i<imgs.length; i++) {
-          if(!imgs[i].complete) { allLoaded = false; break; }
-      }
-      if(allLoaded) {
-          cardsDone = true;
-          checkDone();
-      }
-  }, 50);
-
-  setTimeout(finish, 4000);
+  setTimeout(finish, 2000);
 })();
-</script loading="lazy">
+</script>
 
     <div id="customCursor" class="custom-cursor" aria-hidden="true"></div>
 
@@ -289,109 +262,42 @@
     </nav>
 
     <!-- ================================================================
-         1. HERO — mp4 video + fallback image + CSS-3D destination cards
+         1. HERO — Optimized Static Hero (Destination Photo WebP)
     ================================================================ -->
-    <section id="home" class="journey-section" aria-label="Destination carousel">
-        <div class="journey-sticky">
+    <section id="home" class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-gray-950 pt-24 pb-16">
+        <!-- Background destination image -->
+        <div class="absolute inset-0 z-0">
+            <img id="heroBgImg" src="assets/hero_bg.webp" alt="Scenic mountain route — Abisek Travels"
+                 width="1920" height="1080" fetchpriority="high" decoding="sync"
+                 class="w-full h-full object-cover object-center">
+            <!-- Dark gradient overlays (top scrim for navbar, bottom dark fade) -->
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-black/40"></div>
+        </div>
 
-            <!-- Background: fallback image + crossfading video -->
-            <div id="himalayaBgContainer" aria-hidden="true">
-                <img id="heroFallback" class="himalaya-fallback" src="assets/hero-fallback.webp" alt="" fetchpriority="high" decoding="sync">
-                <!-- Video only on non-mobile — device-tier.js sets body[data-tier] -->
-                <video id="himalayaBgA" class="himalaya-video" autoplay muted loop playsinline preload="auto"
-                       poster="assets/hero-fallback.webp" src="assets/upscaled-video.mp4"></video>
-                <video id="himalayaBgB" class="himalaya-video" muted playsinline preload="auto"
-                       poster="assets/hero-fallback.webp" style="opacity:0;"></video>
+        <!-- Hero Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-tight max-w-4xl drop-shadow-md">
+                Abisek Travels: Reliable Cabs for Every Journey
+            </h1>
+            <p class="mt-4 sm:mt-6 text-base sm:text-xl text-gray-200 max-w-2xl font-sans leading-relaxed drop-shadow">
+                Local rides, airport transfers, and outstation trips from any location.
+            </p>
+
+            <!-- Buttons -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+                <a href="booking.html" class="hero-primary-btn">
+                    <span>Book Your Ride</span>
+                    <svg class="arrow-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://wa.me/917814442326" target="_blank" class="hero-ghost-btn">
+                    WhatsApp us
+                </a>
             </div>
 
-            <!-- Inline: bind fallback→video fade immediately so it fires even if carousel JS is slow -->
-            <script>
-                (function() {
-                    var v = document.getElementById('himalayaBgA');
-                    var f = document.getElementById('heroFallback');
-                    if (!v || !f) return;
-                    if (window.__deviceTier === 'low') {
-                        v.removeAttribute('src'); v.load();
-                        var vb = document.getElementById('himalayaBgB');
-                        if (vb) { vb.removeAttribute('src'); vb.load(); }
-                        return;
-                    }
-                    function onPlaying() {
-                        v.removeEventListener('playing', onPlaying);
-                        f.style.transition = 'opacity 0.5s ease-out';
-                        f.style.opacity = '0';
-                        setTimeout(function() { f.style.display = 'none'; }, 500);
-                    }
-                    if (!v.paused && v.currentTime > 0) { onPlaying(); }
-                    else { v.addEventListener('playing', onPlaying, { once: true }); }
-                    v.addEventListener('error', function() { });
-                })();
-            </script>
-
-            <!-- Dark overlays -->
-            <div class="himalaya-overlay" aria-hidden="true"></div>
-            <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(circle at center,transparent 40%,rgba(2,5,10,0.5) 150%);" aria-hidden="true"></div>
-
-            <!-- NORMAL FLOW CONTENT CONTAINER -->
-            <!-- We add pt-[104px] (about 26rem/6.5rem) to clear navbar (80px) + 24px clearance -->
-            <div class="relative z-10 w-full h-full flex flex-col justify-between items-center" style="padding-top: 64px; padding-bottom: 24px;">
-                
-                <!-- Hero copy (SEO only) -->
-                <div class="sr-only">
-                    <h1>Abisek Travels: Reliable Cabs for Every Journey</h1>
-                    <p>Local rides, airport transfers, and outstation trips from any location.</p>
-                </div>
-
-                <!-- CSS-3D destination cards (built by himalaya-carousel.js) -->
-                <!-- The carousel container is now a flex child. The absolute cards will center within it. -->
-                <div id="destCarousel" class="relative w-full flex-grow flex items-center justify-center" role="region" aria-label="Destination carousel" aria-live="polite" style="min-height: 300px;"></div>
-
-                <!-- CTA & Indicators -->
-                <div class="flex flex-col items-center justify-center z-20 flex-shrink-0 mt-4 sm:mt-6 w-full max-w-[320px] sm:max-w-none px-4 sm:px-0">
-                    
-                    <!-- Carousel Indicators -->
-                    <div id="carouselIndicators" class="flex gap-2 justify-center mb-6" role="tablist">
-                        <button class="indicator-dot active" role="tab" aria-selected="true" aria-label="Destination 1"></button>
-                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 2"></button>
-                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 3"></button>
-                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 4"></button>
-                        <button class="indicator-dot" role="tab" aria-selected="false" aria-label="Destination 5"></button>
-                    </div>
-
-                    <!-- Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center pointer-events-auto">
-                        <a href="booking.html" class="hero-primary-btn">
-                            <span>Book Your Ride</span>
-                            <svg class="arrow-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            <div class="shine-sweep"></div>
-                        </a>
-                        <a href="https://wa.me/917814442326" target="_blank" class="hero-ghost-btn">
-                            WhatsApp us
-                        </a>
-                    </div>
-                    
-                    <!-- Subtext -->
-                    <p class="mt-4 text-[13px] text-white/50 font-sans tracking-wide">Fixed fares · 24/7 service · 2000+ trips</p>
-                    
-                    <!-- Hidden counter for JS compatibility -->
-                    <div id="carouselCounter" class="hidden">01 / 05</div>
-                </div>
-
-                <!-- Carousel controls (left/right arrows) -->
-                <!-- We place them absolute within the flow container to span the edges -->
-                <div class="absolute inset-0 pointer-events-none z-30 flex items-center justify-between px-2 sm:px-6">
-                    <button id="carouselPrev" class="carousel-btn" type="button" aria-label="Previous destination"
-                            style="pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;transition:opacity 0.2s;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
-                    <button id="carouselNext" class="carousel-btn" type="button" aria-label="Next destination"
-                            style="pointer-events:auto;background:none;border:none;color:white;opacity:0.6;cursor:pointer;padding:10px;min-width:44px;min-height:44px;transition:opacity 0.2s;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
-                </div>
-
-            </div>
-            <p class="text-center text-xs text-gray-400 font-sans mt-8">*Fares shown are indicative and depend on your pickup location. Get an exact fare on the booking page.</p>
+            <!-- Subtext -->
+            <p class="mt-6 text-xs sm:text-sm text-white/70 font-sans tracking-wide">
+                Fixed fares · 24/7 service · 2000+ trips
+            </p>
         </div>
     </section>
 
@@ -1134,8 +1040,6 @@
     <script src="script.js"></script>
     <!-- Site config & feature flags (runs after DOM ready) -->
     <script src="js/site-config.js"></script>
-    <!-- Carousel (video hero + 3D destination cards) -->
-    <script src="himalaya-carousel.js" defer></script>
 
 </body>
 </html>
