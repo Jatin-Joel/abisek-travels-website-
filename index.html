@@ -331,7 +331,7 @@
                     </div>
                 </div>
                 <div class="relative fade-in-right">
-                    <div class="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] bg-white rounded-2xl overflow-hidden relative group shadow-2xl">
+                    <div class="aspect-[4/5] sm:aspect-[4/3] lg:aspect-[4/5] bg-white rounded-2xl overflow-hidden relative group shadow-md">
                         <div class="absolute inset-0 bg-gradient-to-tr from-brand-teal/20 to-transparent z-20 pointer-events-none"></div>
                         <div class="absolute inset-0 bg-black/10 group-hover:bg-black/40 transition-colors duration-500 z-10 pointer-events-none"></div>
                         <img src="assets/about_clean.webp" alt="Driver's hand on steering wheel — Abisek Travels"
@@ -386,7 +386,7 @@
                 </div>
                 <!-- Photo -->
                 <div class="order-1 lg:order-2 relative fade-in-right">
-                    <div class="relative h-[340px] xs:h-[400px] sm:h-[450px] md:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 shadow-2xl group hover:border-brand-teal/30 transition-all duration-500">
+                    <div class="relative h-[340px] xs:h-[400px] sm:h-[450px] md:h-[480px] rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200 shadow-md group hover:border-brand-teal/30 transition-all duration-500">
                         <img src="assets/driver.webp"
                              alt="Abisek Atwal — Professional Driver, Abisek Travels"
                              width="682" height="1024" loading="lazy" decoding="async"
@@ -406,7 +406,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-teal/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
                 </div>
             </div>
         </div>
@@ -780,7 +779,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Form -->
-                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-xl relative z-10 font-poppins">
+                <div class="bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-md relative z-10 font-poppins">
                     <h3 class="text-2xl sm:text-3xl font-display font-bold text-gray-900 mb-2">Ready to book?<br>Let's plan your trip.</h3>
                     <p class="text-gray-500 text-sm font-sans mb-8">Fill in the form below and we'll send you a quote within minutes via WhatsApp.</p>
 
@@ -847,7 +846,7 @@
                         </div>
 
                         <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                            <button type="submit" class="flex-1 bg-brand-teal text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-brand-teal/30 hover:bg-brand-teal-hover hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 min-h-[44px]">
+                            <button type="submit" class="flex-1 bg-brand-teal text-white font-bold py-3.5 px-8 rounded-full shadow-sm hover:bg-brand-teal-hover hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 min-h-[44px]">
                                 <i data-lucide="send" class="w-4 h-4"></i> Send via WhatsApp
                             </button>
                             <a href="booking.html" class="flex-1 border-2 border-brand-teal text-brand-teal font-bold py-3.5 px-8 rounded-full hover:bg-brand-teal hover:text-white transition-all duration-300 flex items-center justify-center gap-2 min-h-[44px] text-sm">
@@ -1016,16 +1015,15 @@
     ================================================================ -->
     <!-- Mobile Book Now pill (left) -->
     <a href="booking.html" id="mobileBookNow"
-       class="md:hidden fixed bottom-6 left-4 z-50 bg-brand-teal text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-full shadow-2xl shadow-brand-teal/30 flex items-center gap-2 hover:bg-brand-teal-hover transition-all duration-300 active:scale-95 min-h-[44px]">
+       class="md:hidden fixed bottom-6 left-4 z-50 bg-brand-teal text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-full shadow-md flex items-center gap-2 hover:bg-brand-teal-hover transition-all duration-300 active:scale-95 min-h-[44px]">
         <i data-lucide="calendar-check" class="w-4 h-4"></i>
         Book Now
     </a>
     <!-- WhatsApp button (right, always visible) -->
     <a href="https://wa.me/917814442326?text=Hi%2C%20I%27d%20like%20to%20book%20a%20cab%20with%20Abisek%20Travels"
        id="floatingWhatsapp"
-       class="fixed bottom-6 right-4 sm:bottom-8 sm:right-6 bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.6)] z-50 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+       class="fixed bottom-6 right-4 sm:bottom-8 sm:right-6 bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-md hover:shadow-lg z-50 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
        aria-label="Chat on WhatsApp" style="min-width:44px;min-height:44px;">
-        <div class="absolute inset-0 bg-[#25D366] rounded-full opacity-40 animate-ping"></div>
         <svg viewBox="0 0 24 24" class="w-6 h-6 sm:w-7 sm:h-7 relative z-10 fill-current" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
         </svg>
