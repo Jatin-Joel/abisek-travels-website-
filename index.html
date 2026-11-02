@@ -43,10 +43,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- GSAP (needed for carousel hero) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
     <!-- Tailwind CDN — layout utilities only; colors overridden below -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -74,10 +70,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="journey.css">
 
-    <!-- Device tier detection (runs sync before GSAP carousel) -->
-    <script src="device-tier.js"></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -147,14 +140,6 @@
   }
   
   document.body.style.overflow = 'hidden';
-  
-  var gsapPaused = false;
-  var gsapInterval = setInterval(function() {
-      if (window.gsap && window.gsap.globalTimeline && !gsapPaused) {
-          window.gsap.globalTimeline.pause();
-          gsapPaused = true;
-      }
-  }, 10);
 
   var fill = document.getElementById('preloaderFill');
   var progress = 0;
@@ -190,7 +175,6 @@
           setTimeout(function() {
               document.body.style.overflow = '';
               p.remove();
-              clearInterval(gsapInterval);
           }, 300);
       }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250);
   }
@@ -1059,11 +1043,11 @@
          SCRIPTS — order matters
     ================================================================ -->
     <!-- Lucide icon bundle (replaces data-lucide="" attributes) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
     <!-- Site JS (mobile menu, FAQ accordion, scroll animations, counters, cursor) -->
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
     <!-- Site config & feature flags (runs after DOM ready) -->
-    <script src="js/site-config.js"></script>
+    <script defer src="js/site-config.js"></script>
 
 </body>
 </html>
