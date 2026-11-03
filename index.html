@@ -114,7 +114,19 @@
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     background-color: var(--color-surface-ground, #192225);
     color: var(--color-text-primary, #F7F5F0);
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
+    animation: preloader-auto-dismiss 2.5s ease-in forwards;
+  }
+  #preloader.fade-out, #preloader.preloader-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    display: none !important;
+    visibility: hidden !important;
+  }
+  @keyframes preloader-auto-dismiss {
+    0%, 85% { opacity: 1; pointer-events: auto; }
+    95% { opacity: 0; pointer-events: none; }
+    100% { opacity: 0; pointer-events: none; display: none !important; visibility: hidden !important; }
   }
   @media (prefers-color-scheme: light) {
     #preloader { background-color: #ffffff; color: #111827; }
@@ -146,12 +158,23 @@
 </div>
 <script>
 (function(){
-  if (sessionStorage.getItem('abisek-loaded')) {
+  function dismiss() {
     var p = document.getElementById('preloader');
-    if(p) {
-      p.style.opacity = '0';
-      setTimeout(function(){ p.remove(); }, 150);
-    }
+    if (!p) return;
+    p.style.pointerEvents = 'none';
+    p.style.opacity = '0';
+    p.classList.add('fade-out');
+    setTimeout(function() {
+      if (p) {
+        p.style.display = 'none';
+        p.remove();
+      }
+      document.body.style.overflow = '';
+    }, 200);
+  }
+
+  if (sessionStorage.getItem('abisek-loaded')) {
+    dismiss();
     return;
   }
   
@@ -161,10 +184,12 @@
   var progress = 0;
   function update(val) {
       if(val > progress) progress = val;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          fill.style.transform = 'scaleX(1)';
-      } else {
-          fill.style.transform = 'scaleX(' + (progress/100) + ')';
+      if (fill) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            fill.style.transform = 'scaleX(1)';
+        } else {
+            fill.style.transform = 'scaleX(' + (progress/100) + ')';
+        }
       }
   }
 
@@ -181,22 +206,12 @@
       if(finished) return;
       finished = true;
       update(100);
-      sessionStorage.setItem('abisek-loaded', 'true');
-      
-      var p = document.getElementById('preloader');
-      if(!p) return;
-      
-      setTimeout(function() {
-          p.style.opacity = '0';
-          setTimeout(function() {
-              document.body.style.overflow = '';
-              p.remove();
-          }, 300);
-      }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250);
+      try { sessionStorage.setItem('abisek-loaded', 'true'); } catch(e){}
+      setTimeout(dismiss, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200);
   }
 
-  if(document.fonts && document.fonts.ready) { document.fonts.ready.then(checkDone); } else { checkDone(); }
-  if(document.readyState === 'complete') { checkDone(); } else { window.addEventListener('load', checkDone); }
+  if(document.fonts && document.fonts.ready) { document.fonts.ready.then(checkDone).catch(checkDone); } else { checkDone(); }
+  if(document.readyState === 'complete') { checkDone(); } else { window.addEventListener('load', checkDone, {once:true}); }
 
   window.addEventListener('DOMContentLoaded', function() {
       var img = document.getElementById('heroBgImg');
@@ -209,7 +224,8 @@
       } else { checkDone(); }
   });
 
-  setTimeout(finish, 2000);
+  // Hard timeout ensures preloader never hangs if an asset fails or stalls
+  setTimeout(finish, 1200);
 })();
 </script>
 
@@ -1042,7 +1058,7 @@
         </a>
 
         <!-- 3. Book Now -->
-        <a href="#booking"
+        <a href="booking.html"
            class="flex-1 flex items-center justify-center gap-1.5 py-3 px-2 rounded-xl bg-brand-teal hover:bg-brand-teal-hover text-white font-semibold text-xs active:scale-95 transition-all min-h-[48px]"
            aria-label="Book Cab Now">
             <i data-lucide="calendar-check" class="w-4 h-4 shrink-0"></i>
