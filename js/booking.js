@@ -132,21 +132,61 @@ document.addEventListener('DOMContentLoaded', function () {
       ? `${dropVal} (${otherDropVal})`
       : dropVal;
 
+    // Readable labels for WhatsApp output
+    const vehicleVal = vehicleField?.value || '';
+    const vehicleLabels = {
+      'any':              'No preference',
+      'hatchback-sedan':  'Hatchback / Sedan',
+      'suv-mpv':          'SUV / MPV (7-seater)',
+      'premium-comfort':  'Premium comfort',
+      'larger-groups':    'Larger groups',
+      'ertiga':           'SUV / MPV (7-seater)',
+      'innova':           'Premium comfort',
+    };
+    const vehicleLabel = vehicleLabels[vehicleVal] || (
+      vehicleField && vehicleField.selectedIndex >= 0 && vehicleField.options[vehicleField.selectedIndex]
+        ? vehicleField.options[vehicleField.selectedIndex].text.trim()
+        : vehicleVal
+    );
+
+    const tripVal = tripField?.value || '';
+    const tripLabels = {
+      'roundtrip': 'Round trip',
+      'oneway':    'One way',
+      'local':     'Local City Ride',
+      'airport':   'Airport / Station Transfer',
+      'multiday':  'Multi-Day Tour',
+    };
+    const tripTypeLabel = tripLabels[tripVal] || (
+      tripField && tripField.selectedIndex >= 0 && tripField.options[tripField.selectedIndex]
+        ? tripField.options[tripField.selectedIndex].text.trim()
+        : tripVal
+    );
+
+    const luggageField = document.getElementById('luggage');
+    const luggageVal = luggageField?.value || '';
+    const luggageLabel = (luggageField && luggageField.selectedIndex >= 0 && luggageField.options[luggageField.selectedIndex])
+      ? luggageField.options[luggageField.selectedIndex].text.trim()
+      : (luggageVal ? luggageVal.charAt(0).toUpperCase() + luggageVal.slice(1) : '');
+
     const data = {
-      bookingRef: bookingRef,
-      name:       document.getElementById('name')?.value.trim() || '',
-      phone:      document.getElementById('phone')?.value.trim() || '',
-      pickup:     effectivePickup,
-      drop:       effectiveDrop,
-      otherPickup: otherPickupVal,
-      otherDrop:  otherDropVal,
-      date:       document.getElementById('travelDate')?.value || '',
-      time:       document.getElementById('travelTime')?.value || '',
-      passengers: document.getElementById('passengers')?.value || '',
-      luggage:    document.getElementById('luggage')?.value || '',
-      vehicle:    document.getElementById('vehicle')?.value || '',
-      tripType:   document.getElementById('tripType')?.value || '',
-      notes:      document.getElementById('notes')?.value.trim() || '',
+      bookingRef:    bookingRef,
+      name:          document.getElementById('name')?.value.trim() || '',
+      phone:         document.getElementById('phone')?.value.trim() || '',
+      pickup:        effectivePickup,
+      drop:          effectiveDrop,
+      otherPickup:   otherPickupVal,
+      otherDrop:     otherDropVal,
+      date:          document.getElementById('travelDate')?.value || '',
+      time:          document.getElementById('travelTime')?.value || '',
+      passengers:    document.getElementById('passengers')?.value || '',
+      luggage:       luggageVal,
+      luggageLabel:  luggageLabel,
+      vehicle:       vehicleVal,
+      vehicleLabel:  vehicleLabel,
+      tripType:      tripVal,
+      tripTypeLabel: tripTypeLabel,
+      notes:         document.getElementById('notes')?.value.trim() || '',
     };
 
     // 1. Try Supabase (stub — replace with real SDK call)
@@ -173,13 +213,13 @@ document.addEventListener('DOMContentLoaded', function () {
       '',
       'Name: ' + d.name,
       'Phone: ' + d.phone,
-      'Trip type: ' + d.tripType,
+      'Trip type: ' + (d.tripTypeLabel || d.tripType),
       'Pickup: ' + d.pickup,
       'Drop: ' + d.drop,
       'Date: ' + d.date + (d.time ? ' at ' + d.time : ''),
       'Passengers: ' + d.passengers,
-      'Luggage: ' + d.luggage,
-      'Vehicle preference: ' + d.vehicle,
+      'Luggage: ' + (d.luggageLabel || d.luggage),
+      'Vehicle preference: ' + (d.vehicleLabel || d.vehicle),
       d.notes ? 'Notes: ' + d.notes : '',
     ].filter(Boolean).join('\n');
 
