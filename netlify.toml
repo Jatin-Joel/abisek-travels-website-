@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "https://www.abisektravels.in/*"
+  to = "https://abisektravels.in/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.abisektravels.in/*"
+  to = "https://abisektravels.in/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://abisektravels.in/*"
+  to = "https://abisektravels.in/:splat"
+  status = 301
+  force = true

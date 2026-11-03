@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.abisektravels.in"
+        }
+      ],
+      "destination": "https://abisektravels.in/$1",
+      "permanent": true
+    }
+  ]
+}

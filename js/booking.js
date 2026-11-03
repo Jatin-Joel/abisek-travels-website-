@@ -23,8 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
     'pune':            'Pune',
   };
   const vehicleMap = {
-    'innova': 'Toyota Innova Crysta',
-    'ertiga': 'Maruti Suzuki Ertiga',
+    'ertiga':           'suv-mpv',
+    'innova':           'premium-comfort',
+    'hatchback-sedan':  'hatchback-sedan',
+    'suv-mpv':          'suv-mpv',
+    'premium-comfort':  'premium-comfort',
+    'larger-groups':    'larger-groups',
   };
 
   const dropField    = document.getElementById('drop');
@@ -32,24 +36,25 @@ document.addEventListener('DOMContentLoaded', function () {
   const tripField    = document.getElementById('tripType');
 
   if (dropField && params.get('route')) {
-    const desiredVal = routeMap[params.get('route')] || params.get('route');
-    dropField.value = desiredVal;
-    if (!dropField.value) {
-      Array.from(dropField.options).forEach(function (o) {
-        if (o.text.toLowerCase().includes(desiredVal.toLowerCase())) {
-          o.selected = true;
-        }
-      });
+    const rawRoute = params.get('route');
+    const desiredVal = routeMap[rawRoute];
+    if (desiredVal) {
+      dropField.value = desiredVal;
+      if (!dropField.value) {
+        Array.from(dropField.options).forEach(function (o) {
+          if (o.value === desiredVal || o.text.toLowerCase().includes(desiredVal.toLowerCase())) {
+            o.selected = true;
+          }
+        });
+      }
     }
   }
   if (vehicleField && params.get('vehicle')) {
-    vehicleField.value = vehicleMap[params.get('vehicle')] || params.get('vehicle');
-    // Set the select option
-    Array.from(vehicleField.options).forEach(function (o) {
-      if (o.text.toLowerCase().includes(vehicleField.value.toLowerCase())) {
-        o.selected = true;
-      }
-    });
+    const rawParam = params.get('vehicle');
+    const matchedVal = vehicleMap[rawParam];
+    if (matchedVal) {
+      vehicleField.value = matchedVal;
+    }
   }
   if (tripField && params.get('service')) {
     const svcMap = {
@@ -67,8 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const pickupField = document.getElementById('pickup');
   const otherPickupWrapper = document.getElementById('otherPickupWrapper');
-  const fareEstimateText = document.getElementById('fareEstimateText');
-  const fareBox = document.getElementById('fareEstimateBox');
 
   if (pickupField && otherPickupWrapper) {
       pickupField.addEventListener('change', function() {
@@ -79,31 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
               otherPickupWrapper.classList.add('hidden');
               document.getElementById('otherPickup').required = false;
           }
-          updateFareDisplay();
       });
   }
-  
-  if (dropField) dropField.addEventListener('change', updateFareDisplay);
-
-  function updateFareDisplay() {
-      if (!fareBox) return;
-      
-      const pickupVal = pickupField ? pickupField.value : '';
-      const dropVal = dropField ? dropField.value : '';
-      
-      fareBox.style.display = ''; // Always show now because we use it for status
-      
-      if (pickupVal === 'Other' || (pickupVal && pickupVal !== 'Pathankot')) {
-          fareEstimateText.textContent = 'Custom quote via WhatsApp';
-      } else if (pickupVal && dropVal) {
-          fareEstimateText.textContent = 'Get a custom quote';
-      } else {
-          fareEstimateText.textContent = 'Calculating…';
-      }
-  }
-  
-  // Initialize display
-  updateFareDisplay();
 
   // ── Form submit ────────────────────────────────────────────────────────────
   form.addEventListener('submit', function (e) {

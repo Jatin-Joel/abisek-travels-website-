@@ -128,27 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(setupHover, 2000);
     }
 
-    // 4. Parallax Hero Background & Navbar Scroll styling (Passive for performance)
-    const navbar = document.getElementById('navbar');
-    const heroBg = document.getElementById('heroBg');
-
-    let scrollTicking = false;
-    window.addEventListener('scroll', () => {
-        if (!scrollTicking) {
-            window.requestAnimationFrame(() => {
-                const scrollY = window.scrollY;
-                
-                // Hero parallax
-                if (heroBg && window.innerWidth >= 768) {
-                    heroBg.style.transform = `translate3d(0, ${scrollY * 0.3}px, 0)`;
-                }
-                scrollTicking = false;
-            });
-            scrollTicking = true;
-        }
-    }, { passive: true });
-
-    // 5. Scroll Reveal Intersection Observer
+    // 4. Scroll Reveal Intersection Observer (Transform & Opacity only)
     const scrollRevealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -175,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Stats Count-Up Animation (requestAnimationFrame + cubic ease-out, fires once)
+    // 5. Stats Count-Up Animation (requestAnimationFrame + cubic ease-out, fires once; respects prefers-reduced-motion)
     const counterNumbers = document.querySelectorAll('.counter-number');
 
     const counterObserver = new IntersectionObserver((entries, observer) => {
@@ -184,7 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.dataset.counted = 'true';
                 observer.unobserve(entry.target);
                 const target = parseInt(entry.target.getAttribute('data-target'), 10);
-                animateCounter(entry.target, target);
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    entry.target.textContent = target;
+                } else {
+                    animateCounter(entry.target, target);
+                }
             }
         });
     }, { threshold: 0.25 });
