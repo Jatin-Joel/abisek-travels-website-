@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
     'chandigarh':      'Chandigarh',
     'delhi':           'Delhi',
     'leh-ladakh':      'Leh',
-    'uttarakhand':     'Other',
-    'pune':            'Pune',
+    'uttarakhand':     'All India / Other city',
+    'all-india':       'All India / Other city',
+    'pune':            'All India / Other city',
   };
   const vehicleMap = {
     'ertiga':           'suv-mpv',
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (pickupField && otherPickupWrapper) {
       pickupField.addEventListener('change', function() {
-          if (pickupField.value === 'Other') {
+          if (pickupField.value === 'All India / Other city' || pickupField.value === 'Other') {
               otherPickupWrapper.classList.remove('hidden');
               document.getElementById('otherPickup').required = true;
           } else {
