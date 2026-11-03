@@ -26,7 +26,8 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
     // Convert URL path to local file path
-    let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+    const reqPath = req.url.split('?')[0];
+    let filePath = path.join(__dirname, reqPath === '/' ? 'index.html' : reqPath);
     
     // Resolve extension
     const ext = path.extname(filePath).toLowerCase();
