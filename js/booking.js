@@ -73,30 +73,73 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const pickupField = document.getElementById('pickup');
   const otherPickupWrapper = document.getElementById('otherPickupWrapper');
+  const otherPickupInput = document.getElementById('otherPickup');
 
-  if (pickupField && otherPickupWrapper) {
-      pickupField.addEventListener('change', function() {
-          if (pickupField.value === 'All India / Other city' || pickupField.value === 'Other') {
-              otherPickupWrapper.classList.remove('hidden');
-              document.getElementById('otherPickup').required = true;
-          } else {
-              otherPickupWrapper.classList.add('hidden');
-              document.getElementById('otherPickup').required = false;
-          }
-      });
+  function syncPickupOther() {
+    if (!pickupField || !otherPickupWrapper || !otherPickupInput) return;
+    if (pickupField.value === 'All India / Other city' || pickupField.value === 'Other') {
+      otherPickupWrapper.classList.remove('hidden');
+      otherPickupInput.required = true;
+    } else {
+      otherPickupWrapper.classList.add('hidden');
+      otherPickupInput.required = false;
+      otherPickupInput.value = '';
+    }
   }
+
+  if (pickupField) {
+    pickupField.addEventListener('change', syncPickupOther);
+  }
+
+  const otherDropWrapper = document.getElementById('otherDropWrapper');
+  const otherDropInput = document.getElementById('otherDrop');
+
+  function syncDropOther() {
+    if (!dropField || !otherDropWrapper || !otherDropInput) return;
+    if (dropField.value === 'All India / Other city' || dropField.value === 'Other') {
+      otherDropWrapper.classList.remove('hidden');
+      otherDropInput.required = true;
+    } else {
+      otherDropWrapper.classList.add('hidden');
+      otherDropInput.required = false;
+      otherDropInput.value = '';
+    }
+  }
+
+  if (dropField) {
+    dropField.addEventListener('change', syncDropOther);
+  }
+
+  // Initial sync in case query params or defaults selected "All India / Other city"
+  syncPickupOther();
+  syncDropOther();
 
   // ── Form submit ────────────────────────────────────────────────────────────
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     const bookingRef = 'ABK-' + Math.floor(1000 + Math.random() * 9000);
+    const pickupVal = pickupField?.value.trim() || '';
+    const otherPickupVal = otherPickupInput?.value.trim() || '';
+    const dropVal = dropField?.value.trim() || '';
+    const otherDropVal = otherDropInput?.value.trim() || '';
+
+    const effectivePickup = (otherPickupVal && (pickupVal === 'All India / Other city' || pickupVal === 'Other'))
+      ? `${pickupVal} (${otherPickupVal})`
+      : pickupVal;
+
+    const effectiveDrop = (otherDropVal && (dropVal === 'All India / Other city' || dropVal === 'Other'))
+      ? `${dropVal} (${otherDropVal})`
+      : dropVal;
+
     const data = {
       bookingRef: bookingRef,
       name:       document.getElementById('name')?.value.trim() || '',
       phone:      document.getElementById('phone')?.value.trim() || '',
-      pickup:     document.getElementById('pickup')?.value.trim() || '',
-      drop:       document.getElementById('drop')?.value.trim() || '',
+      pickup:     effectivePickup,
+      drop:       effectiveDrop,
+      otherPickup: otherPickupVal,
+      otherDrop:  otherDropVal,
       date:       document.getElementById('travelDate')?.value || '',
       time:       document.getElementById('travelTime')?.value || '',
       passengers: document.getElementById('passengers')?.value || '',
