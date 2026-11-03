@@ -23,8 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
     'pune':            'Pune',
   };
   const vehicleMap = {
-    'innova': 'Toyota Innova Crysta',
-    'ertiga': 'Maruti Suzuki Ertiga',
+    'innova':           'innova',
+    'ertiga':           'ertiga',
+    'hatchback-sedan':  'hatchback-sedan',
+    'suv-mpv':          'suv-mpv',
+    'premium-comfort':  'premium-comfort',
+    'larger-groups':    'larger-groups',
   };
 
   const dropField    = document.getElementById('drop');
@@ -43,13 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
   if (vehicleField && params.get('vehicle')) {
-    vehicleField.value = vehicleMap[params.get('vehicle')] || params.get('vehicle');
-    // Set the select option
-    Array.from(vehicleField.options).forEach(function (o) {
-      if (o.text.toLowerCase().includes(vehicleField.value.toLowerCase())) {
-        o.selected = true;
-      }
-    });
+    const rawParam = params.get('vehicle');
+    const matchedVal = vehicleMap[rawParam];
+    if (matchedVal) {
+      vehicleField.value = matchedVal;
+    }
   }
   if (tripField && params.get('service')) {
     const svcMap = {

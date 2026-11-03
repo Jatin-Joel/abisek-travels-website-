@@ -272,70 +272,115 @@
     
         <!-- FLEET SECTION -->
         <section id="fleet" class="py-16 sm:py-24 bg-white border-t border-gray-200">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10 sm:mb-14">
                     <h2 class="text-xs sm:text-sm font-bold text-brand-teal tracking-widest uppercase mb-2 font-poppins">Our Vehicles</h2>
-                    <h3 class="text-2xl sm:text-3xl font-display font-bold text-gray-900">The Cars We Drive</h3>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gray-900">A Vehicle for Every Trip</h3>
+                    <p class="text-gray-500 font-sans text-sm sm:text-base max-w-2xl mx-auto mt-3">We work with a range of well-maintained vehicles, so you get the right fit for your group and route.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-poppins">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 font-poppins">
 
-                    <!-- Ertiga -->
-                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                        <img src="assets/ertiga_profile.webp" alt="Maruti Suzuki Ertiga — Abisek Travels cab"
-                             width="800" height="800"
-                             loading="lazy" decoding="async" class="w-full h-56 object-contain bg-gray-50 px-6 pt-6">
-                        <div class="p-6 sm:p-8">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <h2 class="text-xl sm:text-2xl font-display font-bold text-gray-900">Maruti Suzuki Ertiga</h2>
-                                    <p class="text-brand-teal text-sm font-medium mt-1">7-seater · AC · Well-maintained</p>
-                                </div>
-                                <span class="bg-brand-teal/10 text-brand-teal text-xs font-bold px-3 py-1 rounded-full">Available</span>
+                    <!-- 1. Hatchback / Sedan -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <div class="p-6 bg-gray-50/70 border-b border-gray-100 flex items-center justify-center h-40">
+                            <div class="w-16 h-16 rounded-2xl bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                                <i data-lucide="car" class="w-8 h-8"></i>
                             </div>
-                            <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed mb-6">
-                                Comfortable and fuel-efficient, the Ertiga is our workhorse for most trips — Pathankot local rides, airport and station drops, and outstation travel up to 6 passengers.
-                            </p>
-                            <ul class="space-y-2.5 text-sm font-sans text-gray-600 mb-6">
-                                <li class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-brand-teal shrink-0"></i>Up to 6 passengers (+ driver)</li>
-                                <li class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-brand-teal shrink-0"></i>3–4 large suitcases in boot</li>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="mb-3">
+                                <h3 class="text-xl font-display font-bold text-gray-900">Hatchback / Sedan</h3>
+                                <p class="text-brand-teal text-sm font-medium mt-1">Up to 4 passengers · AC</p>
+                            </div>
+                            <ul class="space-y-2.5 text-sm font-sans text-gray-600 mb-6 flex-1">
+                                <li class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-brand-teal shrink-0"></i>Up to 4 passengers</li>
+                                <li class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-brand-teal shrink-0"></i>2 medium suitcases</li>
                                 <li class="flex items-center gap-2"><i data-lucide="wind" class="w-4 h-4 text-brand-teal shrink-0"></i>Air-conditioned</li>
-                                <li class="flex items-center gap-2"><i data-lucide="bluetooth" class="w-4 h-4 text-brand-teal shrink-0"></i>Bluetooth music, USB charging</li>
-                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-teal shrink-0"></i>Suitable for local, outstation &amp; hill trips</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-teal shrink-0"></i>Ideal for local rides and airport drops</li>
                             </ul>
-                            <a href="booking.html?vehicle=ertiga" class="bg-brand-teal text-white font-bold px-6 py-3 rounded-full hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] inline-flex items-center gap-2">
-                                <i data-lucide="calendar-check" class="w-4 h-4"></i> Book with Ertiga
+                            <a href="booking.html?vehicle=hatchback-sedan" class="w-full bg-brand-teal text-white font-bold py-3 px-4 rounded-xl hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] inline-flex items-center justify-center gap-2 text-center">
+                                <i data-lucide="calendar-check" class="w-4 h-4 shrink-0"></i> Request this vehicle type
                             </a>
                         </div>
                     </div>
 
-                    <!-- Innova -->
-                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                        
-                        <div class="p-6 sm:p-8">
-                            <div class="flex items-start justify-between mb-3">
-                                <div>
-                                    <h2 class="text-xl sm:text-2xl font-display font-bold text-gray-900">Toyota Innova Crysta</h2>
-                                    <p class="text-brand-teal text-sm font-medium mt-1">7-seater · AC · Premium comfort</p>
-                                </div>
-                                <span class="bg-gray-100 text-gray-500 text-xs font-bold px-3 py-1 rounded-full">On request</span>
+                    <!-- 2. SUV / MPV (7-seater) -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <div class="p-6 bg-gray-50/70 border-b border-gray-100 flex items-center justify-center h-40">
+                            <div class="w-16 h-16 rounded-2xl bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                                <i data-lucide="shield" class="w-8 h-8"></i>
                             </div>
-                            <p class="text-gray-500 font-sans text-sm sm:text-base leading-relaxed mb-6">
-                                The Innova Crysta offers a larger, smoother ride — ideal for bigger groups, long outstation journeys, and passengers who prefer extra legroom and boot space.
-                            </p>
-                            <ul class="space-y-2.5 text-sm font-sans text-gray-600 mb-6">
-                                <li class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-brand-teal shrink-0"></i>Up to 6 passengers (+ driver)</li>
-                                <li class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-brand-teal shrink-0"></i>Larger boot for extra luggage</li>
-                                <li class="flex items-center gap-2"><i data-lucide="wind" class="w-4 h-4 text-brand-teal shrink-0"></i>Dual-zone air-conditioning</li>
-                                <li class="flex items-center gap-2"><i data-lucide="bluetooth" class="w-4 h-4 text-brand-teal shrink-0"></i>Bluetooth music, USB charging</li>
-                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-teal shrink-0"></i>Great for multi-day outstation tours</li>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="mb-3">
+                                <h3 class="text-xl font-display font-bold text-gray-900">SUV / MPV (7-seater)</h3>
+                                <p class="text-brand-teal text-sm font-medium mt-1">Up to 6 passengers · AC</p>
+                            </div>
+                            <ul class="space-y-2.5 text-sm font-sans text-gray-600 mb-6 flex-1">
+                                <li class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-brand-teal shrink-0"></i>Up to 6 passengers</li>
+                                <li class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-brand-teal shrink-0"></i>3–4 large suitcases</li>
+                                <li class="flex items-center gap-2"><i data-lucide="wind" class="w-4 h-4 text-brand-teal shrink-0"></i>Air-conditioned</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-teal shrink-0"></i>Ideal for families and hill trips</li>
                             </ul>
-                            <a href="booking.html?vehicle=innova" class="bg-brand-teal text-white font-bold px-6 py-3 rounded-full hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] inline-flex items-center gap-2">
-                                <i data-lucide="calendar-check" class="w-4 h-4"></i> Book with Innova
+                            <a href="booking.html?vehicle=suv-mpv" class="w-full bg-brand-teal text-white font-bold py-3 px-4 rounded-xl hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] inline-flex items-center justify-center gap-2 text-center">
+                                <i data-lucide="calendar-check" class="w-4 h-4 shrink-0"></i> Request this vehicle type
                             </a>
                         </div>
                     </div>
+
+                    <!-- 3. Premium comfort -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <div class="p-6 bg-gray-50/70 border-b border-gray-100 flex items-center justify-center h-40">
+                            <div class="w-16 h-16 rounded-2xl bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                                <i data-lucide="sparkles" class="w-8 h-8"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="mb-3">
+                                <h3 class="text-xl font-display font-bold text-gray-900">Premium comfort</h3>
+                                <p class="text-brand-teal text-sm font-medium mt-1">Up to 6 passengers · AC</p>
+                            </div>
+                            <ul class="space-y-2.5 text-sm font-sans text-gray-600 mb-6 flex-1">
+                                <li class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-brand-teal shrink-0"></i>Up to 6 passengers</li>
+                                <li class="flex items-center gap-2"><i data-lucide="maximize" class="w-4 h-4 text-brand-teal shrink-0"></i>Extra comfort and legroom</li>
+                                <li class="flex items-center gap-2"><i data-lucide="wind" class="w-4 h-4 text-brand-teal shrink-0"></i>Air-conditioned</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-teal shrink-0"></i>Ideal for long outstation trips</li>
+                            </ul>
+                            <a href="booking.html?vehicle=premium-comfort" class="w-full bg-brand-teal text-white font-bold py-3 px-4 rounded-xl hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] inline-flex items-center justify-center gap-2 text-center">
+                                <i data-lucide="calendar-check" class="w-4 h-4 shrink-0"></i> Request this vehicle type
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4. Larger groups (on request) -->
+                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                        <div class="p-6 bg-gray-50/70 border-b border-gray-100 flex items-center justify-center h-40">
+                            <div class="w-16 h-16 rounded-2xl bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                                <i data-lucide="users" class="w-8 h-8"></i>
+                            </div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="mb-3">
+                                <h3 class="text-xl font-display font-bold text-gray-900">Larger groups (on request)</h3>
+                                <p class="text-brand-teal text-sm font-medium mt-1">Group travel · Arranged on request</p>
+                            </div>
+                            <ul class="space-y-2.5 text-sm font-sans text-gray-600 mb-6 flex-1">
+                                <li class="flex items-center gap-2"><i data-lucide="bus" class="w-4 h-4 text-brand-teal shrink-0"></i>Bigger vehicles for groups</li>
+                                <li class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4 text-brand-teal shrink-0"></i>Luggage space based on group size</li>
+                                <li class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-brand-teal shrink-0"></i>Arranged on request</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-teal shrink-0"></i>Ideal for group tours &amp; family trips</li>
+                            </ul>
+                            <a href="booking.html?vehicle=larger-groups" class="w-full bg-brand-teal text-white font-bold py-3 px-4 rounded-xl hover:bg-brand-teal-hover transition-colors text-sm min-h-[44px] inline-flex items-center justify-center gap-2 text-center">
+                                <i data-lucide="calendar-check" class="w-4 h-4 shrink-0"></i> Request this vehicle type
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- Availability disclaimer note -->
+                <p class="text-center text-gray-400 font-sans text-xs sm:text-sm mt-8">Exact vehicle model is confirmed at the time of booking, based on availability.</p>
 
                 <!-- Not sure which vehicle section -->
                 <div class="mt-12 bg-white rounded-2xl border border-gray-200 p-8 sm:p-10 text-center shadow-sm font-poppins">
