@@ -7,74 +7,54 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
     
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
-    
-    if (mobileMenuBtn && mobileMenu && mobileMenuOverlay) {
+    if (mobileMenuBtn && mobileMenu) {
         let isMenuOpen = false;
 
         const openMenu = () => {
             isMenuOpen = true;
-            // Show overlay
-            mobileMenuOverlay.classList.remove('hidden');
-            // Trigger reflow
-            void mobileMenuOverlay.offsetWidth;
-            mobileMenuOverlay.classList.remove('opacity-0');
-            // Slide in panel
-            mobileMenu.classList.remove('translate-x-full');
-            // Lock body scroll
-            document.body.style.overflow = 'hidden';
-            // Toggle hamburger to X
-            mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+            mobileMenu.classList.remove('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            if (navbar) navbar.classList.add('nav-menu-open');
+            // Toggle hamburger to X icon
+            mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
         };
 
         const closeMenu = () => {
-            if (!isMenuOpen) return;
+            if (!isMenuOpen && mobileMenu.classList.contains('hidden')) return;
             isMenuOpen = false;
-            // Slide out panel
-            mobileMenu.classList.add('translate-x-full');
-            // Hide overlay gracefully
-            mobileMenuOverlay.classList.add('opacity-0');
-            setTimeout(() => {
-                if (!isMenuOpen) mobileMenuOverlay.classList.add('hidden');
-            }, 300); // matches transition duration
-            // Unlock body scroll
-            document.body.style.overflow = '';
-            // Toggle X back to hamburger
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            if (navbar) navbar.classList.remove('nav-menu-open');
+            // Toggle X back to hamburger icon
             mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
         };
 
         const toggleMenu = (e) => {
-            if (e.type === 'touchstart') e.preventDefault(); // Prevent double-firing or delay
-            e.stopPropagation();
+            if (e && e.type === 'touchstart') e.preventDefault();
+            if (e) e.stopPropagation();
             if (isMenuOpen) closeMenu();
             else openMenu();
         };
 
         mobileMenuBtn.addEventListener('click', toggleMenu);
         mobileMenuBtn.addEventListener('touchstart', toggleMenu, { passive: false });
-        
-        if (mobileMenuCloseBtn) {
-            mobileMenuCloseBtn.addEventListener('click', closeMenu);
-            mobileMenuCloseBtn.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                closeMenu();
-            }, { passive: false });
-        }
-        
-        mobileMenuOverlay.addEventListener('click', closeMenu);
-        mobileMenuOverlay.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            closeMenu();
-        }, { passive: false });
 
+        // Close menu on Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isMenuOpen) closeMenu();
         });
-        
-        // Close menu when a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll('.mobile-nav-link');
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu when a link inside mobileMenu is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a, .mobile-nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });

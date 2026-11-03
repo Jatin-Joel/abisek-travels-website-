@@ -116,6 +116,10 @@
     color: var(--color-text-primary, #F7F5F0);
     transition: opacity 0.3s ease;
   }
+  #preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
   @media (prefers-color-scheme: light) {
     #preloader { background-color: #ffffff; color: #111827; }
   }
@@ -149,6 +153,7 @@
   if (sessionStorage.getItem('abisek-loaded')) {
     var p = document.getElementById('preloader');
     if(p) {
+      p.style.pointerEvents = 'none';
       p.style.opacity = '0';
       setTimeout(function(){ p.remove(); }, 150);
     }
@@ -185,7 +190,8 @@
       
       var p = document.getElementById('preloader');
       if(!p) return;
-      
+      p.style.pointerEvents = 'none';
+      p.classList.add('fade-out');
       setTimeout(function() {
           p.style.opacity = '0';
           setTimeout(function() {
@@ -1042,7 +1048,7 @@
         </a>
 
         <!-- 3. Book Now -->
-        <a href="#booking"
+        <a href="booking.html"
            class="flex-1 flex items-center justify-center gap-1.5 py-3 px-2 rounded-xl bg-brand-teal hover:bg-brand-teal-hover text-white font-semibold text-xs active:scale-95 transition-all min-h-[48px]"
            aria-label="Book Cab Now">
             <i data-lucide="calendar-check" class="w-4 h-4 shrink-0"></i>
