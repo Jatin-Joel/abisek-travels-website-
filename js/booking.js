@@ -36,14 +36,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const tripField    = document.getElementById('tripType');
 
   if (dropField && params.get('route')) {
-    const desiredVal = routeMap[params.get('route')] || params.get('route');
-    dropField.value = desiredVal;
-    if (!dropField.value) {
-      Array.from(dropField.options).forEach(function (o) {
-        if (o.text.toLowerCase().includes(desiredVal.toLowerCase())) {
-          o.selected = true;
-        }
-      });
+    const rawRoute = params.get('route');
+    const desiredVal = routeMap[rawRoute];
+    if (desiredVal) {
+      dropField.value = desiredVal;
+      if (!dropField.value) {
+        Array.from(dropField.options).forEach(function (o) {
+          if (o.value === desiredVal || o.text.toLowerCase().includes(desiredVal.toLowerCase())) {
+            o.selected = true;
+          }
+        });
+      }
     }
   }
   if (vehicleField && params.get('vehicle')) {
@@ -69,8 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
   const pickupField = document.getElementById('pickup');
   const otherPickupWrapper = document.getElementById('otherPickupWrapper');
-  const fareEstimateText = document.getElementById('fareEstimateText');
-  const fareBox = document.getElementById('fareEstimateBox');
 
   if (pickupField && otherPickupWrapper) {
       pickupField.addEventListener('change', function() {
@@ -81,31 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
               otherPickupWrapper.classList.add('hidden');
               document.getElementById('otherPickup').required = false;
           }
-          updateFareDisplay();
       });
   }
-  
-  if (dropField) dropField.addEventListener('change', updateFareDisplay);
-
-  function updateFareDisplay() {
-      if (!fareBox) return;
-      
-      const pickupVal = pickupField ? pickupField.value : '';
-      const dropVal = dropField ? dropField.value : '';
-      
-      fareBox.style.display = ''; // Always show now because we use it for status
-      
-      if (pickupVal === 'Other' || (pickupVal && pickupVal !== 'Pathankot')) {
-          fareEstimateText.textContent = 'Custom quote via WhatsApp';
-      } else if (pickupVal && dropVal) {
-          fareEstimateText.textContent = 'Get a custom quote';
-      } else {
-          fareEstimateText.textContent = 'Calculating…';
-      }
-  }
-  
-  // Initialize display
-  updateFareDisplay();
 
   // ── Form submit ────────────────────────────────────────────────────────────
   form.addEventListener('submit', function (e) {
