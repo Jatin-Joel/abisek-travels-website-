@@ -38,8 +38,8 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Hero image preload (responsive) -->
-    <link rel="preload" as="image" href="assets/hero_bg.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/hero_mobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero_car.webp" media="(min-width: 768px)" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero_car_mobile.webp" media="(max-width: 767px)" type="image/webp" fetchpriority="high">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -264,37 +264,40 @@
 
     <!-- ================================================================
          1. HERO — Stitch Redesign (Responsive Static Hero)
-         Mobile background placeholder: assets/hero_mobile.webp
-         Desktop background: assets/hero_bg.webp
+         Desktop bg placeholder : assets/hero_car.webp  (monastery 1920×1080 — swap with 1920px car photo)
+         Mobile bg placeholder  : assets/hero_car_mobile.webp (monastery 800×1200 — swap with 800-1000px portrait car photo)
     ================================================================ -->
-    <section id="home" class="relative min-h-[92vh] md:min-h-screen flex items-start sm:items-center justify-center md:justify-start overflow-hidden bg-gray-950 pt-24 sm:pt-28 md:pt-0 pb-16 sm:pb-20">
-        <!-- Background destination image -->
+    <section id="home" class="hero-section relative overflow-hidden bg-gray-950">
+
+        <!-- ── Background ── -->
         <div class="absolute inset-0 z-0">
-            <picture class="w-full h-full">
-                <!-- Mobile hero image placeholder (assets/hero_mobile.webp) -->
-                <source media="(max-width: 767px)" srcset="assets/hero_mobile.webp">
-                <!-- Desktop hero image (assets/hero_bg.webp) -->
-                <img id="heroBgImg" src="assets/hero_bg.webp" alt="Scenic mountain route — Abisek Travels"
+            <picture style="display:block;width:100%;height:100%;position:absolute;inset:0;">
+                <!-- Mobile: hero_car_mobile.webp (placeholder: monastery portrait crop) -->
+                <source media="(max-width: 767px)" srcset="assets/hero_car_mobile.webp" type="image/webp">
+                <!-- Desktop: hero_car.webp (placeholder: monastery 1920×1080) -->
+                <img id="heroBgImg" src="assets/hero_car.webp"
+                     alt="Cab on a scenic mountain road — Abisek Travels"
                      width="1920" height="1080" fetchpriority="high" decoding="sync"
-                     class="w-full h-full object-cover object-center">
+                     style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
             </picture>
 
-            <!-- Dark gradient overlays for high-contrast readability -->
-            <!-- Base dim overlay -->
-            <div class="absolute inset-0 bg-black/45"></div>
-            <!-- Top navbar scrim -->
-            <div class="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/85 via-black/45 to-transparent pointer-events-none"></div>
-            <!-- Desktop heavy left scrim behind text -->
-            <div class="hidden md:block absolute inset-y-0 left-0 w-3/5 bg-gradient-to-r from-gray-950/95 via-gray-950/70 to-transparent pointer-events-none"></div>
-            <!-- Mobile heavy overlay behind content and bottom fade -->
-            <div class="md:hidden absolute inset-0 bg-gradient-to-b from-black/60 via-gray-950/65 to-gray-950/95 pointer-events-none"></div>
-            <!-- Bottom fade to next section -->
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-gray-950 to-transparent pointer-events-none"></div>
+            <!-- Nav scrim: keeps logo/hamburger readable over bright sky (both viewports) -->
+            <div class="hero-nav-scrim absolute inset-x-0 top-0 pointer-events-none" style="z-index:2;"></div>
+
+            <!-- Desktop: left-side dark scrim so text stays readable against bright background -->
+            <div class="hero-desktop-scrim absolute inset-y-0 left-0 pointer-events-none" style="z-index:2;"></div>
+
+            <!-- Mobile: bottom-heavy overlay — transparent at top so car shows, dark at bottom behind text -->
+            <div class="hero-mobile-overlay absolute inset-0 pointer-events-none" style="z-index:2;"></div>
+
+            <!-- Bottom edge fade to next section -->
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-gray-950 to-transparent pointer-events-none" style="z-index:2;"></div>
         </div>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center md:items-start text-center md:text-left mt-3 sm:mt-6 md:mt-0">
-            <div class="max-w-xl flex flex-col items-center md:items-start">
+        <!-- ── Content ── -->
+        <div class="hero-content-outer relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="z-index:10;">
+            <div class="flex flex-col items-center md:items-start text-center md:text-left">
+
                 <!-- CAB & TAXI SERVICE Badge -->
                 <div class="hero-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold tracking-wider uppercase mb-3 sm:mb-4">
                     <span class="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
@@ -312,7 +315,7 @@
                 </p>
 
                 <!-- CTA Buttons -->
-                <div class="mt-6 sm:mt-8 flex flex-row gap-3 w-full sm:w-auto justify-center sm:justify-start max-w-md sm:max-w-none">
+                <div class="mt-6 sm:mt-7 flex flex-row gap-3 w-full sm:w-auto justify-center md:justify-start max-w-xs sm:max-w-sm md:max-w-none">
                     <a href="booking.html" class="hero-primary-btn flex-1 sm:flex-initial">
                         <span>Book Your Ride</span>
                     </a>
@@ -325,20 +328,12 @@
                 </div>
 
                 <!-- Trust Chips -->
-                <div class="mt-5 sm:mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-2.5">
-                    <div class="hero-trust-chip">
-                        <span class="chip-dot bg-[#3db39e]"></span>
-                        <span>Fixed fares</span>
-                    </div>
-                    <div class="hero-trust-chip">
-                        <span class="chip-dot bg-[#38bdf8]"></span>
-                        <span>24/7 service</span>
-                    </div>
-                    <div class="hero-trust-chip">
-                        <span class="chip-dot bg-[#fbbf24]"></span>
-                        <span>2000+ trips</span>
-                    </div>
+                <div class="mt-5 sm:mt-6 flex flex-wrap gap-2 sm:gap-2.5 justify-center md:justify-start">
+                    <div class="hero-trust-chip"><span class="chip-dot bg-[#3db39e]"></span><span>Fixed fares</span></div>
+                    <div class="hero-trust-chip"><span class="chip-dot bg-[#38bdf8]"></span><span>24/7 service</span></div>
+                    <div class="hero-trust-chip"><span class="chip-dot bg-[#fbbf24]"></span><span>2000+ trips</span></div>
                 </div>
+
             </div>
         </div>
     </section>

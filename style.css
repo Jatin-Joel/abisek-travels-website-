@@ -186,6 +186,93 @@ nav.scrolled {
     transform: none;
 }
 
+/* ============================================================
+   HERO LAYOUT — Stitch Redesign
+   Desktop bg placeholder : assets/hero_car.webp  (monastery 1920×1080 — replace with 1920px car photo)
+   Mobile bg placeholder  : assets/hero_car_mobile.webp (monastery 800×1200 — replace with 800-1000px portrait car photo)
+   ============================================================ */
+
+/* Base: full-viewport hero, content vertically centered on desktop */
+.hero-section {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* ── Mobile (< 768px) ── */
+/* Top-anchor content so the car is visible above the text block.
+   Badge starts at ~50-55% of viewport height.
+   48px minimum gap below trust chips is provided by padding-bottom. */
+@media (max-width: 767px) {
+    .hero-section {
+        align-items: flex-start;
+    }
+    .hero-content-outer {
+        padding-top: 47svh;   /* pushes badge to ~50-55% of viewport */
+        padding-bottom: 3.5rem; /* ≥ 48px gap below trust chips */
+    }
+}
+
+/* ── Desktop (≥ 768px) ── */
+@media (min-width: 768px) {
+    .hero-content-outer {
+        padding-top: 5rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* ── Nav scrim — both viewports ──
+   Dark gradient at the very top (~120px) keeps logo, nav links,
+   Book Now button and hamburger readable over a bright sky. */
+.hero-nav-scrim {
+    height: 120px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.72) 0%,
+        rgba(0, 0, 0, 0.35) 55%,
+        transparent 100%
+    );
+}
+
+/* ── Desktop: left scrim behind text ──
+   Darkens the left ~62% of the hero so the white text is legible
+   over whatever sky/mountain colours are in the background photo. */
+.hero-desktop-scrim {
+    display: none;
+}
+@media (min-width: 768px) {
+    .hero-desktop-scrim {
+        display: block;
+        width: 62%;
+        background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.92) 0%,
+            rgba(0, 0, 0, 0.78) 38%,
+            rgba(0, 0, 0, 0.30) 65%,
+            transparent 100%
+        );
+    }
+}
+
+/* ── Mobile: bottom-heavy overlay ──
+   Transparent at the top so the car stays clearly visible;
+   ramps to near-black behind the text block at the bottom. */
+.hero-mobile-overlay {
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.08) 28%,
+        rgba(0, 0, 0, 0.76) 50%,
+        rgba(0, 0, 0, 0.96) 100%
+    );
+}
+@media (min-width: 768px) {
+    .hero-mobile-overlay {
+        display: none;
+    }
+}
+
 /* 9. Mobile Touch Targets & Form Optimizations */
 @media (max-width: 768px) {
     /* Prevent iOS zoom-in when focusing inputs (requires 16px min font size) */
@@ -339,9 +426,8 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
 /* ==========================================================================
    Hero CTA Buttons & Trust Chips (Stitch Hero)
-   Mobile background placeholder: assets/hero_mobile.webp
-   (Replace assets/hero_mobile.webp with the clean car-on-road photo when available)
-   Desktop background: assets/hero_bg.webp
+   Desktop bg placeholder : assets/hero_car.webp  (monastery 1920×1080 — swap with 1920px car photo)
+   Mobile bg placeholder  : assets/hero_car_mobile.webp (monastery 800×1200 — swap with 800-1000px portrait car photo)
    ========================================================================== */
 
 /* Hero Badge */
