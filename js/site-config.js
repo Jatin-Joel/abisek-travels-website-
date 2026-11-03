@@ -10,9 +10,6 @@ const SITE_CONFIG = {
   // Set to true once you have confirmed real reviews from customers.
   SHOW_REVIEWS: false,
 
-  // Set to true once vehicle details have been confirmed.
-  SHOW_FLEET: false,
-
   // ── Contact Details ───────────────────────────────────────────────────────
   phone: '+91 78144 42326',
   whatsapp: '917814442326',     // digits only, used in wa.me links
@@ -29,12 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const reviewsSection = document.getElementById('testimonials');
   if (reviewsSection) {
     reviewsSection.style.display = SITE_CONFIG.SHOW_REVIEWS ? '' : 'none';
-  }
-
-  // Fleet section
-  const fleetSection = document.getElementById('fleet-teaser');
-  if (fleetSection) {
-    fleetSection.style.display = SITE_CONFIG.SHOW_FLEET ? '' : 'none';
   }
 
   // Inject real phone number into all tel: links

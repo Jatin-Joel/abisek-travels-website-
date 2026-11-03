@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
     'pune':            'Pune',
   };
   const vehicleMap = {
-    'innova':           'innova',
-    'ertiga':           'ertiga',
+    'ertiga':           'suv-mpv',
+    'innova':           'premium-comfort',
     'hatchback-sedan':  'hatchback-sedan',
     'suv-mpv':          'suv-mpv',
     'premium-comfort':  'premium-comfort',
