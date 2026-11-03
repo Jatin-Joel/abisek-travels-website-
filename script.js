@@ -12,11 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && mobileMenu) {
         let isMenuOpen = false;
 
+        const bottomBar = document.getElementById('mobileBottomBar');
+
         const openMenu = () => {
             isMenuOpen = true;
             mobileMenu.classList.remove('hidden');
             mobileMenuBtn.setAttribute('aria-expanded', 'true');
             if (navbar) navbar.classList.add('nav-menu-open');
+            if (bottomBar) bottomBar.classList.add('hidden');
+            document.body.style.overflow = 'hidden';
             // Toggle hamburger to X icon
             mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
         };
@@ -27,19 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.add('hidden');
             mobileMenuBtn.setAttribute('aria-expanded', 'false');
             if (navbar) navbar.classList.remove('nav-menu-open');
+            if (bottomBar) bottomBar.classList.remove('hidden');
+            document.body.style.overflow = '';
             // Toggle X back to hamburger icon
             mobileMenuBtn.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
         };
 
         const toggleMenu = (e) => {
-            if (e && e.type === 'touchstart') e.preventDefault();
             if (e) e.stopPropagation();
             if (isMenuOpen) closeMenu();
             else openMenu();
         };
 
+        // Click listener only (no touchstart, preventing double-toggles or scroll blocking on mobile)
         mobileMenuBtn.addEventListener('click', toggleMenu);
-        mobileMenuBtn.addEventListener('touchstart', toggleMenu, { passive: false });
 
         // Close menu on Escape key
         document.addEventListener('keydown', (e) => {

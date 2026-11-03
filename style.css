@@ -601,7 +601,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 #mobileMenu {
   padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));
-  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+  padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 #floatingWhatsapp {
   margin-bottom: env(safe-area-inset-bottom, 0px);
